@@ -1,5 +1,7 @@
 .anmelden-ueberschrift {
-    padding-top: 3%;    
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: #303030;
 }
 
 .btn {
@@ -12,4 +14,13 @@
     background-color: #57bea4;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     color: white;
+}
+
+.felder {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fafafa;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    border-radius: 5px;
 }
