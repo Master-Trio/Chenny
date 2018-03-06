@@ -7,8 +7,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<title>Chenny</title>
-    <link rel="shortcut icon" href="IMG/favicon.png" type="<mime-type>"/>
-    
+	<link rel="shortcut icon" href="IMG/favicon.png" type="<mime-type>" />
+
 	<!-- Bootstrap -->
 	<link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -32,52 +32,60 @@
 			margin-top: 3%;
 		}
 
-        .wic {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+		.wic {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 
-        .w {
-            text-align: center;
-            width: 70%;
-        }
-        .ueber {
-            font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
-        }
-        .dunkelHint {
-            background-color: #303030;
-        }
-        .hellHint {
-            background-color: #cecece;
-        }
-        .helleSchrift {
-            color: #cecece;
-        }
-        .dunkleSchrift {
-            color: #303030;
-        }
-        .chennyFarbe {
-            background-color: #57bea4;
-        }
-		.anker{
+		.w {
+			text-align: center;
+			width: 70%;
+		}
+
+		.ueber {
+			font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+		}
+
+		.dunkelHint {
+			background-color: #303030;
+		}
+
+		.hellHint {
+			background-color: #cecece;
+		}
+
+		.helleSchrift {
+			color: #cecece;
+		}
+
+		.dunkleSchrift {
+			color: #303030;
+		}
+
+		.chennyFarbe {
+			background-color: #57bea4;
+		}
+
+		.anker {
 			width: 50px;
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
 		}
-        .marg {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
+
+		.marg {
+			margin-top: 2rem;
+			margin-bottom: 2rem;
+		}
 	</style>
 </head>
 
 <body style="margin: 0">
 
-    <!-- NAVIGATIONSABSCHNITT -->
+	<!-- NAVIGATIONSABSCHNITT -->
 	<header>
-		<nav  style="background-color:#303030;"class="navbar fixed-top navbar-expand-lg navbar-dark">
+		<nav style="background-color:#303030;" class="navbar fixed-top navbar-expand-lg navbar-dark">
 			<a class="navbar-brand" href="#"><img src="IMG/vektorlogo.png" height="40" class="d-inline-block align-top Responsive image" alt=""></a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -87,13 +95,13 @@
 				<ul class="navbar-nav ml-auto ">
 
 					<li style="font-size:20px" class="nav-item mr-5">
-						<a class="nav-link" href="#">Das Projekt</a>
+						<a class="nav-link" href="#projekt">Das Projekt</a>
 					</li>
 					<li style="font-size:20px" class="nav-item mr-5">
-						<a class="nav-link" href="#">Das Team</a>
+						<a class="nav-link" href="#team">Das Team</a>
 					</li>
 					<li style="font-size:20px" class="nav-item mr-5">
-						<a class="nav-link" href="#">Kontakt</a>
+						<a class="nav-link" href="#kontakt">Kontakt</a>
 					</li>
 					<li style="font-size:20px" class="nav-item mr-1">
 						<a class="nav-link" href="#">FAQ</a>
@@ -107,55 +115,67 @@
 	</header>
 	<br><br><br><br><br><br><br><br><br><br>
 	<br><br><br><br><br><br><br><br>
-	
+
 	<!-- ANIMATIONSABSCHNITT -->
 	<h1 style="text-align: center" class="display-1">Animation</h1>
-	
+
 	<br><br>
 	<br><br><br><br><br><br><br><br><br><br>
-	
+
 	<!-- ANFANGSABSCHNITT -->
 	<div class="chennyFarbe"><br><button style="font-size:300%;background-color:#57bea4" type="button" class="btn btn-lg btn-block ueber dunkleSchrift marg">Leg los!</button><br></div>
 
-    <!-- PROJEKTABSCHNITT -->
-    <div class="dunkelHint"><h1 style="text-align: center" id="1" class="ueber helleSchrift"><br>Was ist Chenny?</h1>
-    <img class="anker marg" src="IMG/ankergruen.png">
-	<div class="wic"><div class="w"><p class="helleSchrift">Chenny ist ein webbasiertes Datenkonzeptionierungstool, welches sich auf die Chen-Notation spezialisiert. Es soll jederzeit gratis zur Verfügung stehen und ist vor Allem für Schüler, die sich mit dem Erstellen von ERDs/ERMs befassen, ausgelegt. Die Software weist eine simple Struktur auf und die tatsächliche Entwurfserstellung ist in einzelne Schritte aufgeteilt, womit der Lernprozess der Chen-Notation vereinfacht wird.</p><br><br></div></div></div>
-	
+	<!-- PROJEKTABSCHNITT -->
+	<section id="projekt" style="padding-top: 40px; margin-top: -40px;">
+		<div class="dunkelHint">
+			<h1 style="text-align: center" id="1" class="ueber helleSchrift"><br>Was ist Chenny?</h1>
+			<img class="anker marg" src="IMG/ankergruen.png">
+			<div class="wic">
+				<div class="w">
+					<p class="helleSchrift">Chenny ist ein webbasiertes Datenkonzeptionierungstool, welches sich auf die Chen-Notation spezialisiert. Es soll jederzeit gratis zur Verfügung stehen und ist vor Allem für Schüler, die sich mit dem Erstellen von ERDs/ERMs befassen, ausgelegt. Die Software weist eine simple Struktur auf und die tatsächliche Entwurfserstellung ist in einzelne Schritte aufgeteilt, womit der Lernprozess der Chen-Notation vereinfacht wird.</p><br><br></div>
+			</div>
+		</div>
+	</section>
 	<!-- TEAMABSCHNITT -->
-	<div class="hellHint dunkleSchrift"><br><br><h1 style="text-align: center" class="ueber" id="3">Das Team</h1>
-	<img class="anker marg" src="IMG/ankergruen.png">
-	<div class="row">
-		<div class="col margintop">
-			<img class="imgcenter" src="IMG/platz.jpg">
-			<h1 style="text-align: center">Maciej Dzialoszynski</h1>
-			<h6 style="text-align: center;margin-right: 30px;margin-left: 30px;">
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-			</h6>
+	<section id="team" style="padding-top: 40px; margin-top: -40px;">
+		<div class="hellHint dunkleSchrift"><br><br>
+			<h1 style="text-align: center" class="ueber" id="3">Das Team</h1>
+			<img class="anker marg" src="IMG/ankergruen.png">
+			<div class="row">
+				<div class="col margintop">
+					<img class="imgcenter" src="IMG/platz.jpg">
+					<h1 style="text-align: center">Maciej Dzialoszynski</h1>
+					<h6 style="text-align: center;margin-right: 30px;margin-left: 30px;">
+						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+					</h6>
 
-		</div>
-		<div class="col margintop">
-			<img class="imgcenter" src="IMG/platz.jpg">
-			<h1 style="text-align: center">David Jovanovic</h1>
-			<h6 style="text-align: center;margin-right: 30px;margin-left: 30px;">
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-			</h6>
-		</div>
-		<div class="col margintop">
-			<img class="imgcenter " src="IMG/platz.jpg">
-			<h1 style="text-align: center">Sebastian Grünewald</h1>
-			<h6 style="text-align: center;margin-right: 30px;margin-left: 30px;">
-				Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-			</h6>
-		</div>
-	</div><br><br></div>
+				</div>
+				<div class="col margintop">
+					<img class="imgcenter" src="IMG/platz.jpg">
+					<h1 style="text-align: center">David Jovanovic</h1>
+					<h6 style="text-align: center;margin-right: 30px;margin-left: 30px;">
+						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+					</h6>
+				</div>
+				<div class="col margintop">
+					<img class="imgcenter " src="IMG/platz.jpg">
+					<h1 style="text-align: center">Sebastian Grünewald</h1>
+					<h6 style="text-align: center;margin-right: 30px;margin-left: 30px;">
+						Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+					</h6>
+				</div>
+			</div><br><br></div>
+	</section>
 
-    <!-- KONTAKTABSCHNITT -->
-    <div class="dunkelHint"><br><br><h1 style="text-align:center" class="ueber helleSchrift">Kontakt</h1>
-    <img class="anker marg" src="IMG/ankergruen.png">
-    <br></div>
-    
-	
+	<!-- KONTAKTABSCHNITT -->
+	<section id="kontakt" style="padding-top: 40px; margin-top: -40px;">
+		<div class="dunkelHint"><br><br>
+			<h1 style="text-align:center" class="ueber helleSchrift">Kontakt</h1>
+			<img class="anker marg" src="IMG/ankergruen.png">
+			<br></div>
+	</section>
+
+
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Include all compiled plugins (below), or include individual files as needed -->
