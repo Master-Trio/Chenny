@@ -10,10 +10,10 @@
     <link href="css/style-reg.css" rel="stylesheet">
 
     <title>Registrieren</title>
-    <link rel="shortcut icon" href="IMG/favicon.png" type="<mime-type>"/>
+    <link rel="shortcut icon" href="IMG/favicon.png" type="<mime-type>" />
 </head>
 
-<body>
+<body style="background-color: #989c9b">
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -23,31 +23,38 @@
     <!-- Registrierungsseite -->
 
     <div class="anmelden-ueberschrift" align="center">
-        <img src="IMG/vektorlogo.png" width="20%" height="auto">
-        <hr style="border-top: 1px solid #8c8b8b; width: 40%">
-        <h1>Registrierung</h1>
+        <img src="IMG/vektorlogo.png" width="130px">
+    </div><br>
+    <h1 style="text-align: center; color: ##303030">Registrierung</h1>
+
+    <div class="felder container" align="center">
+        <div class="row" style=" text-align: center; margin-left: 25%; margin-right: 25%;">
+            <div class="col"><b>Vorname</b><br><input type="text" style="text-align: center"></div>
+            <div class="col"><b>Nachname</b><br><input type="text" style="text-align: center"></div>
+        </div>
+        
+        <div class="row" style="text-align: center">
+            <div class="col"><b>E-Mail</b><br>
+                <input type="text" size="35" style="text-align: center"></div>
+        </div><br>
+        <hr style="border-top: 1px solid #8c8b8b; width: 70%">
+        <div class="row" style="text-align: center">
+            <div class="col"><b>Passwort</b><br>
+                <input type="password" size="35" style="text-align: center">
+                <p style="font-size: 10pt">min. 6 Zeichen | min. 1 Groß/Kleinbuchstabe | min. 1 Zahl</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: center">
+            <div class="col"><b>Passwort wiederholen</b><br>
+                <input type="password" size="35" style="text-align: center"></div>
+        </div>
+        <br>
     </div>
-    <div class="row" style="padding-top: 2%; text-align: center; margin-left: 25%; margin-right: 25%;">
-        <div class="col"><b>Vorname</b><br><input type="text" style="text-align: center"></div>
-        <div class="col"><b>Nachname</b><br><input type="text" style="text-align: center"></div>
-    </div>
+
     <br>
-    <div class="row" style="text-align: center">
-        <div class="col"><b>E-Mail</b><br>
-            <input type="text" size="35" style="text-align: center"></div>
-    </div><br>
-    <div class="row" style="text-align: center">
-        <div class="col"><b>Passwort</b><br>
-            <input type="password" size="35" style="text-align: center">
-            <p style="font-size: 10pt">min. 6 Zeichen | min. 1 Groß/Kleinbuchstabe | min. 1 Zahl</p></div>
-    </div><br>
-     <div class="row" style="text-align: center">
-        <div class="col"><b>Passwort wiederholen</b><br>
-            <input type="password" size="35" style="text-align: center"></div>
-    </div><br>
     <div align="center">
         <button type="button" class="btn">Registrieren</button>
     </div>
-    
+
 </body>
 </html>
