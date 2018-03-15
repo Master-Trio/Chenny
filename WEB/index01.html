@@ -52,11 +52,25 @@
             margin-top: 3%;
             margin-bottom: 1%;
         }
+        
+        .marginAnimation {
+            margin-top: 15%;
+            margin-bottom: 10%;
+        }
 
         .wic {
+            display: -ms-flexbox;
             display: flex;
             align-items: center;
             justify-content: center;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+        
+        .stickyPos {
+            position: sticky;   
+            top: 0;
+            z-index: -1;
         }
 
         .w {
@@ -112,6 +126,7 @@
             font-size: 50px;
             color: #303030;
         }
+        
     </style>
 </head>
 
@@ -146,14 +161,13 @@
             </div>
         </nav>
     </header>
-    <br><br><br><br><br><br><br><br><br><br>
-    <br><br><br><br><br><br><br><br>
 
     <!-- ANIMATIONSABSCHNITT -->
-    <h1 style="text-align: center" class="display-1">Animation</h1>
-
-    <br><br>
-    <br><br><br><br><br><br><br><br><br><br>
+    <div class="wic hellHint stickyPos">
+        <div class="w marginAnimation">
+            <h1 class="ueber dunkleSchrift">Animation coming soon..</h1>
+        </div>
+    </div>
 
     <!-- ANFANGSABSCHNITT -->
     <div class="chennyFarbe">
