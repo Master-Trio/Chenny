@@ -60,25 +60,11 @@
             margin-bottom: 10%;
         }
 
-        .wic {
-            display: -ms-flexbox;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            -ms-flex-wrap: wrap;
-            flex-wrap: wrap;
-        }
-
         .stickyPos {
             position: -webkit-stick;
             position: sticky;
             top: 0;
             z-index: -1;
-        }
-
-        .w {
-            text-align: center;
-            width: 70%;
         }
 
         .ueber {
@@ -130,6 +116,39 @@
             color: #303030;
         }
 
+        .animation {
+            background-color: #eeeeee;
+        }
+
+        /* ---
+            Hier stehen die wichtigsten classes für die Positionierung der gesamten conts samt divs
+        */
+
+        .cont {
+            width: 100%;
+        }
+
+        .wic {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%
+        }
+
+        .w {
+            text-align: center;
+            width: 70%;
+        }
+
+        .cont .animation {
+            padding-top: 300px;
+            padding-bottom: 280px;
+        }
+
+        /* ---
+            Positionierung-Ende
+        */
+
     </style>
 </head>
 
@@ -140,8 +159,8 @@
         <nav style="background-color:#303030;" class="navbar fixed-top navbar-expand-lg navbar-dark border-bottom border-white">
             <a class="navbar-brand" href="#"><img src="IMG/vektorlogo.png" height="40" class="d-inline-block align-top Responsive image" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+            <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto ">
 
@@ -157,42 +176,45 @@
                     <li style="font-size:20px" class="nav-item mr-1">
                         <a class="nav-link" href="#">FAQ</a>
                     </li>
-
-
                 </ul>
-
             </div>
         </nav>
     </header>
 
     <!-- ANIMATIONSABSCHNITT -->
-    <div class="wic hellHint stickyPos">
-        <div class="w marginAnimation">
-            <h1 class="ueber dunkleSchrift">Animation coming soon..</h1>
+    <div class="cont">
+        <div class="animation wic">
+            <div class="w">
+                <h1 class="ueber dunkleSchrift">Animation coming soon..</h1>
+            </div>
         </div>
     </div>
 
     <!-- ANFANGSABSCHNITT -->
-    <div class="chennyFarbe">
-        <br>
-        <button type="button" class="btn leglos">LEG LOS</button>
-        <br>
+    <div class="cont">
+        <div class="chennyFarbe">
+            <br>
+            <button type="button" class="btn leglos">LEG LOS</button>
+            <br>
+        </div>
     </div>
 
     <!-- PROJEKTABSCHNITT -->
     <section id="projekt" style="padding-top: 40px; margin-top: -40px;">
-        <div class="dunkelHint">
+        <div class="cont dunkelHint">
             <h1 style="text-align: center" id="1" class="ueber helleSchrift"><br>Was ist Chenny?</h1>
             <img class="anker marg" src="IMG/ankergruen.png">
             <div class="wic">
                 <div class="w">
-                    <p class="helleSchrift">Chenny ist ein webbasiertes Datenkonzeptionierungstool, welches sich auf die Chen-Notation spezialisiert. Es soll jederzeit gratis zur Verfügung stehen und ist vor Allem für Schüler, die sich mit dem Erstellen von ERDs/ERMs befassen, ausgelegt. Die Software weist eine simple Struktur auf und die tatsächliche Entwurfserstellung ist in einzelne Schritte aufgeteilt, womit der Lernprozess der Chen-Notation vereinfacht wird.</p><br><br></div>
+                    <p class="helleSchrift">Chenny ist ein webbasiertes Datenkonzeptionierungstool, welches sich auf die Chen-Notation spezialisiert. Es soll jederzeit gratis zur Verfügung stehen und ist vor Allem für Schüler, die sich mit dem Erstellen von ERDs/ERMs befassen, ausgelegt. Die Software weist eine simple Struktur auf und die tatsächliche Entwurfserstellung ist in einzelne Schritte aufgeteilt, womit der Lernprozess der Chen-Notation vereinfacht wird.</p><br><br>
+                </div>
             </div>
         </div>
     </section>
+
     <!-- TEAMABSCHNITT -->
     <section id="team" style="padding-top: 40px; margin-top: -40px;">
-        <div class="hellHint dunkleSchrift"><br><br>
+        <div class="cont hellHint dunkleSchrift"><br><br>
             <h1 style="text-align: center" class="ueber" id="3">Das Team</h1>
             <img class="anker marg" src="IMG/ankergruen.png">
             <div class="row">
@@ -220,12 +242,13 @@
                         Legt immer großen Wert auf korrekte Implementierung <br>-<br>&lt;h1&gt;<i style="font-family: Courier New"> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna </i>&lt;/h1&gt;
                     </h6>
                 </div>
-            </div><br><br></div>
+            </div><br><br>
+        </div>
     </section>
 
     <!-- KONTAKTABSCHNITT -->
     <section id="kontakt" style="padding-top: 40px; margin-top: -40px;">
-        <div class="dunkelHint"><br><br>
+        <div class="cont dunkelHint"><br><br>
             <h1 style="text-align:center" class="ueber helleSchrift">Kontakt</h1>
             <img class="anker marg" src="IMG/ankergruen.png">
             <div class="wic">
@@ -238,7 +261,8 @@
                     </p>
                 </div>
             </div>
-            <br></div>
+            <br>
+        </div>
     </section>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
