@@ -55,18 +55,6 @@
             margin-bottom: 1%;
         }
 
-        .marginAnimation {
-            margin-top: 15%;
-            margin-bottom: 10%;
-        }
-
-        .stickyPos {
-            position: -webkit-stick;
-            position: sticky;
-            top: 0;
-            z-index: -1;
-        }
-
         .ueber {
             font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
         }
@@ -116,8 +104,18 @@
             color: #303030;
         }
 
+        /*
+            Für Animation nötige classes
+        */
         .animation {
             background-color: #eeeeee;
+        }
+
+        .stickyPos {
+            position: -webkit-stick;
+            position: sticky;
+            top: 0;
+            z-index: -1;
         }
 
         /* ---
@@ -182,7 +180,7 @@
     </header>
 
     <!-- ANIMATIONSABSCHNITT -->
-    <div class="cont">
+    <div class="cont stickyPos">
         <div class="animation wic">
             <div class="w">
                 <h1 class="ueber dunkleSchrift">Animation coming soon..</h1>
