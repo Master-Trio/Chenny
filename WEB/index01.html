@@ -107,6 +107,7 @@
         /*
             Für Animation nötige classes
         */
+
         .animation {
             background-color: #eeeeee;
         }
@@ -117,6 +118,69 @@
             top: 0;
             z-index: -1;
         }
+
+        /*
+            ANIMATION
+        */
+
+        @keyframes entityMove {
+            from {
+                top: 380px;
+            }
+            to {
+                top: 10px;
+            }
+        }
+
+        .entity {
+            position: relative;
+            width: 180px;
+            height: 100px;
+            border-style: solid;
+            border-width: 4px;
+            border-color: #57bea4;
+            border-radius: 7px;
+        }
+
+        .firstEntity {
+            top: 380px;
+            left: -220px;
+            animation: entityMove 3s 1;
+            animation-fill-mode: forwards;
+        }
+
+        .secondEntity {
+            top: 380px;
+            left: 220px;
+            animation: entityMove 3s 1;
+            animation-fill-mode: forwards;
+            animation-delay: 3s;
+        }
+
+        @keyframes firstAttributeMove {
+            from {
+                top: -800px;
+                left: 180px;
+            }
+            to {
+                top: -140px;
+                left: 140px;
+            }
+        }
+
+        .attribute {
+            position: absolute;
+            top: -200px;
+            width: 160px;
+            height: 80px;
+            border-style: solid;
+            border-width: 4px;
+            border-color: #57bea4;
+            border-radius: 50%;
+            animation: firstAttributeMove 2s 1;
+            animation-fill-mode: forwards;
+        }
+
 
         /* ---
             Hier stehen die wichtigsten classes für die Positionierung der gesamten conts samt divs
@@ -182,9 +246,8 @@
     <!-- ANIMATIONSABSCHNITT -->
     <div class="cont stickyPos">
         <div class="animation wic">
-            <div class="w">
-                <h1 class="ueber dunkleSchrift">Animation coming soon..</h1>
-            </div>
+            <div class="entity firstEntity"><div class="attribute"></div></div>
+            <div class="entity secondEntity"></div>
         </div>
     </div>
 
