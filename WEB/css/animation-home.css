@@ -32,18 +32,6 @@
     }
 }
 
-/*
-    Hintergrundfarbe der Chenny-Entität
-*/
-
-@keyframes secEnt {
-    from {
-        
-    }
-    to {
-        background-color: #eeeeee;
-    }
-}
 
 .entity {
     position: relative;
@@ -65,7 +53,7 @@
 .secondEntity {
     top: 380px;
     left: 220px;
-    animation: entityMove 2s 1, secEnt 2s linear 2s forwards;
+    animation: entityMove 2s 1;
     animation-fill-mode: forwards;
     animation-delay: 3s;
 }
