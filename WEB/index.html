@@ -1,27 +1,531 @@
-<!DOCTYPE html>
-<html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <title>Chenny coming soon..</title>
-    <style>
-        .lo {
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Chenny</title>
+     <style>
+        .round {
+            border-radius: 50%;
+        }
+
+        .imgcenter {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 250px;
+            height: 250px;
+        }
+
+        .marginKontakt {
+            margin-top: 3%;
+            margin-left: 1%;
+            margin-right: 1%;
+            text-align: center;
+        }
+
+        .marginKontaktText {
+            margin-top: 3%;
+            margin-bottom: 1%;
+        }
+
+        .ueber {
+            font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+        }
+
+        .dunkelHint {
+            background-color: #303030;
+        }
+
+        .hellHint {
+            background-color: #eeeeee;
+        }
+
+        .helleSchrift {
+            color: #eeeeee;
+        }
+
+        .dunkleSchrift {
+            color: #303030;
+        }
+
+        .chennyFarbe {
+            background-color: #57bea4;
+        }
+
+        .chennySchrift {
+            color: #57bea4;
+        }
+
+        .anker {
+            width: 50px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .marg {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .leglos {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border-radius: 15px;
+            font-size: 50px;
+            color: #303030;
+        }
+
+        /*
+            Für Animation nötige classes
+        */
+
+        .animation {
+            background-color: #eeeeee;
+        }
+
+        .stickyPos {
+            position: -webkit-stick;
+            position: sticky;
+            top: 0;
+            z-index: -1;
+        }
+
+        /*
+           ---- ANIMATION ----
+        */
+
+        /*
+            Entities
+        */
+
+        @keyframes entityMove {
+            from {
+                top: 380px;
+            }
+            to {
+                top: 10px;
+            }
+        }
+
+        .entity {
+            position: relative;
+            width: 180px;
+            height: 100px;
+            border-style: solid;
+            border-width: 4px;
+            border-color: #57bea4;
+            border-radius: 7px;
+        }
+
+        .firstEntity {
+            top: 380px;
+            left: -220px;
+            animation: entityMove 2s 1;
+            animation-fill-mode: forwards;
+        }
+
+        .secondEntity {
+            top: 380px;
+            left: 220px;
+            animation: entityMove 3s 1;
+            animation-fill-mode: forwards;
+            animation-delay: 5s;
+        }
+
+        /*
+            attributes
+        */
+
+        @keyframes firstAttributeMove {
+            from {
+                top: -800px;
+                left: 180px;
+            }
+            to {
+                top: -140px;
+                left: 140px;
+            }
+        }
+
+        @keyframes secondAttributeMove {
+            from {
+                top: -800px;
+                left: -200px;
+            }
+            to {
+                top: -140px;
+                left: -120px;
+            }
+        }
+
+        @keyframes thirdAttributeMove {
+            from {
+                border-width: 0px;
+                width: 0px;
+                height: 0px;
+            }
+            to {
+                width: 160px;
+                height: 80px;
+                border-width: 4px;
+            }
+        }
+
+        /*
+            -- Text innerhalb der Attribute --
+        */
+
+        .attributeText {
+            display: inline-block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+
+            font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+            font-size: 120%;
+            color: #303030;
+
+        }
+
+        @keyframes attributeText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .firstText {
+            opacity: 0;
+            animation: attributeText 1s 1;
+            animation-fill-mode: forwards;
+            animation-delay: 5s;
+        }
+
+        .secondText {
+            opacity: 0;
+            animation: attributeText 1s 1;
+            animation-fill-mode: forwards;
+            animation-delay: 5.2s;
+        }
+
+        .thirdText {
+            opacity: 0;
+            animation: attributeText 1s 1;
+            animation-fill-mode: forwards;
+            animation-delay: 5.4s;
+        }
+
+        /*
+            -- Textende --
+        */
+
+        .attribute {
+            position: absolute;
+            width: 160px;
+            height: 80px;
+            border-style: solid;
+            border-width: 4px;
+            border-color: #57bea4;
+            border-radius: 50%;
+        }
+
+        .firstAttribute {
+            top: -800px;
+            left: 180px;
+            animation: firstAttributeMove 1.5s 1;
+            animation-fill-mode: forwards;
+        }
+
+
+        .secondAttribute {
+            top: -800px;
+            left: -200px;
+            animation: secondAttributeMove 1.5s 1;
+            animation-fill-mode: forwards;
+        }
+
+        .thirdAttribute {
+            position: absolute;
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-width: 0px;
+            border-color: #57bea4;
+            border-radius: 50%;
+
+            transform: translateX(-50%) translateY(-50%);
+
+            top: 190px;
+            left: -40px;
+            animation: thirdAttributeMove 1.5s 1;
+            animation-fill-mode: forwards;
+            animation-delay: 1.5s;
+        }
+
+        /*
+            lines
+        */
+
+        @keyframes firstLineMove {
+            from {
+                width: 0;
+                height: 0;
+                border-width: 0;
+            }
+            to {
+                height: 4px;
+                width: 85px;
+                border-width: 1px;
+                transform: rotate(50deg);
+            }
+        }
+
+        @keyframes secondLineMove {
+            from {
+                height: 4px;
+                width: 85px;
+                border-width: 1px;
+                transform: rotate(50deg);
+            }
+            to {
+                height: 4px;
+                width: 87px;
+                border-width: 1px;
+                transform: rotate(310deg);
+                left: 110px;
+            }
+        }
+
+        @keyframes thirdLineMove {
+            from {}
+            to {
+                height: 4px;
+                width: 82px;
+                border-width: 1px;
+
+                top: 122px;
+                left: -20px;
+                transform: rotate(130deg);
+            }
+        }
+
+        .line {
+            position: absolute;
+            background-color: #57bea4;
+            border-style: solid;
+            border-color: #57bea4;
+            border-radius: 5px;
+        }
+
+        .firstLine {
+            border-width: 0px;
+
+            height: 0px;
+            width: 0px;
+
+            top: -36px;
+            left: -20px;
+
+            animation: firstLineMove 1.5s 1;
+            animation-fill-mode: forwards;
+            animation-delay: 2s;
+        }
+
+        .secondLine {
+            height: 0px;
+            width: 0px;
+            border-width: 0px;
+
+            top: -36px;
+            left: -20px;
+            transform: rotate(50deg);
+
+            animation: secondLineMove 2s 1;
+            animation-fill-mode: forwards;
+            animation-delay: 3.3s;
+        }
+
+        .thirdLine {
+            height: 4px;
+            width: 82px;
+            border-width: 1px;
+
+            top: 40px;
+            left: -43px;
+            transform: rotate(90deg);
+
+            animation: thirdLineMove 2s 1;
+            animation-fill-mode: forwards;
+            animation-delay: 3.3s;
+        }
+
+        /* ---
+            Hier stehen die wichtigsten classes für die Positionierung der gesamten conts samt divs
+        */
+
+        .cont {
+            width: 100%;
+        }
+
+        .wic {
             display: flex;
             align-items: center;
             justify-content: center;
+            width: 100%
         }
-        .lo .cs {
-            font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
-            color: #57bea4;
-            font-size: 200%;
+
+        .w {
+            text-align: center;
+            width: 70%;
         }
+
+        .cont .animation {
+            padding-top: 300px;
+            padding-bottom: 280px;
+        }
+
+        /* ---
+            Positionierung-Ende
+        */
+
     </style>
-    <link rel="shortcut icon" href="IMG/favicon.png" type="<mime-type>"/>
-</head>
-<body style="background-color: dimgrey">
-   <div style="position: absolute; top: 200px">
-       <div class="lo"><img style="height: 40%; width: 40%" src="IMG/vektorlogo.png" alt="Chenny-Logo"></div>
-        <div class="lo"><h1 class="lo, cs">Coming Soon!</h1></div>
-   </div>
-</body>
+  </head>
+  <body>
+    <header>
+        <nav style="background-color:#303030;" class="navbar fixed-top navbar-expand-lg navbar-dark border-bottom border-white">
+            <a class="navbar-brand" href="#"><img src="IMG/vektorlogo.png" height="40" class="d-inline-block align-top Responsive image" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto ">
+
+                    <li class="nav-item mr-5">
+                        <a class="nav-link" href="#projekt">Das Projekt</a>
+                    </li>
+                    <li class="nav-item mr-5">
+                        <a class="nav-link" href="#team">Das Team</a>
+                    </li>
+                    <li class="nav-item mr-5">
+                        <a class="nav-link" href="#kontakt">Kontakt</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+   <!-- ANIMATIONSABSCHNITT -->
+    <div class="cont stickyPos">
+        <div class="animation wic">
+            <div class="entity firstEntity">
+                <div class="attribute firstAttribute">
+                    <div class="attributeText firstText">innovativ</div>
+                </div>
+                <div class="line firstLine"></div>
+                <div class="line secondLine"></div>
+                <div class="line thirdLine"></div>
+                <div class="attribute secondAttribute">
+                    <div class="attributeText secondText">effizient</div>
+                </div>
+                <div class="attribute thirdAttribute">
+                    <div class="attributeText thirdText">einfach</div>
+                </div>
+            </div>
+            <div class="entity secondEntity">
+                <img class="attributeText" style="width: 95%" src="IMG/vektorlogo.png" alt="Logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- ANFANGSABSCHNITT -->
+    <div class="cont">
+        <div class="chennyFarbe">
+            <br>
+            <button type="button" class="btn leglos">LEG LOS</button>
+            <br>
+        </div>
+    </div>
+
+    <!-- PROJEKTABSCHNITT -->
+    <section id="projekt" style="padding-top: 40px; margin-top: -40px;">
+        <div class="cont dunkelHint">
+            <h1 style="text-align: center" id="1" class="ueber helleSchrift"><br>Was ist Chenny?</h1>
+            <img class="anker marg" src="IMG/ankergruen.png">
+            <div class="wic">
+                <div class="w">
+                    <p class="helleSchrift">Chenny ist ein webbasiertes Datenkonzeptionierungstool, welches sich auf die Chen-Notation spezialisiert. Es soll jederzeit gratis zur Verfügung stehen und ist vor Allem für Schüler, die sich mit dem Erstellen von ERDs/ERMs befassen, ausgelegt. Die Software weist eine simple Struktur auf und die tatsächliche Entwurfserstellung ist in einzelne Schritte aufgeteilt, womit der Lernprozess der Chen-Notation vereinfacht wird.</p><br><br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAMABSCHNITT -->
+    <section id="team" style="padding-top: 40px; margin-top: -40px;">
+        <div class="cont hellHint dunkleSchrift"><br><br>
+            <h1 style="text-align: center" class="ueber" id="3">Das Team</h1>
+            <img class="anker marg" src="IMG/ankergruen.png">
+            <div class="row">
+                <div class="col marginKontakt">
+                    <img class="imgcenter round" src="IMG/Maciej.jpg">
+                    <h1 class="marginKontaktText" style="text-align: center">Maciej Dzialoszynski</h1>
+                    <h3 class="chennySchrift marginKontaktText">Programmierer</h3>
+                    <h6 class="marginKontaktText" style="margin-right: 30px;margin-left: 30px;">
+                        Verleiht der Website den nötigen visuellen Kick. Auch die Wartung der Datenbank liegt in seinem Aufgabenbereich. Sowohl Designmakel als auch Inkonsistenzen werden vermieden. Für Fragen hat er immer ein offenes Ohr.
+                    </h6>
+                </div>
+                <div class="col marginKontakt">
+                    <img class="imgcenter round" src="IMG/David.jpg">
+                    <h1 class="marginKontaktText" style="text-align: center">David Jovanovic </h1>
+                    <h3 class="chennySchrift marginKontaktText">Teamleiter</h3>
+                    <h6 class="marginKontaktText" style="margin-right: 30px;margin-left: 30px;">
+                        Behält den Überblick und einen kühlen Kopf. Die Teammitglieder werden von ihm regelmäßig mit Motivation und Unterstützung versorgt. Außerdem befasst er sich mit der Logik hinter dem Programm.
+                    </h6>
+                </div>
+                <div class="col marginKontakt">
+                    <img class="imgcenter round" src="IMG/Sebastian.jpg">
+                    <h1 class="marginKontaktText" style="text-align: center">Sebastian Grünewald</h1>
+                    <h3 class="chennySchrift marginKontaktText">Programmierer</h3>
+                    <h6 class="marginKontaktText" style="margin-right: 30px;margin-left: 30px;">
+                        Legt immer großen Wert auf korrekte Implementierung <br>-<br>&lt;h1&gt;<i style="font-family: Courier New"> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna </i>&lt;/h1&gt;
+                    </h6>
+                </div>
+            </div><br><br>
+        </div>
+    </section>
+
+    <!-- KONTAKTABSCHNITT -->
+    <section id="kontakt" style="padding-top: 40px; margin-top: -40px;">
+        <div class="cont dunkelHint"><br><br>
+            <h1 style="text-align:center" class="ueber helleSchrift">Kontakt</h1>
+            <img class="anker marg" src="IMG/ankergruen.png">
+            <div class="wic">
+                <div class="w">
+                    <p class="helleSchrift">Interessierst du dich für Chenny? Hast du Fragen bzw. Verbesserungsvorschläge? Sende uns eine E-Mail, wir antworten so bald wie möglich!</p>
+                    <i style="font-size:50px; color: #eeeeee; margin-left: 5.5px;" class="fa">&#xf003;</i>
+                    <br><br>
+                    <p>
+                        <a href="mailto:chenny.tgm@gmail.com" class="chennySchrift">chenny.tgm@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+            <br>
+        </div>
+    </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 </html>
