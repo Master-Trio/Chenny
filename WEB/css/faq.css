@@ -1,0 +1,27 @@
+.ueberschrift {
+    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+}
+
+.plus {
+    width: 25px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    color: #57bea4;
+}
+.line {
+    border-top: 3px solid;  
+    width: 70%;
+}
+
+.felder {
+    padding-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fragestellung {
+    font-family: sans-serif;
+    font-size: 14pt;
+    color: #57bea4;
+}
