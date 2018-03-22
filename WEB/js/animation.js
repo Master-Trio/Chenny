@@ -6,8 +6,8 @@ var width=0;
 				console.log(width);
 				document.getElementById('animation').style.visibility = "visible";
 				document.getElementById('animation').style.height = "auto";
-				document.getElementById('animation').style.marginTop = "80px";
-				document.getElementById('animation').style.marginBottom = "-550px";
+				document.getElementById('animation').style.marginTop = "63px";
+				document.getElementById('animation').style.marginBottom = "-590px";
 				document.getElementById('1').style.visibility = "hidden";
 				document.getElementById('1').style.height = "0";
 			}
@@ -18,8 +18,8 @@ var width=0;
 				 console.log(width);
 				document.getElementById('animation').style.visibility = "visible";
 				document.getElementById('animation').style.height = "auto";
-				document.getElementById('animation').style.marginTop = "80px";
-				document.getElementById('animation').style.marginBottom = "-550px";
+				document.getElementById('animation').style.marginTop = "63px";
+				document.getElementById('animation').style.marginBottom = "-590px";
 				
 				document.getElementById('1').style.visibility = "hidden";
 				document.getElementById('1').style.height = "0";
