@@ -61,7 +61,7 @@
 	} 
 	else{
 		$ausgabe = "<html><head></head><body>";
-		$ausgabe .= "<form name='testform' action='index.php' method='POST'>";
+		$ausgabe .= "<form name='testform' action='regist.php' method='POST'>";
 		$ausgabe .= "<h1>Registrierung</h1>";
 		$ausgabe .= "Titel:<input type='text' name='titel_textfield' /><br />";
 		$ausgabe .= "Vorname:<input type='text' name='vname_textfield' /><br />";
