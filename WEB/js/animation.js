@@ -7,7 +7,7 @@ var width=0;
 				document.getElementById('animation').style.visibility = "visible";
 				document.getElementById('animation').style.height = "auto";
 				document.getElementById('animation').style.marginTop = "63px";
-				document.getElementById('animation').style.marginBottom = "-590px";
+				document.getElementById('animation').style.marginBottom = "-580px";
 				document.getElementById('1').style.visibility = "hidden";
 				document.getElementById('1').style.height = "0";
 			}
@@ -19,7 +19,7 @@ var width=0;
 				document.getElementById('animation').style.visibility = "visible";
 				document.getElementById('animation').style.height = "auto";
 				document.getElementById('animation').style.marginTop = "63px";
-				document.getElementById('animation').style.marginBottom = "-590px";
+				document.getElementById('animation').style.marginBottom = "-580px";
 				
 				document.getElementById('1').style.visibility = "hidden";
 				document.getElementById('1').style.height = "0";
