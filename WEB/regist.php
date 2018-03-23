@@ -35,7 +35,7 @@
 					//Abfragen ob das Passwort den Kriterien entspricht
 					if(empty($pw1)){
 						$er .= "<p>Bitte ein Passwort eingeben!</p>";
-					}elseif(strlen($pw1)<8){
+					}elseif(strlen($pw1)<6){
 						$er .= "<p>Passwort zu kurz!</p>";
 					}elseif (!preg_match("#[0-9]+#", $pw1)) {
 						$er .= "<p>Mindestens eine Zahl!</p>";
