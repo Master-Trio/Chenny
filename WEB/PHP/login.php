@@ -1,50 +1,43 @@
 <?php
-	// Melde alle PHP Fehler (siehe Changelog)
-	error_reporting(E_ALL);
-	if(isset($_POST["anmelden"])){
-		//Daten die vom Formular übergeben werden und in die Datenbank gelangen
-		$user =$_POST["username_textfield"];
-		//Passwort
-		$pw = $_POST["passwd_textfield"];
-		//3-Fach verschlüsseltes Passwort
-		$pwcrypt = md5(md5(md5(pw)));
-			
-		//Connection Infos
-		$servername = "localhost";
-		$username = "proj_chenny";
-		$password = "Aeth3fai";
-		$db="proj_chenny";
-		$table="user";
-		//Verbindungsaufbau zur Datenbank
-		$mysqli = new mysqli($servername, $username, $password,$db);
+session_start();
+if(isset($_POST['submit'])){
+	
+	include_once_'config.php';
+
+	$user = mysqli_real_escape_string($conn,$_POST["uid"]);
+	$pw = mysqli_real_escape_string($conn,$_POST["pw"]);
 		
-			//Checkt ob der Username und das Passwort mit den Daten in der Datebank übereinstimmen
-			$sql = "SELECT username,password FROM user WHERE username='".$user."' AND password='".$pwcrypt."'";
-			if($result = $mysqli->query($sql)){
-				if($result->num_rows > 0){
-					echo "eingeloggt";
+	
+	if(empty($user)||empty($pw)){
+		header("Location: index1.php?login=error");
+		exit();
+	}else{
+		$sql = "SELECT * from users WHERE user_uid='$user'"
+		$result = mysqli_query($conn,$sql);
+				$resultCheck = mysqli_num_rows($result);
+				if($resultCheck < 1){
+					header("Location: index1.php?login=error");
+					exit();
 				}
 				else{
-					echo "Daten falsch";
+					if($row = mysqli_fetch_assoc($result)){
+						$hashedPwdCheck = password_verify($pwd, $row['user_pwd']);
+						if($hashedPwdCheck == false){
+							header("Location: index1.php?login=error");
+							exit();
+						}elseif($hashedPwdCheck == true){
+							$_SESSION['uid'] = $row['user_uid'];
+							$_SESSION['password'] = $row['user_pwd'];
+							$_SESSION['vn'] = $row['user_vn'];
+							$_SESSION['nn'] = $row['user_nn'];
+							header("Location: index1.php?login=sucess");
+							exit();
+						}
+					}
 				}
-			}
-			$result->free();
-			//Beenden der SQL Verbindung
-			$mysqli->close();
-		}
-	
-	else{
-		$ausgabe = "<html><head></head><body>";
-		$ausgabe .= "<form name='testform' action='login.php' method='POST'>";
-		$ausgabe .= "<h1>Login</h1>";
-		$ausgabe .= "Username:<input type='text' name='username_textfield' /><br />";
-		$ausgabe .= "Passwort:<input type='password' name='passwd_textfield' /><br />";
-		$ausgabe .= "<input type='submit' name='anmelden'/><br />";
-		$ausgabe .= "</form></body></html>";
-		echo $ausgabe;
 	}
+}else{
+	header("Location: index1.php?login=error");
+	exit();
+}
 ?>
-
-
-
-	
