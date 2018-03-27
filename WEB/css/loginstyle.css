@@ -152,6 +152,19 @@ header .nav-login form input{
 	font-size: 14px;
 	line-height: 30px;
 }
+header .nav-login form input:focus{
+	float:left;
+	width:140px;
+	height:30px;
+	padding:0px 10px;
+	margin-right:10px;
+	border: 2px solid #57bea4;
+	background-color:#eeeeee;
+	font-family:arial;
+	color:#303030;
+	font-size: 14px;
+	line-height: 30px;
+}
 header .nav-login form button{
 	border-radius:8px;
 	float:left;
@@ -188,7 +201,7 @@ header .nav-login a{
 .main-container h2{
 	font-family:arial;
 	font-size: 40px;
-	color:#111;
+	color:#303030;
 	line-height:50px;
 	text-align:center;
 }
@@ -208,6 +221,18 @@ img{
 	padding:0px 5%;
 	margin-bottom:4px;
 	border: none;
+	background-color:#fff;
+	font-family:arial;
+	color:#111;
+	font-size: 16px;
+	line-height: 40px;
+}
+.signup-form input:focus{
+	width:90%;
+	height:40px;
+	padding:0px 5%;
+	margin-bottom:4px;
+	border: 2px solid #57bea4;
 	background-color:#fff;
 	font-family:arial;
 	color:#111;
