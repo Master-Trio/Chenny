@@ -256,5 +256,31 @@ img{
 	background-color:#303030;
 }
 
+.cont {
+	width: 100%;
+}
 
+.wic {
+	display: flex;
+	width: 100%
+}
 
+.wic_center {
+	display: flex;
+	align-items: center;
+    justify-content: center;
+	width: 100%
+}
+
+.w {
+	font-size: 90%;
+	text-align: center;
+	width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+	.nav-login {
+		display: none;
+		
+	}
+}

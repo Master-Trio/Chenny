@@ -2,8 +2,8 @@
 	include_once 'header.php';
 ?>
   
-  <section class="main-container">
-	<div class="main-wrapper">
+  <section class="main-container cont">
+	<div class="main-wrapper wic_center">
 		<?php
 			if(isset($_SESSION['uid'])){
 				echo "<h2>Willkommen auf Chenny ".$_SESSION['vname']."</h2>";

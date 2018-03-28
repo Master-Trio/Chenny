@@ -3,9 +3,10 @@
 ?>
   
   <section class="main-container">
-	<div class="main-wrapper">
-		<h2>Registrieren</h2>
-		<form class="signup-form" action="signup.ext.php" method="POST">
+	<div class="main-wrapper cont">
+		<h2 class="w">Registrieren</h2>
+		<div class="wic">
+			<form class="signup-form" action="signup.ext.php" method="POST">
 			<?php
 				echo "<p style='color:red;text-align:center;margin-bottom:10px;font-family: Arial;'>".$_SESSION['er']."</p>";
 				$_SESSION['er'] = "";
@@ -19,6 +20,7 @@
 			<h6 style="text-align:center;margin-bottom:10px;font-family: Arial;">min 6 Zeichen | min 1 Buchstabe | min 1 Zahl</h6>
 			<button type="submit" name="submit">Registrieren</button>
 		</form>
+		</div>
 	</div>
   </section>
 <?php
