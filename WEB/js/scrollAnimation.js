@@ -1,3 +1,9 @@
+/*
+	Um Animationen nach dem Scrollen zu ermöglichen, muss der viewportchecker angewendet werden.
+	Da dieser jedoch im Google Chrome Browser nicht funktioniert, muss abgefragt werden, um welchen Browser es sich handelt.
+	Danach können entsprechende Maßnahmen in Form von, nicht einbeziehen des viewportcheckers bei Chrome.
+*/
+
 var nVer = navigator.appVersion;
 var nAgt = navigator.userAgent;
 var browserName = navigator.appName;
@@ -114,22 +120,23 @@ if (isNaN(majorVersion)) {
     majorVersion = parseInt(navigator.appVersion, 10);
 }
 
+// --ANIMATIONEN--
 
 window.onload = function () {
-    if (isItChrome == false) {
+    if (isItChrome == false) { // Wenn es sich nicht um den Chrome Browser handelt
+	// Überschriftsanimation
         jQuery(document).ready(function () {
             jQuery('.ueber').addClass("hidden").viewportChecker({
                 classToAdd: 'visible animated flipInX', // Hier können Klassen bei einem SICHTBAREN Element hinzugefügt werden
                 offset: 50
             });
         });
-
+	// Bildanimation
         jQuery(document).ready(function () {
             jQuery('.round').addClass("hidden").viewportChecker({
                 classToAdd: 'visible animated zoomIn', // Hier können Klassen bei einem SICHTBAREN Element hinzugefügt werden
                 offset: 50
             });
         });
-
     }
 }
