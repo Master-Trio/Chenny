@@ -108,7 +108,7 @@
     
     opacity: 0.0;
     
-    font-family: ArialRoundedMTBold, "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: ArialRoundedMTBold, "Arial Rounded MT Bold", "Varela Round", "Helvetica Rounded", Arial, sans-serif;
     font-size: 160%;
     color: #303030;
     
@@ -220,7 +220,7 @@
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
 
-    font-family: "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
+    font-family: "Arial Rounded MT Bold", "Varela Round", "Helvetica Rounded", Arial, sans-serif;
     font-size: 120%;
     color: #303030;
 
