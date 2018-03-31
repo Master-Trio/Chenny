@@ -16,11 +16,18 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="shortcut icon" href="IMG/favicon.png" type="<mime-type>" />
     <!-- Leg Los Button CSS -->
-	<link href="css/style-reg.css" rel="stylesheet">
-   	<!-- Animation JS -->
-	<script src="js/animation.js"></script>
-    <title>Chenny</title>
-    
+    <link href="css/style-reg.css" rel="stylesheet">
+    <!--Varela font - ähnlich zu Arial rounded mt -->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <!-- Verschiedene Animationen verpackt in einem großen file
+    	Diese werden hier für die Animationen nach dem Scrollen genutzt.
+      -->
+    <link rel="stylesheet" type="text/css" href="css/animate.css" />
+    <!-- Animation JS -->
+    <script src="js/animation.js"></script>
+
+    <title>Chenny - Ein Datenbankkonzeptionierungstool</title>
+
 </head>
 
 <body style="overflow-x: hidden;">
@@ -50,7 +57,7 @@
 
     <!-- ANIMATIONSABSCHNITT -->
     <div class="cont stickyPos">
-       <img class="wic"style="visibility: hidden;margin-top:0;margin-bottom:0px;" id="animation" src="IMG/Animation_01.png" height="0px">
+        <img class="wic" style="visibility: hidden;margin-top:0;margin-bottom:0px;" id="animation" src="IMG/Animation_01.png" height="0px">
         <div id="1" class="animation wic">
             <!-- Linke Entität zusammen mit allen Attributen und zugehörigen Linien -->
             <div class="entity firstEntity">
@@ -162,10 +169,16 @@
         </div>
     </section>
 
+    <!-- SCROLL-ANIMATIONS-ABSCHNITT -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script defer src="js/viewportchecker.js"></script>
+    <script defer src="js/scrollAnimation.js"></script>
+
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
+
 </html>

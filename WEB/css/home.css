@@ -1,101 +1,108 @@
 .round {
-            border-radius: 50%;
-        }
+    border-radius: 50%;
+}
 
-        .imgcenter {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 250px;
-            height: 250px;
-        }
+.imgcenter {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 250px;
+    height: 250px;
+}
 
-        .marginKontakt {
-            margin-top: 3%;
-            margin-left: 1%;
-            margin-right: 1%;
-            text-align: center;
-        }
+.marginKontakt {
+    margin-top: 3%;
+    margin-left: 1%;
+    margin-right: 1%;
+    text-align: center;
+}
 
-        .marginKontaktText {
-            margin-top: 3%;
-            margin-bottom: 1%;
-        }
+.marginKontaktText {
+    margin-top: 3%;
+    margin-bottom: 1%;
+}
 
-        .ueber {
-            font-family: ArialRoundedMTBold, "Arial Rounded MT Bold", "Helvetica Rounded", Arial, sans-serif;
-        }
+@keyframes ueberA {
+    0% {
+        font-size: 0%;
+    }
+}
 
-        .dunkelHint {
-            background-color: #303030;
-        }
+.ueber {
+    font-family: ArialRoundedMTBold, "Arial Rounded MT Bold", "Varela Round", "Helvetica Rounded", Arial, sans-serif;
+    font-size: 250%;
+}
 
-        .hellHint {
-            background-color: #eeeeee;
-        }
+.dunkelHint {
+    background-color: #303030;
+}
 
-        .helleSchrift {
-            color: #eeeeee;
-        }
+.hellHint {
+    background-color: #eeeeee;
+}
 
-        .dunkleSchrift {
-            color: #303030;
-        }
+.helleSchrift {
+    color: #eeeeee;
+}
 
-        .chennyFarbe {
-            background-color: #57bea4;
-        }
+.dunkleSchrift {
+    color: #303030;
+}
 
-        .chennySchrift {
-            color: #57bea4;
-        }
+.chennyFarbe {
+    background-color: #57bea4;
+}
 
-        .anker {
-            width: 50px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.chennySchrift {
+    color: #57bea4;
+}
 
-        .marg {
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-        }
+.anker {
+    width: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        .leglos {
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-            border-radius: 15px;
-            font-size: 50px;
-            color: #303030;
-        }
+.marg {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 
-        /* ---
+.leglos {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 15px;
+    font-size: 50px;
+    color: #303030;
+}
+
+/* ---
             Hier stehen die wichtigsten classes für die Positionierung der gesamten conts samt divs
         */
 
-        .cont {
-            width: 100%;
-        }
+.cont {
+    width: 100%;
+}
 
-        .wic {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%
-        }
+.wic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%
+}
 
-        .w {
-            text-align: center;
-            width: 70%;
-        }
+.w {
+    text-align: center;
+    width: 70%;
+}
 
-        .cont .animation {
-            padding-top: 300px;
-            padding-bottom: 280px;
-        }
+.cont .animation {
+    padding-top: 300px;
+    padding-bottom: 280px;
+}
 
-        /* ---
+/* ---
             Positionierung-Ende
         */
