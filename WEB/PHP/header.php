@@ -33,13 +33,11 @@ session_start();
 					</form>';
 				}else{
 					echo '<form action="login.ext.php" method="POST">
-					<input type="text" name="uid" placeholder="Username/E-Mail">
-					<input type="password" name="pwd" placeholder="Password">
-					<button style="background-color:#eeeeee;color:#303030" type="submit" name="submit">anmelden</button>
+					<span><input type="text" name="uid" placeholder="Username/E-Mail"></span>
+					<span><input type="password" name="pwd" placeholder="Password"></span>
+					<span><button style="background-color:#eeeeee;color:#303030" type="submit" name="submit">anmelden</button></span>
 					</form>
-					<form action="signup.php" method="POST">
-						<button type="submit" name="submit">registrieren</button>
-					</form>';
+					';
 				}
 			?>	
 			</div>

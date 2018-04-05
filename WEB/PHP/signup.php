@@ -2,10 +2,11 @@
 	include_once 'header.php';
 ?>
   
+  <h2 class="wic"></h2>
   <section class="main-container">
-	<div class="main-wrapper cont">
-		<h2 class="w">Registrieren</h2>
-		<div class="wic">
+	<div class="main-wrapper">
+		<h2>Registrieren</h2>
+		<div>
 			<form class="signup-form" action="signup.ext.php" method="POST">
 			<?php
 				echo "<p style='color:red;text-align:center;margin-bottom:10px;font-family: Arial;'>".$_SESSION['er']."</p>";

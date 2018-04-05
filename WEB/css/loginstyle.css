@@ -244,17 +244,55 @@ header .nav-login a{
 }
 .wic {
 	display: flex;
-	width: 100%
-}
-.w {
-	font-size: 90%;
-	text-align: center;
 	width: 100%;
+	align-items: center;
+    justify-content: center;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
 	.nav-login {
-		display: none;
-		
+		display: flex;
+		width: 100%;
+		align-items: center;
+   		justify-content: center;	
 	}
+}
+
+@media screen and (max-width: 400px) {
+	.signup-form {
+		width: 80%;
+		height: 80%;
+	}
+	
+	span {
+		display: block;
+		right: auto;
+		left: auto;
+		padding: 20px;
+	}
+	
+	.nav-login form span button {
+		width: 140px;
+	}
+	
+	.nav-login {
+		margin-top: -15%;
+		padding: 20px;
+		display: flex;
+		align-items: center;
+    	justify-content: center;
+	}
+	
+	.nav-login form {
+		flex-direction: column;
+	}
+	/*
+	.nav-login button {
+		left: 50%;
+		top: 70%;
+		-webkit-transform: translateX(-50%) translateY(-50%);
+		transform: translateX(-50%) translateY(-50%);
+	}
+	
+	*/
 }
