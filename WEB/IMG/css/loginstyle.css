@@ -102,6 +102,12 @@ input, select {
 }
 
 /* Code*/
+
+
+.main-wrapper{
+	margin:0 auto;
+	width: 1000px;
+}
 a{
 	text-decoration:none;
 }
@@ -188,6 +194,10 @@ header .nav-login a{
 	color:#ccc;
 	line-height:63px;
 }
+
+.main-container{
+	padding-top:40px;
+}
 .main-container h2{
 	font-family:arial;
 	font-size: 40px;
@@ -197,6 +207,9 @@ header .nav-login a{
 }
 
 /*signup.php*/
+img{
+	margin-top:5px;
+}
 .signup-form{
 	width:400px;
 	margin: 0 auto;
@@ -242,10 +255,23 @@ header .nav-login a{
 .signup-form button:hover{
 	background-color:#303030;
 }
+
+.cont {
+	width: 100%;
+}
+
 .wic {
 	display: flex;
 	width: 100%
 }
+
+.wic_center {
+	display: flex;
+	align-items: center;
+    justify-content: center;
+	width: 100%
+}
+
 .w {
 	font-size: 90%;
 	text-align: center;
