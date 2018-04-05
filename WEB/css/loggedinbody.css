@@ -1,9 +1,20 @@
 .maindiv{
-	
+	margin-top:67px;
+	background-color:#eeeeee;
 }
 .entwdiv{
-	margin-top:30px;
+	margin-top:70px;
+	border:3px solid #303030;
 	background-color:#303030;
-	height:300px;
 	color:#eeeeee;
+	height:300px;
+}
+.vorschau{
+	float:left;
+	background-color:#303030;
+	width:180px;
+	height:180px;
+	margin-left:5%;
+	margin-right:50px;
+	margin-top:20px;
 }

@@ -16,31 +16,45 @@ session_start();
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
-  <body>
+  <body style="background-color:#eeeeee;">
   <header>
-	<nav>
-		<div class="main-wrapper">
-			<ul>
-				<li><a href="../index.html"><img src="../IMG/vektorlogo.png" height="50px"></a></li>
+	<nav style="background-color:#303030;" class="navbar fixed-top navbar-expand-lg navbar-dark border-bottom border-white">
+		<a class="navbar-brand" href="../index.html">
+			<img src="../IMG/vektorlogo.png" height="40" class="d-inline-block align-top Responsive image" alt="Chennylogo">
+		</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav ml-auto">
+				<?php
+					if(isset($_SESSION['uid'])){
+						echo 
+							'<li style="margin-left:10px;margin-top:10px;" class="nav-item">
+								<form action="logout.ext.php" method="POST">
+									<button class="subm" type="submit" name="submit">abmelden</button>
+								</form>
+							</li>
+							<li style="margin-left:10px;margin-top:10px;" class="nav-item">
+								<p style="color:#eeeeee;">'.$_SESSION['uid'].'</p>
+							</li>';
+					}else{
+						echo 
+						'<li style="margin-right:10px;margin-top:3px;" class="nav-item">
+							<form action="login.ext.php" method="POST">
+								<input class="eingabe" type="text" name="uid" placeholder=" Username/E-Mail">
+								
+						</li>
+						<li style="margin-right:10px;margin-top:3px;" class="nav-item">
+							<input class="eingabe" type="password" name="pwd" placeholder=" Passwort">
+						</li>
+						<li style="margin-top:3px;" class="nav-item">
+							<button class="subm" type="submit" name="submit">anmelden</button>
+							</form>	
+						</li>';
+					}
+				?>	
 			</ul>
-			<div class="nav-login">
-			<?php
-				if(isset($_SESSION['uid'])){
-					echo 
-					'<form style="width:300px;" action="logout.ext.php" method="POST">
-						<button style="background-color:#eeeeee;color:#303030" type="submit" name="submit">abmelden</button>
-						<h6 style="color:#eeeeee;padding-top:5px;">'.$_SESSION['uid'].'</h6>
-					</form>';
-				}else{
-					echo '<form action="login.ext.php" method="POST">
-					<span><input type="text" name="uid" placeholder="Username/E-Mail"></span>
-					<span><input type="password" name="pwd" placeholder="Password"></span>
-					<span><button style="background-color:#eeeeee;color:#303030" type="submit" name="submit">anmelden</button></span>
-					</form>
-					';
-				}
-			?>	
-			</div>
 		</div>
 	</nav>
-  </header>
+ </header>

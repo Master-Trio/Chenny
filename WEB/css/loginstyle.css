@@ -29,6 +29,7 @@ time, mark, audio, video {
 
 body {
     line-height:1;
+	background-color:#eeeeee;
 }
 
 article,aside,details,figcaption,figure,
@@ -108,6 +109,7 @@ a{
 body{
 	background-color:#eeeeee;
 }
+/*
 header nav {
 	width: 100%;
 	height: 60px;
@@ -249,7 +251,7 @@ header .nav-login a{
     justify-content: center;
 }
 
-@media screen and (max-width: 700px) {
+/*@media screen and (max-width: 700px) {
 	.nav-login {
 		display: flex;
 		width: 100%;
@@ -286,7 +288,6 @@ header .nav-login a{
 	.nav-login form {
 		flex-direction: column;
 	}
-	/*
 	.nav-login button {
 		left: 50%;
 		top: 70%;
@@ -295,4 +296,28 @@ header .nav-login a{
 	}
 	
 	*/
+.eingabe{
+	border-radius:5px;
+	font-size: 13px;
+	border: none;
+	background-color:#fff;
+	font-family:arial;
+	color:#303030;
+}
+.eingabe:focus{
+	border: 2px solid #57bea4;
+}
+.subm{
+	border:none;
+	cursor:pointer;
+	display:block;
+	background-color:#eeeeee;
+	color:#303030;
+	border-radius:7px;
+	height:auto;
+}
+.subm:hover{
+	background-color:#303030;
+	color:#eeeeee;
+}
 }
