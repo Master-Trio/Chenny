@@ -1,0 +1,418 @@
+/*
+    Für Animation nötige classes
+*/
+
+.animation {
+    background-color: #eeeeee;
+}
+
+.stickyPos {
+    position: sticky;
+    top: 0;
+    z-index: -1;
+}
+
+/*
+    -------------------
+    ---- ANIMATION ----
+    -------------------
+*/
+
+/*
+    Entities
+*/
+
+@keyframes entityMove {
+    from {
+        top: 380px;
+    }
+    to {
+        top: 10px;
+    }
+}
+
+
+.entity {
+    position: relative;
+    width: 180px;
+    height: 100px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #57bea4;
+    border-radius: 7px;
+}
+
+.firstEntity {
+    top: 380px;
+    left: -220px;
+    animation: entityMove 2s 1;
+    animation-fill-mode: forwards;
+}
+
+.secondEntity {
+    top: 380px;
+    left: 220px;
+    animation: entityMove 2s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 3s;
+}
+
+/*
+    relationship
+*/
+
+@keyframes relation {
+    from {
+        border-color: #eeeeee;
+        border-style: solid;
+        border-radius: 7px;
+        opacity: 0.0;
+        transform: rotate(45deg);
+    }
+    to {
+        border-color: #57bea4;
+        border-style: solid;
+        border-radius: 7px;
+        opacity: 1;
+        transform: rotate(135deg);
+    }
+}
+
+.relation {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-width: 4px;
+    top: 11px;
+    
+    transform: rotate(135deg);
+    
+    animation: relation 1.5s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 3s;
+}
+
+.relationDiv {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    
+    transform: rotate(225deg);
+}
+
+.relationText {
+    position: relative;
+    text-align: center;
+    left: 5px;
+    top: 15px;
+    
+    opacity: 0.0;
+    
+    font-family: ArialRoundedMTBold, "Arial Rounded MT Bold", "Varela Round", "Helvetica Rounded", Arial, sans-serif;
+    font-size: 160%;
+    color: #303030;
+    
+    animation: attributeText 1s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 4.7s;
+}
+
+@keyframes firstRotationLine {
+    from {
+        border-color: #eeeeee;
+        opacity: 0.0;
+    }
+    to {
+        width: 214px;
+        border-color: #57bea4;
+        opacity: 1;
+    }
+}
+
+.firstRotationLine {
+    position: absolute;
+    border-width: 2px;
+
+    width: 0px;
+
+    top: 45px;
+    left: 172px;
+    
+    animation: firstRotationLine 1s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 4s;
+}
+
+@keyframes secondRotationLine {
+    from {
+        border-color: #eeeeee;
+        opacity: 0.0;
+    }
+    to {
+        width: 214px;
+        border-color: #57bea4;
+        opacity: 1;
+    }
+}
+
+.secondRotationLine {
+    position: absolute;
+    border-width: 2px;
+
+    opacity: 0.0;
+    width: 0px;
+
+    top: 45px;
+    left: 476px;
+    
+    animation: secondRotationLine 1s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 4s;
+}
+
+/*
+    attributes
+*/
+
+@keyframes firstAttributeMove {
+    from {
+        top: -800px;
+        left: 180px;
+    }
+    to {
+        top: -140px;
+        left: 140px;
+    }
+}
+
+@keyframes secondAttributeMove {
+    from {
+        top: -800px;
+        left: -200px;
+    }
+    to {
+        top: -140px;
+        left: -120px;
+    }
+}
+
+@keyframes thirdAttributeMove {
+    from {
+        border-width: 0px;
+        width: 0px;
+        height: 0px;
+    }
+    to {
+        width: 160px;
+        height: 80px;
+        border-width: 4px;
+    }
+}
+
+/*
+    -- Text innerhalb der Attribute --
+*/
+
+.attributeText {
+    display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    font-family: "Arial Rounded MT Bold", "Varela Round", "Helvetica Rounded", Arial, sans-serif;
+    font-size: 120%;
+    color: #303030;
+
+}
+
+@keyframes attributeText {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.firstText {
+    opacity: 0;
+    animation: attributeText 1s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 4s;
+}
+
+.secondText {
+    opacity: 0;
+    animation: attributeText 1s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 4.2s;
+}
+
+.thirdText {
+    opacity: 0;
+    animation: attributeText 1s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 4.4s;
+}
+
+/*
+            -- Textende --
+        */
+
+.attribute {
+    position: absolute;
+    width: 160px;
+    height: 80px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: #57bea4;
+    border-radius: 50%;
+}
+
+/* Attribut - rechts oben */
+
+.firstAttribute {
+    top: -800px;
+    left: 180px;
+    animation: firstAttributeMove 1.5s 1;
+    animation-fill-mode: forwards;
+}
+
+/* Attribut - links oben */
+
+.secondAttribute {
+    top: -800px;
+    left: -200px;
+    animation: secondAttributeMove 1.5s 1;
+    animation-fill-mode: forwards;
+}
+
+/* Attribut - links unten */
+
+.thirdAttribute {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-style: solid;
+    border-width: 0px;
+    border-color: #57bea4;
+    border-radius: 50%;
+
+    transform: translateX(-50%) translateY(-50%);
+
+    top: 190px;
+    left: -40px;
+    animation: thirdAttributeMove 1s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 1.5s;
+}
+
+/*
+            lines
+        */
+
+@keyframes firstLineMove {
+    from {
+        width: 0;
+        height: 0;
+        border-width: 0;
+    }
+    to {
+        height: 4px;
+        width: 85px;
+        border-width: 1px;
+        transform: rotate(50deg);
+    }
+}
+
+@keyframes secondLineMove {
+    from {
+        height: 4px;
+        width: 85px;
+        border-width: 1px;
+        transform: rotate(50deg);
+    }
+    to {
+        height: 4px;
+        width: 87px;
+        border-width: 1px;
+        transform: rotate(310deg);
+        left: 110px;
+    }
+}
+
+@keyframes thirdLineMove {
+    from {}
+    to {
+        height: 4px;
+        width: 82px;
+        border-width: 1px;
+
+        top: 122px;
+        left: -20px;
+        transform: rotate(130deg);
+    }
+}
+
+.line {
+    position: absolute;
+    background-color: #57bea4;
+    border-style: solid;
+    border-color: #57bea4;
+    border-radius: 5px;
+}
+
+/* Linie zu 'effizient' */
+
+.firstLine {
+    border-width: 0px;
+
+    height: 0px;
+    width: 0px;
+
+    top: -36px;
+    left: -20px;
+
+    animation: firstLineMove 1s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+}
+
+/* Linie zu 'innovativ' */
+
+.secondLine {
+    height: 0px;
+    width: 0px;
+    border-width: 0px;
+
+    top: -36px;
+    left: -20px;
+    transform: rotate(50deg);
+
+    animation: secondLineMove 1s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 3.1s;
+}
+
+/* Linie zu 'einfach' */
+
+.thirdLine {
+    height: 4px;
+    width: 82px;
+    border-width: 1px;
+
+    top: 40px;
+    left: -43px;
+    transform: rotate(90deg);
+
+    animation: thirdLineMove 1s 1;
+    animation-fill-mode: forwards;
+    animation-delay: 3.1s;
+}
+
+/*
+         
+            --- Animation-Ende ---
+         
+         */
