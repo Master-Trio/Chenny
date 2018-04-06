@@ -201,10 +201,11 @@ header .nav-login a{
 /*signup.php*/
 .signup-form{
 	width:400px;
+	margin: 0 auto;
 	padding-top:30px;
 }
 .signup-form input{
-	width:100%;
+	width:90%;
 	height:40px;
 	padding:0px 5%;
 	margin-bottom:4px;
@@ -216,7 +217,7 @@ header .nav-login a{
 	line-height: 40px;
 }
 .signup-form input:focus{
-	width:100%;
+	width:90%;
 	height:40px;
 	padding:0px 5%;
 	margin-bottom:4px;
@@ -295,18 +296,6 @@ header .nav-login a{
 	}
 	
 	*/
-
-@media screen and (max-width: 400px) {
-	.signup-form {
-		width: 80%;
-		height: 80%;
-	}
-	.signup-form button {
-		width: 80%;
-		font-size: 20px;
-	}
-}
-
 .eingabe{
 	border-radius:5px;
 	font-size: 13px;
@@ -319,7 +308,7 @@ header .nav-login a{
 	border: 2px solid #57bea4;
 }
 .subm{
-	margin-top:1.5px;
+	margin-top:3px;
 	border:none;
 	cursor:pointer;
 	display:block;
@@ -331,4 +320,5 @@ header .nav-login a{
 .subm:hover{
 	background-color:#57bea4;
 	color:#eeeeee;
+}
 }
