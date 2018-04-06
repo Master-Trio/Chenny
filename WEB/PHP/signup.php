@@ -5,8 +5,8 @@
   <h2 class="wic"></h2>
   <section class="main-container">
 	<div class="main-wrapper">
-		<h2>Registrieren</h2>
 		<div>
+		<h2 style="margin-top:100px;text-align:center;">Registrieren</h2>
 		<form class="signup-form" action="signup.ext.php" method="POST">
 			<?php
 				echo "<p style='color:red;text-align:center;font-family: Arial;'>".$_SESSION['er']."</p>";
@@ -16,8 +16,6 @@
 				
 				}else{
 					echo '
-					
-					<h2 style="text-align:center;">Registrieren</h2>
 					<input type="text" name="vn" placeholder="Vorname">
 					<input type="text" name="nn" placeholder="Nachname">
 					<input type="text" name="email" placeholder="E-Mail">
