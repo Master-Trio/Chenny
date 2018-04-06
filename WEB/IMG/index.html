@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Mail-Symbol -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="css/animation-home.css">
+    <!-- Home CSS -->
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="shortcut icon" href="IMG/favicon.png" type="<mime-type>" />
+    <!-- Leg Los Button CSS -->
+    <link href="css/style-reg.css" rel="stylesheet">
+    <!--Varela font - ähnlich zu Arial rounded mt -->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <!-- Verschiedene Animationen verpackt in einem großen file
+    	Diese werden hier für die Animationen nach dem Scrollen genutzt.
+      -->
+    <link rel="stylesheet" type="text/css" href="css/animate.css" />
+    <!-- Animation JS -->
+    <script src="js/animation.js"></script>
+
+    <title>Chenny - Ein Datenbankkonzeptionierungstool</title>
+
+</head>
+
+<body style="overflow-x: hidden;" id="home">
+    <!-- NAVIGATIONSABSCHNITT -->
+    <header>
+        <nav style="background-color:#303030;" class="navbar fixed-top navbar-expand-lg navbar-dark border-bottom border-white">
+            <a class="navbar-brand" href="#home"><img src="IMG/vektorlogo.png" height="40" class="d-inline-block align-top Responsive image" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto ">
+
+                    <li class="nav-item mr-5">
+                        <a style="font-size: 20px" class="nav-link" href="#projekt">Das Projekt</a>
+                    </li>
+                    <li class="nav-item mr-5">
+                        <a style="font-size: 20px" class="nav-link" href="#team">Das Team</a>
+                    </li>
+                    <li class="nav-item mr-5">
+                        <a style="font-size: 20px" class="nav-link" href="#kontakt">Kontakt</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ANIMATIONSABSCHNITT -->
+    <div class="cont stickyPos">
+        <img class="wic" style="visibility: hidden;margin-top:0;margin-bottom:0px;" id="animation" src="IMG/Animation_01.png" height="0px">
+        <div id="1" class="oneandonly animation wic">
+            <!-- Linke Entität zusammen mit allen Attributen und zugehörigen Linien -->
+            <div class="entity firstEntity">
+                <!-- Attribut - rechts oben -->
+                <div style="font-size: 180%; animation-delay: 4.5s" class="attributeText firstText">Das</div>
+                <div class="attribute firstAttribute">
+                    <div class="attributeText firstText">innovativ</div>
+                </div>
+                <!-- Linien -->
+                <div class="line firstLine"></div>
+                <div class="line secondLine"></div>
+                <div class="line thirdLine"></div>
+                <div class="line firstRotationLine"></div>
+                <div class="line secondRotationLine"></div>
+                <!-- Attribut - links oben -->
+                <div class="attribute secondAttribute">
+                    <div class="attributeText secondText">effizient</div>
+                </div>
+                <!-- Attribut - links unten -->
+                <div class="attribute thirdAttribute">
+                    <div class="attributeText thirdText">einfach</div>
+                </div>
+            </div>
+            <!-- Beziehungsraute -->
+            <div class="relation">
+                <div class="relationDiv">
+                    <div class="relationText">ist</div>
+                </div>
+            </div>
+            <!-- Rechte Entität samt Chenny-Logo -->
+            <div class="entity secondEntity secEnt">
+                <img class="attributeText" style="width: 95%" src="IMG/vektorlogo.png" alt="Logo">
+            </div>
+        </div>
+    </div>
+
+    <!-- ANFANGSABSCHNITT -->
+    <div class="cont">
+        <div class="chennyFarbe">
+            <br>
+            <button type="button" class="btn leglos" onclick="window.location.href='PHP/signup.php'">LEG LOS</button>
+            <br>
+        </div>
+    </div>
+
+    <!-- PROJEKTABSCHNITT -->
+    <section id="projekt" style="padding-top: 40px; margin-top: -40px;">
+        <div class="cont dunkelHint">
+            <h1 style="text-align: center" id="1" class="ueber helleSchrift"><br>Was ist Chenny?</h1>
+            <img class="anker marg" src="IMG/ankergruen.png">
+            <div class="wic">
+                <div class="w">
+                    <p class="helleSchrift">Chenny ist ein webbasiertes Datenkonzeptionierungstool, welches sich auf die Chen-Notation spezialisiert. Es soll jederzeit gratis zur Verfügung stehen und ist vor Allem für Schüler, die sich mit dem Erstellen von ERDs/ERMs befassen, ausgelegt. Die Software weist eine simple Struktur auf und die tatsächliche Entwurfserstellung ist in einzelne Schritte aufgeteilt, womit der Lernprozess der Chen-Notation vereinfacht wird.</p><br><br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAMABSCHNITT -->
+    <section id="team" style="padding-top: 40px; margin-top: -40px;">
+        <div class="cont hellHint dunkleSchrift"><br><br>
+            <h1 style="text-align: center" class="ueber" id="3">Das Team</h1>
+            <img class="anker marg" src="IMG/ankergruen.png">
+            <div class="row">
+                <div class="col marginKontakt">
+                    <img class="imgcenter round" src="IMG/Maciej.jpg">
+                    <h1 class="marginKontaktText" style="text-align: center">Maciej Dzialoszynski</h1>
+                    <h3 class="chennySchrift marginKontaktText">Programmierer</h3>
+                    <h6 class="marginKontaktText" style="margin-right: 30px;margin-left: 30px;">
+                        Verleiht der Website den nötigen visuellen Kick. Auch die Wartung der Datenbank liegt in seinem Aufgabenbereich. Sowohl Designmakel als auch Inkonsistenzen werden vermieden. Für Fragen hat er immer ein offenes Ohr.
+                    </h6>
+                </div>
+                <div class="col marginKontakt">
+                    <img class="imgcenter round" src="IMG/David.jpg">
+                    <h1 class="marginKontaktText" style="text-align: center">David Jovanovic </h1>
+                    <h3 class="chennySchrift marginKontaktText">Teamleiter</h3>
+                    <h6 class="marginKontaktText" style="margin-right: 30px;margin-left: 30px;">
+                        Behält den Überblick und einen kühlen Kopf. Die Teammitglieder werden von ihm regelmäßig mit Motivation und Unterstützung versorgt. Außerdem befasst er sich mit der Logik hinter dem Programm.
+                    </h6>
+                </div>
+                <div class="col marginKontakt">
+                    <img class="imgcenter round" src="IMG/Sebastian.jpg">
+                    <h1 class="marginKontaktText" style="text-align: center">Sebastian Grünewald</h1>
+                    <h3 class="chennySchrift marginKontaktText">Programmierer</h3>
+                    <h6 class="marginKontaktText" style="margin-right: 30px;margin-left: 30px;">
+                        Legt immer großen Wert auf korrekte Implementierung <br>-<br>&lt;h1&gt;<i style="font-family: Courier New"> Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna </i>&lt;/h1&gt;
+                    </h6>
+                </div>
+            </div><br><br>
+        </div>
+    </section>
+
+    <!-- KONTAKTABSCHNITT -->
+    <section id="kontakt" style="padding-top: 40px; margin-top: -40px;">
+        <div class="cont dunkelHint"><br><br>
+            <h1 style="text-align:center" class="ueber helleSchrift">Kontakt</h1>
+            <img class="anker marg" src="IMG/ankergruen.png">
+            <div class="wic">
+                <div class="w">
+                    <p class="helleSchrift">Interessierst du dich für Chenny? Hast du Fragen bzw. Verbesserungsvorschläge? Sende uns eine E-Mail, wir antworten so bald wie möglich!</p>
+                    <i style="font-size:50px; color: #eeeeee; margin-left: 5.5px;" class="fa">&#xf003;</i>
+                    <br><br>
+                    <p>
+                        <a href="mailto:chenny.tgm@gmail.com" class="chennySchrift">chenny.tgm@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+            <br>
+        </div>
+    </section>
+
+    <!-- SCROLL-ANIMATIONS-ABSCHNITT -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script defer src="js/viewportchecker.js"></script>
+    <script defer src="js/scrollAnimation.js"></script>
+    
+    <!--ANCHOR SCROLL-->
+    <script src="//code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="js/scrollAnchor.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
