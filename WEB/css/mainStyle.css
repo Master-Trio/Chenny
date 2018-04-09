@@ -1,0 +1,104 @@
+.helleSchrift {
+    color: #eeeeee;
+}
+
+.dunkleSchrift {
+    color: #303030;
+}
+
+.chennyFarbe {
+    background-color: #57bea4;
+}
+
+.chennySchrift {
+    color: #57bea4;
+}
+
+
+.cont {
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.ueber {
+    font-family: ArialRoundedMTBold, "Arial Rounded MT Bold", "Varela Round", "Helvetica Rounded", Arial, sans-serif;
+    font-size: 250%;
+}
+
+.anker {
+    width: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.marg {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.wic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%
+}
+
+.w {
+    text-align: center;
+    width: 70%;
+}
+
+.auswahl {
+    font-size: 18pt;
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 15px;
+    background-color: #57bea4;
+    border: 1px solid;
+}
+
+.auswahl:hover {
+    background-color: #eeeeee;
+    color: #303030;
+}
+
+.auswahl:focus {
+    background-color: #303030;
+    color: white;
+}
+
+.weiter {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 5px;
+    font-size: 14pt;
+    background-color: #303030;
+    color: #eeeeee;
+}
+
+.weiter:hover {
+    background-color: #57bea4;
+    color: #303030;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

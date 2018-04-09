@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--CSS einbinden-->
+    <link rel="stylesheet" href="css/mainStyle.css">
+
+    <link rel="shortcut icon" href="IMG/favicon.png" type="<mime-type>" />
+
+    <script src="js/mainScript.js"></script>
+
+    <title>Entwurf erstellen</title>
+</head>
+
+<body>
+    <!-- NAVIGATIONSABSCHNITT -->
+    <header>
+        <nav style="background-color:#303030;" class="navbar fixed-top navbar-expand-lg navbar-dark border-bottom border-white">
+            <a class="navbar-brand" href="#home"><img src="IMG/vektorlogo.png" height="40" class="d-inline-block align-top Responsive image" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto ">
+
+                    <li class="nav-item mr-5">
+                        <a style="font-size: 20px" class="nav-link" href="#projekt">#1</a>
+                    </li>
+                    <li class="nav-item mr-5">
+                        <a style="font-size: 20px" class="nav-link" href="#team">#2</a>
+                    </li>
+                    <li class="nav-item mr-5">
+                  <a style="font-size: 20px" class="nav-link" href="#kontakt">#3</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <br><br><br>
+
+    <!--Schritt 1-->
+    <section id="schritt1" style="padding-top: 40px; margin-top: -50px;">
+        <div class="cont" style="background-color: #eeeeee">
+            <br>
+            <h1 style="text-align: center;" class="ueber dunkleSchrift">Schritt 1</h1>
+            <img class="anker marg" src="IMG/ankergruen.png">
+            <div class="wic">
+                <div class="w">
+                    <p style="font-size: 14pt;s" class="dunkleSchrift">In diesem Schritt kannst du die Anzahl der Entitäten, die du haben möchtest, auswählen</p><br><br>
+                </div>
+            </div>
+            <div class="gruppe wic" align="center">
+                <div class="btn-group" role="group">
+                    <button value="1" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">1</button>
+                    <button value="2" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">2</button>
+                    <button value="3" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">3</button>
+                    <button value="4" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">4</button>
+                    <button value="5" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">5</button>
+                    <button value="6" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">6</button>
+                    <button value="7" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">7</button>
+                    <button value="8" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">8</button>
+                    <button value="9" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">9</button>
+                    <button value="10" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">10</button>
+                </div>
+            </div>
+            <br><br>
+            <div id="test" class="namen" align="center">
+                
+            </div>
+            <br><br>
+            <button type="button" class="btn weiter">Weiter</button>
+        </div>
+    </section>
+
+    
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
