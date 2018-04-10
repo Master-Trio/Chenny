@@ -11,7 +11,7 @@
 	}
 	if(isset($_SESSION['er'])){
 		echo 
-		"<h2>".$_SESSION['er']."</h2>";
+		'<h2 style="color:red;text-align:right;font-family: Arial;margin-right:50px;">'.$_SESSION['er'].'</h2>';
 		$_SESSION['er'] = "";
 	}
 ?>
