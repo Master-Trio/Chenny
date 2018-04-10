@@ -85,10 +85,15 @@
     color: #303030;
 }
 
+.attribute {
+    color: #eeeeee;
+}
 
-
-
-
+.pfeil {
+    width: 50px;
+    height: auto;
+    display: block;
+}
 
 
 

@@ -30,13 +30,13 @@
                 <ul class="navbar-nav ml-auto ">
 
                     <li class="nav-item mr-5">
-                        <a style="font-size: 20px" class="nav-link" href="#projekt">#1</a>
+                        <a style="font-size: 20px" class="nav-link">#1</a>
                     </li>
                     <li class="nav-item mr-5">
-                        <a style="font-size: 20px" class="nav-link" href="#team">#2</a>
+                        <a style="font-size: 20px" class="nav-link">#2</a>
                     </li>
                     <li class="nav-item mr-5">
-                  <a style="font-size: 20px" class="nav-link" href="#kontakt">#3</a>
+                        <a style="font-size: 20px" class="nav-link">#3</a>
                     </li>
                 </ul>
             </div>
@@ -53,7 +53,7 @@
             <img class="anker marg" src="IMG/ankergruen.png">
             <div class="wic">
                 <div class="w">
-                    <p style="font-size: 14pt;s" class="dunkleSchrift">In diesem Schritt kannst du die Anzahl der Entitäten, die du haben möchtest, auswählen</p><br><br>
+                    <p style="font-size: 14pt;" class="dunkleSchrift">In diesem Schritt kannst du die Anzahl der Entitäten, die du haben möchtest, auswählen</p><br><br>
                 </div>
             </div>
             <div class="gruppe wic" align="center">
@@ -71,15 +71,39 @@
                 </div>
             </div>
             <br><br>
-            <div id="test" class="namen" align="center">
-                
+            <div id="namensfelder" align="center">
+
             </div>
             <br><br>
-            <button type="button" class="btn weiter">Weiter</button>
+            <button type="button" class="btn weiter" onclick="namenSpeichern();">Weiter</button>
+            <br>
+            <div id="fehlermeldung" align="center">
+
+            </div>
         </div>
     </section>
 
-    
+    <!-- Schritt 2 -->
+    <section id="schritt2" style="padding-top: 40px; margin-top: -50px; padding-bottom: 200px;">
+        <div class="cont" style="background-color: #303030;">
+            <br>
+            <h1 style="text-align: center;" class="ueber helleSchrift">Schritt 2</h1>
+            <img class="anker marg" src="IMG/ankergruen.png">
+            <div class="wic">
+                <div class="w">
+                    <p style="font-size: 14pt;" class="helleSchrift">Hier kannst du auswählen wie viel Attribute du pro Entität haben möchtest</p><br><br>
+                </div>
+            </div>
+            <div id="fehlermeldung" align="center">
+
+            </div>
+
+            <div id="attribute" align="center" class="attribute">
+
+            </div>
+        </div>
+    </section>
+
 
 
     <!-- Optional JavaScript -->
@@ -87,5 +111,6 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </body>
 </html>
