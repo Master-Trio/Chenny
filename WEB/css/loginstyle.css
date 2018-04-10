@@ -309,8 +309,9 @@ header .nav-login a{
 }
 
 .eingabe{
+	height:20px;
 	border-radius:5px;
-	font-size: 13px;
+	font-size: 16px;
 	border: none;
 	background-color:#fff;
 	font-family:arial;
@@ -320,7 +321,8 @@ header .nav-login a{
 	border: 2px solid #57bea4;
 }
 .subm{
-	margin-top:1.5px;
+	font-size: 20px;
+	margin-top:1px;
 	border:none;
 	cursor:pointer;
 	display:block;
@@ -330,6 +332,26 @@ header .nav-login a{
 	height:auto;
 }
 .subm:hover{
+	background-color:#57bea4;
+	color:#eeeeee;
+}
+
+.acc{
+	font-size: 20px;
+	margin-top:1px;
+	border:none;
+	cursor:pointer;
+	display:block;
+	background-color:#eeeeee;
+	color:#303030;
+	border-radius:7px;
+	height:auto;
+}
+.acc:hover{
+	background-color:#57bea4;
+	color:#eeeeee;
+}
+.acc:focus{
 	background-color:#57bea4;
 	color:#eeeeee;
 }

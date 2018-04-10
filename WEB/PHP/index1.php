@@ -6,7 +6,7 @@
 	if(isset($_SESSION['uid'])){
 		echo 
 		'<div class="entwdiv">
-			<h1 style="text-align:center">Meine Entwürfe</h1>
+			<h2 style="text-align:center;font-size:40px;">Meine Entwürfe</h2><br>
 		</div>
 		<a style="text-decoration:none;" href="../main.html"><button class="nentw">Neuer Entwurf</button></a>';
 	}

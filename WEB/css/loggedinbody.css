@@ -1,5 +1,4 @@
 .maindiv{
-	margin-top:67px;
 	background-color:#eeeeee;
 }
 .entwdiv{
@@ -30,6 +29,7 @@
 	text-align:center;
 	margin-left:auto;
 	margin-right:auto;
+	padding-bottom:5px;
 }
 .nentw:hover{
 	background-color:#eeeeee;

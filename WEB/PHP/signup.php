@@ -1,11 +1,9 @@
 <?php
 	include_once 'header.php';
 ?>
-  
   <h2 class="wic"></h2>
   <section class="main-container">
 	<div class="main-wrapper">
-		<h2>Registrieren</h2>
 		<div>
 		<form class="signup-form" action="signup.ext.php" method="POST">
 			<?php
@@ -17,7 +15,7 @@
 				}else{
 					echo '
 					
-					<h2 style="text-align:center;">Registrieren</h2>
+					<h2 style="text-align:center;font-size:40px;">Registrieren</h2><br>
 					<input type="text" name="vn" placeholder="Vorname">
 					<input type="text" name="nn" placeholder="Nachname">
 					<input type="text" name="email" placeholder="E-Mail">
