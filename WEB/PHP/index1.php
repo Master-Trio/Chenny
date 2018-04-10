@@ -7,7 +7,8 @@
 		echo 
 		'<div class="entwdiv">
 			<h1 style="text-align:center">Meine Entwürfe</h1>
-		</div>';
+		</div>
+		<a style="text-decoration:none;" href="../main.html"><button class="nentw">Neuer Entwurf</button></a>';
 	}
 	if(isset($_SESSION['er'])){
 		echo 

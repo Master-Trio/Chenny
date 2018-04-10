@@ -17,3 +17,22 @@
 	margin-right:50px;
 	margin-top:20px;
 }
+.nentw{
+	margin-top:10px;
+	border:none;
+	cursor:pointer;
+	display:block;
+	background-color:#57bea4;
+	color:#eeeeee;
+	border-radius:7px;
+	font-size:40px;
+	width: 30%;
+	text-align:center;
+	margin-left:auto;
+	margin-right:auto;
+}
+.nentw:hover{
+	background-color:#eeeeee;
+	color:#57bea4;
+	border:2px solid #57bea4;
+}
