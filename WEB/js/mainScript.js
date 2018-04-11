@@ -1,5 +1,5 @@
 var anzahlEntitaeten = 0;
-var entitaetenNamen = new Array();
+var entitaetenNamen;
 var generateDropdown = "<div style='margin-top: -10px;' class='form-group'><select class='form-control' id='sel1'><option>1</option><option>2</option><option>3</option><option>4</option></select></div>";
 
 function names(anzahl) {
@@ -32,7 +32,7 @@ function namenPruefen(wert) {
 }
 
 function namenSpeichern() {
-
+    entitaetenNamen = new Array();
     /*Hineinschreiben der Entitätennamen in das Array
     Es wird auch bereits überprüft, ob alle Felder ausgefüllt wurden*/
     for (var i = 0; i < anzahlEntitaeten; i++) {
