@@ -4,7 +4,7 @@
   
   <section class="main-container">
 	<div class="main-wrapper">
-		<h2>Erfolgreich registriert, melde dich an.</h2>
+		<h2 style="text-align:center;font-size:40px;">Erfolgreich registriert, melde dich an.</h2>
 
 	</div>
   </section>
