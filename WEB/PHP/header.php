@@ -31,14 +31,14 @@ session_start();
 						echo 
 						'<li class="nav-item">
 							<div class="btn-group dropleft">
-								<button type="button" class="btn dropdown-toggle acc" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<button type="button" class="btn dropdown-toggle dr" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								'.$_SESSION['uid'].'
 								</button>
-								<div class="dropdown-menu">
+								<div class="dropdown-menu dropd">
 									<form action="logout.ext.php" method="POST">
-										<a style="text-align:left;" class="dropdown-item" href="#">Kontoeinstellungen</a>
-										<a style="text-align:left;" class="dropdown-item" href="#">Entwürfe verwalten</a>
-										<a style="text-align:left;" class="dropdown-item" href="logout.ext.php">abmelden</a>
+										<a style="text-align:left;" class="dropdown-item drop" href="#">Kontoeinstellungen</a>
+										<a style="text-align:left;" class="dropdown-item drop" href="#">Entwürfe verwalten</a>
+										<a style="text-align:left;" class="dropdown-item drop" href="logout.ext.php">abmelden</a>
 									</form>
 								</div>
 							</div>

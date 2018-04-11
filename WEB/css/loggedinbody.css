@@ -16,6 +16,20 @@
 	margin-right:50px;
 	margin-top:20px;
 }
+@media screen and (max-width: 480px) {
+	.maindiv button{
+		display:none
+	}
+	
+}
+@media screen and (max-width: 480px) {
+	.entwdiv{
+		border:3px solid #303030;
+		background-color:#303030;
+		color:#eeeeee;
+		height:600px;
+	}
+}
 .nentw{
 	margin-top:10px;
 	border:none;
@@ -35,4 +49,29 @@
 	background-color:#eeeeee;
 	color:#57bea4;
 	border:2px solid #57bea4;
+}
+.dropd{
+	border-radius:10px;
+}
+.drop:hover{
+	background-color:#57bea4;	
+	color:#eeeeee;
+	border-radius:0px;
+}
+.drop:focus{
+	background-color:#57bea4;	
+	color:#eeeeee;
+	border-radius:0px;
+}
+
+.dr{
+	border-radius:10px;
+}
+.dr:hover{
+	background-color:#57bea4;	
+	color:#eeeeee;
+}
+.dr:focus{
+	background-color:#57bea4;	
+	color:#eeeeee;
 }
