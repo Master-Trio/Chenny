@@ -1,0 +1,25 @@
+.kontodiv {
+	width: 100%;
+}
+
+.aaa {
+	float:right;
+	margin-right:0px;
+	cursor: pointer;
+	border: 1px solid #57bea4;
+	border-radius: 4px;
+	background-color: #57bea4;
+	color: #eeeeee;
+	padding-bottom: 3px;
+}
+
+.aaa:hover {
+	background-color: #eeeeee;
+	color: #57bea4;
+}
+
+.in {
+	width: 100px;
+	border-radius: 5px;
+	border: 1px solid #57bea4;
+}

@@ -16,7 +16,7 @@ if(isset($_POST['submit'])){
 		$result = mysqli_query($conn,$sql);
 				$resultCheck = mysqli_num_rows($result);
 				if($resultCheck < 1){
-					header("Location: index1.php?login=error");
+					header("Location: index1.php");
 					$_SESSION['er'] = "User nicht gefunden";
 					exit();
 				}
@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){
 					if($row = mysqli_fetch_assoc($result)){
 						$hashedPwdCheck = password_verify($pwd, $row['user_pwd']);
 						if($hashedPwdCheck == false){
-							header("Location: index1.php?login=error");
+							header("Location: index1.php");
 							$_SESSION['er'] = "Passwort ungültig";
 							exit();
 						}elseif($hashedPwdCheck == true){
@@ -36,7 +36,7 @@ if(isset($_POST['submit'])){
 							$_SESSION['pwdhash'] = $row['user_pwd'];
 							$_SESSION['pwd'] = $pwd;
 							$_SESSION['er'] = "";
-							header("Location: index1.php?login=success");
+							header("Location: index1.php");
 							exit();
 						}
 					}
@@ -45,7 +45,7 @@ if(isset($_POST['submit'])){
 	
 }
 else{
-	header("Location: index1.php?");
+	header("Location: index1.php");
 	exit();
 }
 ?>

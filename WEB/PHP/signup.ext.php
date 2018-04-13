@@ -11,41 +11,41 @@ if(isset($_POST['submit'])){
 	$pwd2 = mysqli_real_escape_string($conn,$_POST["pwd2"]);
 	
 	if(empty($vn)||empty($nn)||empty($uid)||empty($email)||empty($pwd)){
-		header("Location:signup.php?signup=empty");
+		header("Location:signup.php");
 		$_SESSION['er'] = "Bitte alle Felder ausfüllen";
 		exit();
 	}
 	else{
 		if($pwd != $pwd2){
-			header("Location:signup.php?signup=inequal");
+			header("Location:signup.php");
 			$_SESSION['er'] = "Passwörter stimmen nicht überein";
 			exit();
 		}
 		else{
 			if(strlen($pwd)<6){
 				$_SESSION['er'] = "Passwort zu kurz!";
-				header("Location:signup.php?pw=invalid");
+				header("Location:signup.php");
 			}
 			else{
 				if (!preg_match("#[0-9]+#", $pwd)) {
 					$_SESSION['er'] = "Mindestens eine Zahl!";
-					header("Location:signup.php?pw=invalid");
+					header("Location:signup.php");
 				}
 				else{
 					if (!preg_match("#[a-zA-Z]+#", $pwd)) {
 						$_SESSION['er'] = "Mindestens 1 Buchstabe!";
-						header("Location:signup.php?pw=invalid");
+						header("Location:signup.php");
 					}
 					else{
 						if(!preg_match("/^[a-zA-Z]*$/",$vn)||!preg_match("/^[a-zA-Z]*$/",$nn)){
 							$_SESSION['er'] = "Vorname/Nachname ungültig";
-							header("Location:signup.php?signup=invalid");
+							header("Location:signup.php");
 							exit();
 						}
 						else{
 							if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
 								$_SESSION['er'] = "Email ungültig";
-								header("Location:signup.php?signup=email");
+								header("Location:signup.php");
 								exit();
 							}
 							else{
@@ -53,7 +53,7 @@ if(isset($_POST['submit'])){
 								$result = mysqli_query($conn,$sql);
 								$resultCheck = mysqli_num_rows($result);
 								if($resultCheck > 0){
-									header("Location:signup.php?signup=usertaken");
+									header("Location:signup.php");
 									$_SESSION['er'] = "Username/E-mail bereits verwendet";
 									exit();
 								}
@@ -62,7 +62,7 @@ if(isset($_POST['submit'])){
 									$sql = "INSERT INTO users (user_vn,user_nn,user_email,user_uid,user_pwd) 
 														VALUES ('$vn','$nn','$email','$uid','$hashedPwd')";
 									mysqli_query($conn,$sql);
-									header("Location:success.php?signup=success");
+									header("Location:success.php");
 									$_SESSION['er'] = "";
 									exit();
 								}

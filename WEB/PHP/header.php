@@ -7,12 +7,15 @@ session_start();
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+	 <link rel="shortcut icon" href="../IMG/favicon.png" type="<mime-type>" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/loginstyle.css">
 	<link rel="stylesheet" type="text/css" href="../css/loggedinbody.css">
+	<link rel="stylesheet" type="text/css" href="../css/konto.css">
+	<!-- Custom JS -->
+	 <script type="text/javascript" src="../js/konto.js"></script>
     <title>Chenny</title>
   </head>
   <body style="background-color:#eeeeee;">
@@ -36,7 +39,7 @@ session_start();
 								</button>
 								<div class="dropdown-menu dropd">
 									<form action="logout.ext.php" method="POST">
-										<a style="text-align:left;" class="dropdown-item drop" href="#">Kontoeinstellungen</a>
+										<a style="text-align:left;" class="dropdown-item drop" href="konto.php">Kontoeinstellungen</a>
 										<a style="text-align:left;" class="dropdown-item drop" href="#">Entwürfe verwalten</a>
 										<a style="text-align:left;" class="dropdown-item drop" href="logout.ext.php">abmelden</a>
 									</form>
