@@ -6,12 +6,25 @@ function names(anzahl) {
     anzahlEntitaeten = anzahl;
     entitaetenNamen = new Array();
     document.getElementById("namensfelder").innerHTML = "";
-    for (var i = 1; i < (parseInt(anzahl) + 1); i++) {
-        document.getElementById("namensfelder").innerHTML += "   " + i + ". Name: <input id='feld" + i + "' type='text' style='text-align: center;'>";
-        if (i == 5) {
-            document.getElementById("namensfelder").innerHTML += "<br><br>";
+    
+    
+    var ausgabe = 1;
+    
+    if (anzahl % 2 == 0) {
+        for (var i = 0; i < (anzahl/2); i++) {
+            document.getElementById("namensfelder").innerHTML += "<div class='row'><div class='col'>   "+ausgabe+". Entität: <input id='feld"+ausgabe+"' type='text'></div><div class='col'>   "+(ausgabe = ausgabe+1)+". Entität: <input id='feld"+ausgabe+"' type='text'></div></div><br>";
+            ausgabe++;
         }
     }
+    else {
+        for (var i = 0; i < ((anzahl/2)-1); i++) {
+            document.getElementById("namensfelder").innerHTML += "<div class='row'><div class='col'>   "+ausgabe+". Entität: <input id='feld"+ausgabe+"' type='text'></div><div class='col'>   "+(ausgabe = ausgabe+1)+". Entität: <input id='feld"+ausgabe+"' type='text'></div></div><br>";   
+            ausgabe++;
+        }
+        document.getElementById("namensfelder").innerHTML += "<div class='row'><div class='col'>   "+ausgabe+". Entität: <input id='feld"+ausgabe+"' type='text'></div><div class='col'>&nbsp;</div></div>";
+    }
+
+    
 }
 
 
