@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!--CSS einbinden-->
+
+    <link rel="stylesheet" href="css/canvas.css">
+    <link rel="shortcut icon" href="IMG/favicon.png" type="<mime-type>" />
+
+    <title>Workspace</title>
+</head>
+
+<body>
+    <!-- NAVIGATIONSABSCHNITT -->
+    <header>
+        <nav style="background-color:#303030;" class="navbar fixed-top navbar-expand-lg navbar-dark border-bottom border-white">
+            <a class="navbar-brand" href="#home"><img src="IMG/vektorlogo.png" height="40" class="d-inline-block align-top Responsive image" alt=""></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto ">
+
+                    <li class="nav-item mr-5">
+                        <a style="font-size: 20px" class="nav-link">#1</a>
+                    </li>
+                    <li class="nav-item mr-5">
+                        <a style="font-size: 20px" class="nav-link">#2</a>
+                    </li>
+                    <li class="nav-item mr-5">
+                        <a style="font-size: 20px" class="nav-link">#3</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CANVAS -->
+    <div class="wic">
+        <div class="row myrow" style="width: 100%;">
+            <div class="col wic">
+                <canvas></canvas>
+            </div>
+            <div class="col-md-1 wic ">
+                <div class="middleStroke"></div>
+            </div>
+            <div class="col wic">
+                <div>
+                    <div class="row myrow" style="width: 100%;">
+                        <div class="col">
+                            <input class="in" type="text" placeholder=" Entwurfsname">
+                        </div>
+                    </div>
+                    <div class="row myrow" style="width: 100%;">
+                        <div class="col">
+                            <button class="but">speichern</button>
+                        </div>
+                    </div>
+                    <div class="row myrow" style="width: 100%;">
+                        <div class="col">
+                            <button class="but">exportieren</button>
+                        </div>
+                    </div>
+                    <div class="row myrow" style="width: 100%;">
+                        <div class="col">
+                            <button class="but">bearbeiten</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dies wird für die Verwendung von Canvas benötigt
+        const canvas = document.querySelector('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Dies sind die Variablen für die Höhe und Breite des Canvas
+        let cw;
+        let ch;
+
+        // Hier wird sowohl die Höhe, als auch die Breite von Canvas festgelegt
+        function ausrichtung() {
+            var quer = false;
+
+            if (quer == false) {
+                canvas.width = 500;
+                canvas.height = 707.5;
+            } else {
+                canvas.width = 707.5;
+                canvas.height = 500;
+            }
+
+            cw = canvas.width;
+            ch = canvas.height;
+        }
+
+        // Hintergrund
+        function background() {
+            ctx.fillStyle = "lightgrey";
+            ctx.fillRect(0, 0, cw, ch);
+        }
+
+        // Hiermit werden die Ränder von Canvas beseitigt
+        topCanvas = canvas.offsetTop;
+        console.log(topCanvas);
+        leftCanvas = canvas.offsetLeft;
+
+        ausrichtung();
+        background();
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

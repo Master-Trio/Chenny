@@ -1,0 +1,57 @@
+body {
+    background: #eeeeee;
+}
+
+.wic {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding-top: 3%;
+}
+
+.in {
+    padding-bottom: 3px;
+    margin-left: 20px;
+    width: 150px;
+    border-radius: 5px;
+    border: 1px solid #57bea4;
+}
+
+.but {
+    margin-left: 20px;
+    border: 1px solid #57bea4;
+    border-radius: 4px;
+    background-color: #57bea4;
+    color: #eeeeee;
+    padding-bottom: 3px;
+    width: 150px;
+}
+
+.but:hover {
+    background-color: #eeeeee;
+    color: #57bea4;
+    cursor: pointer;
+}
+
+.myrow {
+    margin-bottom: 10px;
+}
+
+.rightButtons {
+    position: absolute;
+    left: 85%;
+    top: 45%;
+}
+
+.middleStroke {
+    position: relative;
+    width: 2px;
+    height: 100%;
+    border: 2px solid #303030;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
