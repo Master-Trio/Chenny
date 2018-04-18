@@ -86,6 +86,27 @@ html{
     color: #303030;
 }
 
+/*
+    Anker-Animation
+*/
+
+.anc {
+    position: absolute;
+    margin-top: 0.1px;
+    width: 50px;
+    height: 3.1px;
+    border: 0px solid;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    border-color: #57bea4;
+    background-color: #57bea4;
+}
+
+.cont:hover .anc {
+    width: 100px;
+}
+
 /* ---
             Hier stehen die wichtigsten classes für die Positionierung der gesamten conts samt divs
         */
