@@ -1,9 +1,9 @@
-html{
-	width: 100%;
-	height: 100%;
-	margin:0;
-	padding: 0;
-	overflow-x: hidden;
+html {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
 }
 
 .round {
@@ -66,6 +66,7 @@ html{
 }
 
 .anker {
+    position: relative;
     width: 50px;
     display: block;
     margin-left: auto;
@@ -101,6 +102,21 @@ html{
     transition: 0.3s;
     border-color: #57bea4;
     background-color: #57bea4;
+}
+
+@-moz-document url-prefix() {
+    .anc {
+        position: absolute;
+        margin-top: 20px;
+        width: 50px;
+        height: 3.1px;
+        border: 0px solid;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        transition: 0.3s;
+        border-color: #57bea4;
+        background-color: #57bea4;
+    }
 }
 
 .cont:hover .anc {
