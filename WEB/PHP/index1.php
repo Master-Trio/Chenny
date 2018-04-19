@@ -10,9 +10,8 @@
 		</div>
 		<a style="text-decoration:none;" href="../main.html"><button class="nentw">Neuer Entwurf</button></a>';
 	}
-	if(isset($_SESSION['er'])){
-		echo 
-		'<h2 style="color:red;text-align:right;font-family: Arial;margin-right:50px;">'.$_SESSION['er'].'</h2>';
+	if($_SESSION['er']!=""){
+		echo "<div style='text-align:center;margin-top:10px;' class='alert alert-danger' role='alert'>".$_SESSION['er']."</div>";
 		$_SESSION['er'] = "";
 	}
 ?>
