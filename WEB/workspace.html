@@ -85,17 +85,32 @@
         // Dies sind die Variablen für die Höhe und Breite des Canvas
         let cw;
         let ch;
-
+        let screenSize = 1;
         // Hier wird sowohl die Höhe, als auch die Breite von Canvas festgelegt
         function ausrichtung() {
-            var quer = false;
+            var quer = true;
+
+            var w = window,
+                d = document,
+                e = d.documentElement,
+                g = d.getElementsByTagName('body')[0],
+                x = w.innerWidth || e.clientWidth || g.clientWidth,
+                y = w.innerHeight || e.clientHeight || g.clientHeight;
+
+            if (x > 1400 && x < 1200) {
+                screenSize = 1.4;
+            } else if (x > 1200) {
+                screenSize = 1.2;
+            } else if (x < 1200) {
+                screenSize = 1;
+            }
 
             if (quer == false) {
-                canvas.width = 500;
-                canvas.height = 707.5;
+                canvas.width = 500 * screenSize;
+                canvas.height = 707.5 * screenSize;
             } else {
-                canvas.width = 707.5;
-                canvas.height = 500;
+                canvas.width = 707.5 * screenSize;
+                canvas.height = 500 * screenSize;
             }
 
             cw = canvas.width;
@@ -112,9 +127,18 @@
         topCanvas = canvas.offsetTop;
         console.log(topCanvas);
         leftCanvas = canvas.offsetLeft;
+        
+        window.onload = function() {
+            ausrichtung();
+            background();
+        }
+        
+        window.onresize = function() {
+            ausrichtung();
+            background();
+        }
 
-        ausrichtung();
-        background();
+       
     </script>
 
     <!-- Optional JavaScript -->
