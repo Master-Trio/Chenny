@@ -1,6 +1,5 @@
 var anzahlEntitaeten = 0;
 var entitaetenNamen;
-var generateDropdown = "<div style='margin-top: -10px;' class='form-group'><select class='form-control' id='sel1'><option>1</option><option>2</option><option>3</option><option>4</option></select></div>";
 
 function names(anzahl) {
     anzahlEntitaeten = anzahl;
@@ -29,9 +28,12 @@ function names(anzahl) {
 
 
 function attributes() {
+    var a = 0;
     document.getElementById("attribute").innerHTML = "";
+    
     for (var i = 0; i < entitaetenNamen.length; i++) {
-        document.getElementById("attribute").innerHTML += "<div class='row'><div class='col'>&nbsp;</div><div class='col'>" + entitaetenNamen[i] + "</div><div class='col'><img class='pfeil' src='IMG/pfeil.png'></div><div class='col'>" + generateDropdown + "</div><div class='col'>Attribut / Attribute</div><div class='col'>&nbsp;</div></div><br>";
+        document.getElementById("attribute").innerHTML += "<div class='row'><div class='col'>&nbsp;</div><div class='col'>" + entitaetenNamen[i] + "</div><div class='col'><img class='pfeil' src='IMG/pfeil.png'></div><div class='col'><div style='margin-top: -10px;' class='form-group'><select class='form-control' id='sel"+String(a)+"' onchange='dyn(this, plural"+i+");'><option>1</option><option>2</option><option>3</option><option>4</option></select></div></div><div class='col' id='plural"+i+"'>Attribut</div><div class='col'>&nbsp;</div></div><br>";
+        a++;
     }
 }
 
@@ -66,4 +68,14 @@ function namenSpeichern() {
     }
 
     attributes();
+}
+
+
+function dyn (drop, schrift) {
+    if (drop.value > 1) {
+        schrift.innerHTML = "Attribute";
+    }
+    else if (drop.value == 1) {
+        schrift.innerHTML = "Attribut"; 
+    }
 }
