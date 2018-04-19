@@ -1,5 +1,7 @@
 var anzahlEntitaeten = 0;
 var entitaetenNamen;
+var weiterAtrribute = false;
+
 
 function names(anzahl) {
     anzahlEntitaeten = anzahl;
@@ -66,7 +68,7 @@ function namenSpeichern() {
             break;
         }
     }
-
+    weiterAtrribute = true;
     attributes();
 }
 
@@ -79,3 +81,24 @@ function dyn (drop, schrift) {
         schrift.innerHTML = "Attribut"; 
     }
 }
+
+function pruefenObWeiterAttribute() {
+    if (!weiterAtrribute) {
+        document.getElementById("fehlermeldung2").innerHTML = "<p style='color: red;'>Wähle erst deine Entitäten aus</p>";
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
