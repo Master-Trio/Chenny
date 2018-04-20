@@ -7,8 +7,10 @@
 		<div>
 		<form class="signup-form" action="signup.ext.php" method="POST">
 			<?php
-				echo "<p style='color:red;text-align:center;font-family: Arial;'>".$_SESSION['er']."</p>";
-				$_SESSION['er'] = "";
+				if($_SESSION['er']!=""){
+					echo "<div style='text-align:center;' class='alert alert-danger' role='alert'>".$_SESSION['er']."</div>";
+					$_SESSION['er'] = "";
+				}
 				if(isset($_SESSION['uid'])){
 					header("Location:index1.php");
 				

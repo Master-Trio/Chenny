@@ -17,6 +17,7 @@ if(isset($_POST['submit1'])){
 			$sql="UPDATE users SET user_uid='$uidneu' WHERE user_uid = '".$_SESSION['uid']."'";
 			$result = mysqli_query($conn,$sql);
 			$_SESSION['uid'] = $uidneu;
+			$_SESSION['gea'] = " ";
 			header("Location:konto.php");
 			exit();
 		}
@@ -35,17 +36,39 @@ $emailneu = mysqli_real_escape_string($conn,$_POST["email"]);
 			$sql="UPDATE users SET user_email='$emailneu' WHERE user_email = '".$_SESSION['email']."'";
 			$result = mysqli_query($conn,$sql);
 			$_SESSION['email'] = $emailneu;
+			$_SESSION['gea'] = " ";
 			header("Location:konto.php");
 			exit();
 		}
 
 }
 if(isset($_POST['submit3'])){
-$pwdneu = password_hash(mysqli_real_escape_string($conn,$_POST["pwd"]),PASSWORD_DEFAULT);
-$sql="UPDATE users SET user_pwd='$pwdneu' WHERE user_pwd = '".$_SESSION['pwdhash']."'";
-			$result = mysqli_query($conn,$sql);
-			$_SESSION['email'] = $emailneu;
-			header("Location:konto.php");
-			exit();
+	$pwdneu = mysqli_real_escape_string($conn,$_POST["pwd"]);
+$pwdneuhash = password_hash(mysqli_real_escape_string($conn,$_POST["pwd"]),PASSWORD_DEFAULT);
+			if(strlen($pwdneu)<6){
+				$_SESSION['er'] = "Passwort zu kurz!";
+				header("Location:konto.php");
+			}
+			else{
+				if (!preg_match("#[0-9]+#", $pwdneu)) {
+					$_SESSION['er'] = "Mindestens eine Zahl!";
+					header("Location:konto.php");
+				}
+				else{
+					if (!preg_match("#[a-zA-Z]+#", $pwdneu)) {
+						$_SESSION['er'] = "Mindestens 1 Buchstabe!";
+						header("Location:konto.php");
+					}else{
+						$sql="UPDATE users SET user_pwd='$pwdneuhash' WHERE user_pwd = '".$_SESSION['pwdhash']."'";
+						$result = mysqli_query($conn,$sql);
+						$_SESSION['email'] = $emailneu;
+						$_SESSION['gea'] = " ";
+						header("Location:konto.php");
+						exit();
+					}
+
+				}
+			}
 }
+
 ?>

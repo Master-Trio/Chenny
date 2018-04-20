@@ -4,8 +4,10 @@
   
   <section class="main-container">
 	<div class="main-wrapper">
-		<h2 style="text-align:center;font-size:40px;">Erfolgreich registriert, melde dich an.</h2>
-
+		<div style="margin-top:10px;text-align:center;" class="alert alert-success" role="alert">
+  			<h1 style="font-size:25px;">Erfolgreich registriert</h1>
+  			<p>Du kannst dich jetzt einloggen</p>
+		</div>
 	</div>
   </section>
 <?php
