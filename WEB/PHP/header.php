@@ -10,6 +10,8 @@ session_start();
 	 <link rel="shortcut icon" href="../IMG/favicon.png" type="<mime-type>" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <!-- Varela Font -->
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
 	<!-- Custom CSS -->
 	<link rel="stylesheet" type="text/css" href="../css/loginstyle.css">
 	<link rel="stylesheet" type="text/css" href="../css/loggedinbody.css">
@@ -40,7 +42,7 @@ session_start();
 								<div class="dropdown-menu dropd">
 									<form action="logout.ext.php" method="POST">
 										<a style="text-align:left;" class="dropdown-item drop" href="konto.php">Kontoeinstellungen</a>
-										<a style="text-align:left;" class="dropdown-item drop" href="#">Entwürfe verwalten</a>
+										<a style="text-align:left;" class="dropdown-item drop" href="index1.php">Entwürfe verwalten</a>
 										<a style="text-align:left;" class="dropdown-item drop" href="logout.ext.php">abmelden</a>
 									</form>
 								</div>

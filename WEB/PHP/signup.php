@@ -24,7 +24,7 @@
 					<input type="text" name="uid" placeholder="Username">
 					<input type="password" name="pwd" placeholder="Passwort">
 					<input type="password" name="pwd2" placeholder="Passwort wiederholen">
-					<h6 style="margin-left:5%;margin-bottom:10px;font-family: Arial;">min 6 Zeichen | min 1 Buchstabe | min 1 Zahl</h6>
+					<h6 style="margin-left:5%;margin-bottom:10px;font-family: Arial;">min 6 Zeichen lang | min 1 Buchstabe | min 1 Zahl</h6>
 					<button type="submit" name="submit">Registrieren</button>
 					</form>
 					</div>

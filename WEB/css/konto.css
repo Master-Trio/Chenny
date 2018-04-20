@@ -1,90 +1,120 @@
 .kontodiv {
-	width: 100%;
+    width: 100%;
 }
 
+/* Klasse für die Chenny-Überschriften, angeführt von Arial Rounded MT Bold und Varela Round als Ersatz */
+
+.myFont {
+    font-family: ArialRoundedMTBold, 'Arial Rounded MT Bold', 'Varela Round', sans-serif;
+}
+
+.lastDiv {
+    margin-bottom: 20px;
+}
+
+/* Buttons */
+
 .aaa {
-	margin-right: 35%;
-	margin-left: 35%;
-	width: 30%;
-	text-align: center;
-	font-size: 40px;
-	margin-top:10px;
-	margin-bottom:10px;
-	cursor: pointer;
-	border: 1px solid #57bea4;
-	border-radius: 4px;
-	background-color: #57bea4;
-	color: #eeeeee;
-	padding-bottom: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+
+    font-size: 30px;
+    margin-right: 37.5%;
+    margin-left: 37.5%;
+    margin-bottom: 10px;
+    width: 25%;
+
+    border: 1px solid #57bea4;
+    border-radius: 4px;
+    background-color: #57bea4;
+    color: #eeeeee;
 }
 
 .aaa:hover {
-	background-color: #eeeeee;
-	color: #57bea4;
+    background-color: #eeeeee;
+    color: #57bea4;
+    cursor: pointer;
 }
+
+/* Input-Felder */
 
 .in {
-	text-align: center;
-	margin-top: 5px;
-	width: 30%;
-	font-size: 30px;
-	margin-left: 35%;
-	margin-right: 35%;
-	border-radius: 5px;
-	border: 1px solid #57bea4;
+    text-align: center;
+    margin-top: 5px;
+    width: 40%;
+    height: 40px;
+    font-size: 25px;
+    margin-left: 30%;
+    margin-right: 30%;
+    border-radius: 5px;
+    border: 1px solid #57bea4;
 }
 
-.table{
-	width:50%;
-	margin-left:25%;
-	margin-right:25%;
-	text-align:center;
+.table {
+    width: 50%;
+    margin-left: 25%;
+    margin-right: 25%;
+    text-align: center;
 }
-.ueb{
-	color:#57bea4;
-	font-size: 40px;
-	text-align: center;
+
+/* Kontoeinstellungs-Überschriften wie Vorname, Nachname, Passwort,.. */
+
+.ueb {
+    font-family: 'Varela Round', sans-serif;
+    color: #57bea4;
+    font-size: 40px;
+    text-align: center;
 }
-.ueb2{
-	font-size: 40px;
-	text-align: center;
+
+/* Spezifische Werte der obigen Überschriften */
+
+.ueb2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 30px;
+    text-align: center;
 }
-.haup{
-	text-align:center;
-	font-size:50px;
-	margin-top:5px;
-	margin-bottom:10px;
+
+/* Hauptüberschrift */
+
+.haup {
+    text-align: center;
+    font-size: 50px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
-@media screen and (max-width: 450px) {
-	.aaa{
-		font-size: 30px;
-	}
-	.ueb2{
-		font-size: 25px;
-		text-align: center;
-		margin-right: 10px;
-		margin-left: 10px;
-	}
-	.ueb{
-		color:#57bea4;
-		font-size: 35px;
-		text-align: center;
-	}
-	.haup{
-		font-size:35px;
-	}
-	.in {
-		margin-top: 5px;
-		width: 80%;
-		font-size: 30px;
-		margin-left: 10%;
-		margin-right: 10%;
-		border-radius: 5px;
-		border: 1px solid #57bea4;
-	}
-	.aaa {
-	margin-right: 10%;
-	margin-left: 10%;
-	width: 80%;
-}
+
+/* Design für kleine/mobile Version */
+
+@media screen and (max-width: 530px) {
+    .aaa {
+        font-size: 30px;
+        margin-right: 20%;
+        margin-left: 20%;
+        width: 60%;
+    }
+    .ueb2 {
+        font-size: 25px;
+        text-align: center;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+    .ueb {
+        color: #57bea4;
+        font-size: 35px;
+        text-align: center;
+    }
+    .haup {
+        font-size: 35px;
+    }
+    .in {
+        margin-top: 5px;
+        width: 80%;
+        font-size: 20px;
+        margin-left: 10%;
+        margin-right: 10%;
+        border-radius: 5px;
+        border: 1px solid #57bea4;
+    }
 }

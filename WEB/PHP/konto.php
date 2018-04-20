@@ -3,7 +3,7 @@
 ?>
 
 <div class="kontodiv">
-<h1 class="haup">Kontoeinstellungen</h1>
+<h1 class="haup myFont">Kontoeinstellungen</h1>
   <?php
 	if($_SESSION['er']!=""){
 		echo "<div style='text-align:center;margin-top:10px;' class='alert alert-danger' role='alert'>".$_SESSION['er']."</div>";
@@ -59,7 +59,7 @@
 		<div class='col ueb2'>*******</div>
 	</div>
 	<div id='33' class='row'>
-		<div align='center' class='col'><button class='aaa' id='3' onclick='sw(3);'>ändern</button></div>
+		<div align='center' class='col lastDiv'><button class='aaa' id='3' onclick='sw(3);'>ändern</button></div>
 	</div>";
 	}else{
 		header("Location:../index.html");
