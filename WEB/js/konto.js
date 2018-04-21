@@ -14,7 +14,7 @@ function sw(x){
 		window.document.getElementById('22').innerHTML="";
 	}if(x==3){
 		var s ="<div class='col lastDiv'><form action='konto.ext.php' method='POST'>";
-			s += "<input name='pwd' class='in' type='text'><button name='submit3' type='submit' class='aaa'>speichern</button></form></div>";
+			s += "<input name='pwd' class='in' type='password'><button name='submit3' type='submit' class='aaa'>speichern</button></form></div>";
 		window.document.getElementById('3').innerHTML = s;
 		window.document.getElementById('33').innerHTML="";
 	}

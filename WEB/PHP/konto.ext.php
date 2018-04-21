@@ -10,7 +10,8 @@ if(isset($_POST['submit1'])){
 	$resultCheck = mysqli_num_rows($result);
 
 		if($resultCheck > 0){
-			echo "Username bereits in Verwendung";
+			$_SESSION['er'] = "Username bereits in Verwendung";
+			header("Location:konto.php");
 			exit();
 		}
 		else{
@@ -29,7 +30,8 @@ $emailneu = mysqli_real_escape_string($conn,$_POST["email"]);
 	$resultCheck = mysqli_num_rows($result);
 
 		if($resultCheck > 0){
-			echo "Email bereits in Verwendung";
+			$_SESSION['er'] = "E-Mail bereits in Verwendung";
+			header("Location:konto.php");
 			exit();
 		}
 		else{
