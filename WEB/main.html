@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -84,14 +85,14 @@
     </section>
 
     <!-- Schritt 2 -->
-    <section id="schritt2" style="padding-top: 40px; margin-top: -50px; padding-bottom: 200px; visibility: hidden;">
+    <section id="schritt2" style="padding-top: 40px; margin-top: -50px; visibility: hidden;">
         <div class="cont" style="background-color: #303030;">
             <br>
             <h1 style="text-align: center;" class="ueber helleSchrift">Schritt 2</h1>
             <img class="anker marg" src="IMG/ankergruen.png">
             <div class="wic">
                 <div class="w">
-                    <p style="font-size: 14pt;" class="helleSchrift">Hier kannst du auswählen wie viel Attribute du pro Entität haben möchtest</p><br><br>
+                    <p style="font-size: 14pt;" class="helleSchrift">Hier kannst du auswählen wie viele Attribute du pro Entität haben möchtest</p><br><br>
                 </div>
             </div>
             <div id="fehlermeldung" align="center">
@@ -102,7 +103,7 @@
 
             </div>
             <br><br>
-            <button type="button" class="btn weiter2" onclick="pruefenObWeiterAttribute();">Weiter</button>
+            <button type="button" class="btn weiter2" onclick="weiterAttribute();">Weiter</button>
             <br>
             <div id="fehlermeldung2" align="center">
 
@@ -110,7 +111,25 @@
         </div>
     </section>
 
-
+    <!-- Schritt 3 -->
+    <section id="schritt3" style="padding-top: 40px; margin-top: -50px; visibility: hidden;">
+        <div class="cont" style="background-color: #eeeeee;">
+            <br>
+            <h1 style="text-align: center;" class="ueber dunkleSchrift">Schritt 3</h1>
+            <img class="anker marg" src="IMG/ankergruen.png">
+            <div class="wic">
+                <div class="w">
+                    <p style="font-size: 14pt;" class="dunkleSchrift">Vergieb hier die Namen deiner Attribute und wähle aus ob diese zusätzlich PK oder FK sind</p><br><br>
+                </div>
+            </div>
+            <div id="tabDiv" align="center">
+                
+            </div>
+            <br><br>
+            <button type="button" class="btn weiter2" onclick="">Weiter</button>
+            <br>
+        </div>
+    </section>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -119,4 +138,5 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </body>
+
 </html>
