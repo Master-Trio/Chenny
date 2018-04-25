@@ -57,13 +57,15 @@ html, body {
     width: 70%;
 }
 
+button.selected{
+  color:red;
+}
+
 .auswahl {
+    margin: 5px;
     font-size: 18pt;
     width: 60px;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: #57bea4;
     border: 1px solid;
 }
@@ -74,6 +76,10 @@ html, body {
 }
 
 .auswahl:focus {
+    background-color: #303030;
+    color: white;
+}
+.auswahl:visited {
     background-color: #303030;
     color: white;
 }

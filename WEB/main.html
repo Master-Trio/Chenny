@@ -57,6 +57,7 @@
                 </div>
             </div>
             <div class="gruppe wic" align="center">
+                <!-- 
                 <div class="btn-group" role="group">
                     <button value="1" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">1</button>
                     <button value="2" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">2</button>
@@ -68,6 +69,19 @@
                     <button value="8" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">8</button>
                     <button value="9" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">9</button>
                     <button value="10" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">10</button>
+                </div>
+                 -->
+                <div class="row no-gutters">
+                    <div class="col"><a href='#target1' id='target1' class='target'><button value="1" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">1</button></a></div>
+                    <div class="col"><button value="2" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">2</button></div>
+                    <div class="col"><button value="3" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">3</button></div>
+                    <div class="col"><button value="4" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">4</button></div>
+                    <div class="col"><button value="5" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">5</button></div>
+                    <div class="col"><button value="6" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">6</button></div>
+                    <div class="col"><button value="7" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">7</button></div>
+                    <div class="col"><button value="8" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">8</button></div>
+                    <div class="col"><button value="9" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">9</button></div>
+                    <div class="col"><button value="10" onclick="names(this.value);" type="button" class="btn btn-secondary auswahl">10</button></div>
                 </div>
             </div>
             <br><br>
@@ -110,6 +124,14 @@
         </div>
     </section>
 
+    <script>
+        $('button').on('click', function() {
+            $('button').removeClass('selected');
+            $(this).addClass('selected');
+        });
+    </script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
     <!-- Optional JavaScript -->
