@@ -1,7 +1,7 @@
 var anzahlEntitaeten = 0;
 var entitaetenNamen;
 var weiterAtrribute = false;
-
+var anzahlAttribute;
 
 function names(anzahl) {
     weiterAtrribute = true;
@@ -73,7 +73,9 @@ function namenSpeichern() {
             break;
         }
     }
-    if (!fehler && weiterAtrribute) { attributes(true); }
+    if (!fehler && weiterAtrribute) {
+        attributes(true);
+    }
 }
 
 
@@ -85,6 +87,63 @@ function dyn(drop, schrift) {
     }
 }
 
-function pruefenObWeiterAttribute() {
+function speicherAnzahlAttribute() {
+    anzahlAttribute = new Array(entitaetenNamen.length);
+    for (var i = 0; i < anzahlAttribute.length; i++) {
+        anzahlAttribute[i] = document.getElementById("sel" + i).value;
+    }
+}
 
+function weiterAttribute() {
+    speicherAnzahlAttribute();
+    document.getElementById("schritt3").style.visibility = "visible";
+    writeTable();
+}
+
+
+function erzeugeTextfelder(j) {
+    var str = "";
+    for (var i = 0; i < anzahlAttribute[j]; i++) {
+        str += "<input type='text' style='margin-bottom: 10px;'><br>";
+    }
+    return str;
+}
+
+function erzeugePKFelder(j) {
+    var str = "";
+    if (anzahlAttribute[j] == 1) {
+        str = "<input type='radio' style='margin-bottom: 10px;' name='gruppe" + j + "' checked='checked'><br>";  
+    }
+    else {
+        for (var i = 0; i < anzahlAttribute[j]; i++) {
+            str += "<input type='radio' style='margin-bottom: 10px;' name='gruppe" + j + "'><br>";  
+        }    
+    }
+    return str;
+}
+
+function erzeugeFKFelder(j) {
+    var str = "";
+    for (var i = 0; i < anzahlAttribute[j]; i++) {
+        str += "<input type='checkbox' style='margin-bottom: 10px;'><br>";
+    }
+    return str;
+}
+
+function writeTable() {
+    var anfang = "<table class='table tabOwn' id='tabelle'><thead><tr><th scope='col'>Entität</th><th scope='col'>Attributnamen</th><th scope='col'>Primary-Key</th><th scope='col'>Foreign-Key</th></tr></thead><tbody id='tabellenbody'>";
+
+    var content = "";
+    for (var i = 0; i < entitaetenNamen.length; i++) {
+        var textFelder = erzeugeTextfelder(i);
+        var PKFelder = erzeugePKFelder(i);
+        var FKFelder = erzeugeFKFelder(i);
+
+        content += "<tr><th scope='row'>" + entitaetenNamen[i] + "</th><td>" + textFelder + "</td><td><fieldset id='gruppe" + i + "'>" + PKFelder + "</fieldset></td><td>" + FKFelder + "</td></tr>";
+    }
+
+    var ende = "</tbody></table>";
+    var gesamt = anfang + content + ende;
+
+    document.getElementById("tabDiv").innerHTML = gesamt;
 }

@@ -130,8 +130,14 @@ button.selected{
     color: #303030;
 }
 
+.tabOwn {
+    text-align: center;
+}
 
-
+#tabDiv {
+    margin-left: 10%;
+    margin-right: 10%;
+}
 
 
 
