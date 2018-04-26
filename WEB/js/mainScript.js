@@ -112,34 +112,26 @@ function erzeugeTextfelder(j) {
 function erzeugePKFelder(j) {
     var str = "";
     if (anzahlAttribute[j] == 1) {
-        str = "<input type='radio' style='margin-bottom: 10px;' name='gruppe" + j + "' checked='checked'><br>";  
+        str = "<input type='checkbox' style='margin-bottom: 10px;' checked='checked' onclick='return false;'><br>";  
     }
     else {
         for (var i = 0; i < anzahlAttribute[j]; i++) {
-            str += "<input type='radio' style='margin-bottom: 10px;' name='gruppe" + j + "'><br>";  
+            str += "<input type='checkbox' style='margin-bottom: 10px;'><br>";  
         }    
     }
     return str;
 }
 
-function erzeugeFKFelder(j) {
-    var str = "";
-    for (var i = 0; i < anzahlAttribute[j]; i++) {
-        str += "<input type='checkbox' style='margin-bottom: 10px;'><br>";
-    }
-    return str;
-}
 
 function writeTable() {
-    var anfang = "<table class='table tabOwn' id='tabelle'><thead><tr><th scope='col'>Entität</th><th scope='col'>Attributnamen</th><th scope='col'>Primary-Key</th><th scope='col'>Foreign-Key</th></tr></thead><tbody id='tabellenbody'>";
+    var anfang = "<table class='table tabOwn' id='tabelle'><thead><tr><th scope='col'>Entität</th><th scope='col'>Attributnamen</th><th scope='col'>Primary-Key</th></tr></thead><tbody id='tabellenbody'>";
 
     var content = "";
     for (var i = 0; i < entitaetenNamen.length; i++) {
         var textFelder = erzeugeTextfelder(i);
         var PKFelder = erzeugePKFelder(i);
-        var FKFelder = erzeugeFKFelder(i);
 
-        content += "<tr><th scope='row'>" + entitaetenNamen[i] + "</th><td>" + textFelder + "</td><td><fieldset id='gruppe" + i + "'>" + PKFelder + "</fieldset></td><td>" + FKFelder + "</td></tr>";
+        content += "<tr><th scope='row'>" + entitaetenNamen[i] + "</th><td>" + textFelder + "</td><td>" + PKFelder + "</td></tr>";
     }
 
     var ende = "</tbody></table>";
