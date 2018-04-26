@@ -1,10 +1,12 @@
-var anzahlEntitaeten = 0;
+var anzahlEntitaeten = 0; 
 var entitaetenNamen;
-var weiterAtrribute = false;
 var anzahlAttribute;
+var attributWerteNamen;
+var attributWertePK;
+var entitaetStelle = 1;
+
 
 function names(anzahl) {
-    weiterAtrribute = true;
     anzahlEntitaeten = anzahl;
     entitaetenNamen = new Array();
     document.getElementById("namensfelder").innerHTML = "";
@@ -103,21 +105,23 @@ function weiterAttribute() {
 
 function erzeugeTextfelder(j) {
     var str = "";
+
     for (var i = 0; i < anzahlAttribute[j]; i++) {
-        str += "<input type='text' style='margin-bottom: 10px;'><br>";
+        str += "<input id='textfeld" + entitaetStelle + (i + 1) + "' type='text' style='margin-bottom: 10px;'><br>";
     }
+    entitaetStelle++;
+
     return str;
 }
 
 function erzeugePKFelder(j) {
     var str = "";
-    if (anzahlAttribute[j] == 1) {
-        str = "<input type='checkbox' style='margin-bottom: 10px;' checked='checked' onclick='return false;'><br>";  
-    }
-    else {
-        for (var i = 0; i < anzahlAttribute[j]; i++) {
-            str += "<input type='checkbox' style='margin-bottom: 10px;'><br>";  
-        }    
+    for (var i = 0; i < anzahlAttribute[j]; i++) {
+          if (anzahlAttribute[j] == 1) {
+            str = "<input id='checkbox" + (entitaetStelle-1) + (i + 1) + "' type='checkbox' style='margin-bottom: 10px;' checked='checked' onclick='return false;'><br>";
+          } else {
+            str += "<input id='checkbox" + (entitaetStelle-1) + (i + 1) + "' type='checkbox' style='margin-bottom: 10px;'><br>";
+          }
     }
     return str;
 }
@@ -139,3 +143,50 @@ function writeTable() {
 
     document.getElementById("tabDiv").innerHTML = gesamt;
 }
+
+function weiterAttributWerte() {
+    attributWerteNamen = new Array();
+    attributWertePK = new Array();
+
+    var platz = 1;
+
+    for (var a = 0; a < anzahlAttribute.length; a++) {
+        for (var i = 0; i < anzahlAttribute[a]; i++) {
+            attributWerteNamen.push(document.getElementById("textfeld" + platz + (i + 1)).value);
+            if (document.getElementById("checkbox" + platz + (i + 1)).checked) {
+                attributWertePK.push(document.getElementById("checkbox" + platz + (i + 1)).value);
+            }
+            else {
+                attributWertePK.push("off");
+            }
+        }
+        platz++;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
