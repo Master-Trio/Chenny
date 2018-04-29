@@ -135,6 +135,12 @@ html, body {
     margin-right: 10%;
 }
 
+.attributAuswahl {
+    width: 40px;
+}
 
+.zeilenUmbruchEntitaet {
+    word-wrap: break-word;
+}
 
 
