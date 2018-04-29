@@ -96,7 +96,11 @@ function attributes() {
     document.getElementById("attribute").innerHTML = ""; //Löscht den Inhalt des DIVs. Wird benötigt damit es überschrieben wird
     //Erzeugt die einzelnen Rows um die Anzahl der Attribute auszuwählen
     for (var i = 0; i < entitaetenNamen.length; i++) {
+<<<<<<< HEAD
         document.getElementById("attribute").innerHTML += "<div class='row'><div class='col'>&nbsp;</div><div class='col'>" + entitaetenNamen[i] + "</div><div class='col'><img class='pfeil' src='IMG/pfeil.png'></div><div class='col'><div style='margin-top: -10px;' class='form-group'><select class='form-control' id='sel" + String(a) + "' onchange='dyn(this, plural" + i + ");'><option>1</option><option>2</option><option>3</option><option>4</option><option>0</option></select></div></div><div class='col' id='plural" + i + "'>Attribut</div><div class='col'>&nbsp;</div></div><br>";
+=======
+        document.getElementById("attribute").innerHTML += "<div class='row'><div class='col'>&nbsp;</div><div style='width: 100px; word-wrap: break-word;' class='col'>" + entitaetenNamen[i] + "</div><div class='col'><img class='pfeil' src='IMG/pfeil.png'></div><div class='col'><div style='margin-top: -10px;' class='form-group'><select class='form-control attributAuswahl' id='sel" + String(a) + "' onchange='dyn(this, plural" + i + ");'><option>1</option><option>2</option><option>3</option><option>4</option></select></div></div><div class='col' id='plural" + i + "'>Attribut</div><div class='col'>&nbsp;</div></div><br>";
+>>>>>>> 5b14d8cd1ca63e4351fda93ff313efaedaa67d7b
         a++;
     }
     document.getElementById("schritt2").style.visibility = "visible"; //Nach der Generierung, wird das DIV angezeigt
