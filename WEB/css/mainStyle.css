@@ -105,6 +105,14 @@ html, body {
     display: block;
 }
 
+.pfeilSpiegel {
+    width: 50px;
+    height: auto;
+    display: block;
+    transform: rotate(180deg);
+}
+
+
 .namensfelder {
     width: 60%;
     margin-left: 20%;
@@ -135,6 +143,16 @@ html, body {
     margin-right: 10%;
 }
 
+#rowEins, #rowZwei, #rowDrei{
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #eeeeee;
+}
+
+#auflistungBeziehungen {
+    margin-left: 10%;
+    margin-right: 10%;
+}
 
 
 

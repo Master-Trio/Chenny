@@ -5,13 +5,14 @@ var anzahlAttribute; //speichert als Array die Anzahl der Attribute pro Entität
 var attributWerteNamen; //speichert als Array die Attributnamen 
 var attributWertePK; //speichert als Array, ob ein Attribut ein PK ist
 var entitaetStelle = 1; //diese Variable wird benötigt, um später die IDs der Attributs-Textfelder und Checkboxen zu vergeben. Dient als Art Gruppierung
-
+var auswahl = false; //Variable um zu überprüfen ob eine Entität ausgewählt wurde
 
 /* Diese Methode wird aufgerufen, wenn ein Entitätsbutton geklickt wurde 
  * Sie erzeugt die Textfelder, welche zur Einagbe der Namen benötigt werden
  * @param value des Buttons
  */
 function names(anzahl) {
+    auswahl = true;
     anzahlEntitaeten = anzahl;
     entitaetenNamen = new Array();
     document.getElementById("namensfelder").innerHTML = ""; //Löscht den Inhalt des DIVs. Wird benötigt damit Textfelder bei neuem Buttonclick neu erzeugt werden
@@ -65,7 +66,7 @@ function namenSpeichern() {
         }
     }
     //Wenn die Fehlervariable weiterhin, wie bei der Initialisierung auf false ist, kann Schritt 2 angezeigt werden
-    if (!fehler) {
+    if (!fehler && auswahl) {
         attributes();
     }
 }
@@ -95,7 +96,7 @@ function attributes() {
     document.getElementById("attribute").innerHTML = ""; //Löscht den Inhalt des DIVs. Wird benötigt damit es überschrieben wird
     //Erzeugt die einzelnen Rows um die Anzahl der Attribute auszuwählen
     for (var i = 0; i < entitaetenNamen.length; i++) {
-        document.getElementById("attribute").innerHTML += "<div class='row'><div class='col'>&nbsp;</div><div class='col'>" + entitaetenNamen[i] + "</div><div class='col'><img class='pfeil' src='IMG/pfeil.png'></div><div class='col'><div style='margin-top: -10px;' class='form-group'><select class='form-control' id='sel" + String(a) + "' onchange='dyn(this, plural" + i + ");'><option>1</option><option>2</option><option>3</option><option>4</option></select></div></div><div class='col' id='plural" + i + "'>Attribut</div><div class='col'>&nbsp;</div></div><br>";
+        document.getElementById("attribute").innerHTML += "<div class='row'><div class='col'>&nbsp;</div><div class='col'>" + entitaetenNamen[i] + "</div><div class='col'><img class='pfeil' src='IMG/pfeil.png'></div><div class='col'><div style='margin-top: -10px;' class='form-group'><select class='form-control' id='sel" + String(a) + "' onchange='dyn(this, plural" + i + ");'><option>1</option><option>2</option><option>3</option><option>4</option><option>0</option></select></div></div><div class='col' id='plural" + i + "'>Attribut</div><div class='col'>&nbsp;</div></div><br>";
         a++;
     }
     document.getElementById("schritt2").style.visibility = "visible"; //Nach der Generierung, wird das DIV angezeigt
@@ -184,7 +185,6 @@ function erzeugePKFelder(j) {
 
     //Diese for-Schleife läuft das Array mit der Anzahl der Attribute durch, an der Stelle die im Parameter übergeben wird
     for (var i = 0; i < anzahlAttribute[j]; i++) {
-
         //Abfrage, ob nur ein Attrbut bei einer Entität gespeichert ist
         if (anzahlAttribute[j] == 1) {
             //Checkbox vorselekttiert und nicht mehr änderbar
@@ -198,25 +198,167 @@ function erzeugePKFelder(j) {
 
 
 /* Diese Methode wird aufgerufen, wenn der 'Weiter' Button bei Schritt 3 gedrückt wurde
- * Sie speichert die Attributnamen und die Werte der Checkboxen in die entsprechenden Arrays
+ * Sie speichert nach einer Überprüfung auf Korrektheit die Attributnamen und die Werte der Checkboxen in die entsprechenden Arrays
+ * Weiters zeigt sie Schritt 4 am Ende an und ruft die entsprechenden Methoden auf 
  */
 function weiterAttributWerte() {
+    var zaehlen = 0; //Diese Variable zählt mit, wie viele PKs ausgewählt sind. Wird für die Fehlermeldung benötigt
     attributWerteNamen = new Array();
     attributWertePK = new Array();
+    var fehler = false; //Wird auf true gesetzt, wenn ein Fehler vorhanden ist. Nur wenn es auf false bleibt, wird Schritt 4 angezeigt
 
     var platz = 1; //Variable die Benötigt wird um die Gruppierung herauszufinden
 
     //Diese for-Schleife läuft das Array der Attributanzahlen durch  
     for (var a = 0; a < anzahlAttribute.length; a++) {
         //Diese for-Schleife läuft den Arrayeintrag durch
+        if (anzahlAttribute[a] == 0) {
+            zaehlen++;
+        }
         for (var i = 0; i < anzahlAttribute[a]; i++) {
-            attributWerteNamen.push(document.getElementById("textfeld" + platz + (i + 1)).value);
+
+            //Überprüfung ob ein Textfeld leer gelassen wurde
+            if (document.getElementById("textfeld" + platz + (i + 1)).value == "") {
+                document.getElementById("fehlermeldung3").innerHTML = "";
+                document.getElementById("fehlermeldung3").innerHTML = "<p style='color: red;'>Es wurden nicht alle Felder ausgefüllt!</p>";
+                fehler = true;
+            } else {
+                attributWerteNamen.push(document.getElementById("textfeld" + platz + (i + 1)).value);
+            }
+
             if (document.getElementById("checkbox" + platz + (i + 1)).checked) {
                 attributWertePK.push(document.getElementById("checkbox" + platz + (i + 1)).value);
+                zaehlen++;
+
             } else {
                 attributWertePK.push("off");
             }
         }
         platz++;
     }
+
+    //Überprüfung, ob genug PKs ausgewählt wurden. Mindestens einer pro Entität
+    if (zaehlen < entitaetenNamen.length) {
+        document.getElementById("fehlermeldung3").innerHTML = "";
+        document.getElementById("fehlermeldung3").innerHTML += "<p style='color: red;'>Es wurden nicht genug PKs ausgewählt!</p>";
+        fehler = true;
+    }
+
+    //Ausgabe von Schritt 4, wenn keine Fehler bestehen
+    if (!fehler) {
+        document.getElementById("fehlermeldung3").innerHTML = "";
+        document.getElementById("schritt4").style.visibility = "visible";
+        erzeugeSchritt4();
+    }
+}
+
+
+
+function erzeugeSchritt4() {
+    createRow1();
+    createRow2();
+    createRow3();
+}
+
+function createRow1() {
+
+    var dropLeft = drops("dropLeft");
+    var dropRight = drops("dropRight");
+
+    document.getElementById("rowEins").innerHTML = "<div class='row'><div class='col'>" + dropLeft + "</div><div class='col'><-- zu --></div><div class='col'>" + dropRight + "</div></div>";
+}
+
+function drops(where) {
+    var str = "<div class='form-group' style='width: 250px;'><select id='" + where + "' class='form-control'>";
+    for (var i = 0; i < entitaetenNamen.length; i++) {
+        str += "<option>" + entitaetenNamen[i] + "</option>";
+    }
+    return str + "</select></div>";
+}
+
+
+function createRow2() {
+    var beziehungen = "<div class='btn-group' role='group'><button type='button' class='btn btn-secondary' style='width: 80px;' onclick='art(\"ist\");'>ist-ein</button><button type='button' class='btn btn-secondary' style='width: 80px;' onclick='art(\"eins\");'>1:1</button><button type='button' class='btn btn-secondary' style='width: 80px;' onclick='art(\"n\");'>1:N</button><button type='button' class='btn btn-secondary' style='width: 80px;' onclick='secondDrop();'>M:N</button></div>";
+
+    document.getElementById("rowZwei").innerHTML = "<div class='row'><div class='col'>&nbsp;</div><div class='col'>" + beziehungen + "</div><div class='col' id='sec'></div></div>";
+}
+
+
+function secondDrop() {
+    beziehungsArt = "m";
+    document.getElementById("sec").innerHTML = drops("second");
+}
+
+var beziehungsArt = "";
+
+function art(typ) {
+    document.getElementById("sec").innerHTML = "";
+    beziehungsArt = typ;
+}
+
+function createRow3() {
+
+    var nameUndWeak = "<input type='text' id='beziehungsName' placeholder='Name der Beziehung' style='margin-right: 30px;'><input id='weak' type='checkbox'><label style='margin-left: 3px;'>Weak</label>";
+    document.getElementById("rowDrei").innerHTML = "<div class='row'><div class='col'>&nbsp;</div><div class='col'>" + nameUndWeak + "</div><div class='col'>&nbsp;</div></div>";
+}
+
+var beziehungen = new Array();
+
+function writeBeziehung() {
+    if (beziehungsArt != "" && document.getElementById("beziehungsName").value != "") {
+        if (document.getElementById("weak").checked) {
+            document.getElementById("weak").value = "on";
+        } else {
+            document.getElementById("weak").value = "off";
+        }
+        try {
+            beziehungen.push(document.getElementById("dropLeft").value + "|" + document.getElementById("beziehungsName").value + "|" + document.getElementById("dropRight").value + "|" + beziehungsArt + "|" + document.getElementById("weak").value + "|" + document.getElementById("second").value);
+        } catch (err) {
+            beziehungen.push(document.getElementById("dropLeft").value + "|" + document.getElementById("beziehungsName").value + "|" + document.getElementById("dropRight").value + "|" + beziehungsArt + "|" + document.getElementById("weak").value + "|no");
+        }
+
+        document.getElementById("fehlermeldung4").innerHTML = "";
+        updateListe();
+    } else {
+        document.getElementById("fehlermeldung4").innerHTML = "<p style='color: red;'>Es wurden nicht alle benötigten Daten angegeben!</p>";
+    }
+}
+
+function updateListe() {
+    var inhaltListe = "";
+
+    for (var i = 0; i < beziehungen.length; i++) {
+        var arr = beziehungen[i].split("|", 6);
+        var bez = "";
+        var wk = "";
+        switch (arr[3]) {
+            case "ist":
+                bez = "ist-ein";
+                arr[1] = "---";
+                break;
+            case "eins":
+                bez = "1:1";
+                break;
+            case "n":
+                bez = "1:N";
+                break;
+            case "m":
+                bez = "M:N";
+                break;
+        }
+
+        if (arr[4] == "on") {
+            wk = "<img src='IMG/check.png' width='25' height='auto' alt='yes'>";
+        } else {
+            wk = "<img src='IMG/X.png' width='20' height='auto' alt='no'>";
+        }
+        if (bez == "M:N") {
+            inhaltListe += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + arr[0] + "</td><td>" + arr[1] + "</td><td>" + arr[2] + "</td><td>" + bez + " mit " + arr[5] + "</td><td>" + wk + "</td><td><button type='button' class='btn weiter2' onclick=''>Löschen</button></td></tr>";
+        } else {
+            inhaltListe += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + arr[0] + "</td><td>" + arr[1] + "</td><td>" + arr[2] + "</td><td>" + bez + "</td><td>" + wk + "</td><td><button type='button' class='btn weiter2' onclick=''>Löschen</button></td></tr>";
+        }
+    }
+
+
+    document.getElementById("auflistungBeziehungen").innerHTML = "<table class='table' style='text-align: center;'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>1. Entität</th><th scope='col'>Name</th><th scope='col'>2. Entität</th><th scope='col'>Art</th><th scope='col'>Weak</th><th scope='col'>Löschen</th></tr></thead><tbody style='color: #eeeeee;'>" + inhaltListe + "</tbody></table>";
 }
