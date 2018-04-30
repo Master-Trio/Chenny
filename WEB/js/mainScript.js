@@ -96,11 +96,8 @@ function attributes() {
     document.getElementById("attribute").innerHTML = ""; //Löscht den Inhalt des DIVs. Wird benötigt damit es überschrieben wird
     //Erzeugt die einzelnen Rows um die Anzahl der Attribute auszuwählen
     for (var i = 0; i < entitaetenNamen.length; i++) {
-<<<<<<< HEAD
-        document.getElementById("attribute").innerHTML += "<div class='row'><div class='col'>&nbsp;</div><div class='col'>" + entitaetenNamen[i] + "</div><div class='col'><img class='pfeil' src='IMG/pfeil.png'></div><div class='col'><div style='margin-top: -10px;' class='form-group'><select class='form-control' id='sel" + String(a) + "' onchange='dyn(this, plural" + i + ");'><option>1</option><option>2</option><option>3</option><option>4</option><option>0</option></select></div></div><div class='col' id='plural" + i + "'>Attribut</div><div class='col'>&nbsp;</div></div><br>";
-=======
-        document.getElementById("attribute").innerHTML += "<div class='row'><div class='col'>&nbsp;</div><div style='width: 100px; word-wrap: break-word;' class='col'>" + entitaetenNamen[i] + "</div><div class='col'><img class='pfeil' src='IMG/pfeil.png'></div><div class='col'><div style='margin-top: -10px;' class='form-group'><select class='form-control attributAuswahl' id='sel" + String(a) + "' onchange='dyn(this, plural" + i + ");'><option>1</option><option>2</option><option>3</option><option>4</option></select></div></div><div class='col' id='plural" + i + "'>Attribut</div><div class='col'>&nbsp;</div></div><br>";
->>>>>>> 5b14d8cd1ca63e4351fda93ff313efaedaa67d7b
+
+        document.getElementById("attribute").innerHTML += "<div class='row'><div class='col'>&nbsp;</div><div style='width: 100px; word-wrap: break-word;' class='col'>" + entitaetenNamen[i] + "</div><div class='col'><img class='pfeil' src='IMG/pfeil.png'></div><div class='col'><div style='margin-top: -10px;' class='form-group'><select class='form-control attributAuswahl' id='sel" + String(a) + "' onchange='dyn(this, plural" + i + ");'><option>1</option><option>2</option><option>3</option><option>4</option><option>0</option></select></div></div><div class='col' id='plural" + i + "'>Attribut</div><div class='col'>&nbsp;</div></div><br>";
         a++;
     }
     document.getElementById("schritt2").style.visibility = "visible"; //Nach der Generierung, wird das DIV angezeigt
@@ -269,7 +266,7 @@ function createRow1() {
     var dropLeft = drops("dropLeft");
     var dropRight = drops("dropRight");
 
-    document.getElementById("rowEins").innerHTML = "<div class='row'><div class='col'>" + dropLeft + "</div><div class='col'><-- zu --></div><div class='col'>" + dropRight + "</div></div>";
+    document.getElementById("rowEins").innerHTML = "<div class='row'><div class='col'>" + dropLeft + "</div><div class='col'><p class='helleSchrift'><-- zu --><p></div><div class='col'>" + dropRight + "</div></div>";
 }
 
 function drops(where) {
@@ -289,20 +286,31 @@ function createRow2() {
 
 
 function secondDrop() {
-    beziehungsArt = "m";
-    document.getElementById("sec").innerHTML = drops("second");
+    if (entitaetenNamen.length < 3) {
+        document.getElementById("fehlermeldung4").innerHTML = "<p style='color: red;'>Es wurden zu wenige Entitäten für eine M:N-Beziehung angegeben!</p>";
+    } else {
+        beziehungsArt = "m";
+        document.getElementById("sec").innerHTML = drops("second");
+    }
 }
 
 var beziehungsArt = "";
 
 function art(typ) {
+    if (typ == "ist") {
+        document.getElementById("beziehungsName").value = "---";
+        document.getElementById("beziehungsName").disabled = true;
+    } else {
+        document.getElementById("beziehungsName").value = "";
+        document.getElementById("beziehungsName").disabled = false;
+    }
     document.getElementById("sec").innerHTML = "";
     beziehungsArt = typ;
 }
 
 function createRow3() {
 
-    var nameUndWeak = "<input type='text' id='beziehungsName' placeholder='Name der Beziehung' style='margin-right: 30px;'><input id='weak' type='checkbox'><label style='margin-left: 3px;'>Weak</label>";
+    var nameUndWeak = "<input type='text' id='beziehungsName' placeholder='Name der Beziehung' style='margin-right: 30px;'><input id='weak' type='checkbox'><label class='helleSchrift' style='margin-left: 3px;'>Weak</label>";
     document.getElementById("rowDrei").innerHTML = "<div class='row'><div class='col'>&nbsp;</div><div class='col'>" + nameUndWeak + "</div><div class='col'>&nbsp;</div></div>";
 }
 
@@ -315,30 +323,49 @@ function writeBeziehung() {
         } else {
             document.getElementById("weak").value = "off";
         }
+
+        var fehler = beziehungenPruefen(document.getElementById("dropLeft").value, document.getElementById("dropRight").value, beziehungsArt);
         try {
-            beziehungen.push(document.getElementById("dropLeft").value + "|" + document.getElementById("beziehungsName").value + "|" + document.getElementById("dropRight").value + "|" + beziehungsArt + "|" + document.getElementById("weak").value + "|" + document.getElementById("second").value);
+            if (!fehler) {
+                beziehungen.push(document.getElementById("dropLeft").value + "|" + document.getElementById("beziehungsName").value + "|" + document.getElementById("dropRight").value + "|" + beziehungsArt + "|" + document.getElementById("weak").value + "|" + document.getElementById("second").value);
+            }
         } catch (err) {
-            beziehungen.push(document.getElementById("dropLeft").value + "|" + document.getElementById("beziehungsName").value + "|" + document.getElementById("dropRight").value + "|" + beziehungsArt + "|" + document.getElementById("weak").value + "|no");
+            if (!fehler) {
+                beziehungen.push(document.getElementById("dropLeft").value + "|" + document.getElementById("beziehungsName").value + "|" + document.getElementById("dropRight").value + "|" + beziehungsArt + "|" + document.getElementById("weak").value + "|no");
+            }
         }
 
+
+        //prüfen auf doppelte Einträge
+        var doppelt = false;
+
         document.getElementById("fehlermeldung4").innerHTML = "";
-        updateListe();
+        if (!doppelt) {
+            updateListe();
+        } else {
+            beziehungen.pop();
+        }
     } else {
         document.getElementById("fehlermeldung4").innerHTML = "<p style='color: red;'>Es wurden nicht alle benötigten Daten angegeben!</p>";
     }
 }
 
+
 function updateListe() {
     var inhaltListe = "";
+    var arr = new Array();
 
+    if (beziehungen.length == 0) {
+        document.getElementById("auflistungBeziehungen").innerHTML = "";
+    }
+    
     for (var i = 0; i < beziehungen.length; i++) {
-        var arr = beziehungen[i].split("|", 6);
+        arr = beziehungen[i].split("|", 6);
         var bez = "";
         var wk = "";
         switch (arr[3]) {
             case "ist":
                 bez = "ist-ein";
-                arr[1] = "---";
                 break;
             case "eins":
                 bez = "1:1";
@@ -357,12 +384,47 @@ function updateListe() {
             wk = "<img src='IMG/X.png' width='20' height='auto' alt='no'>";
         }
         if (bez == "M:N") {
-            inhaltListe += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + arr[0] + "</td><td>" + arr[1] + "</td><td>" + arr[2] + "</td><td>" + bez + " mit " + arr[5] + "</td><td>" + wk + "</td><td><button type='button' class='btn weiter2' onclick=''>Löschen</button></td></tr>";
+            inhaltListe += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + arr[0] + "</td><td>" + arr[1] + "</td><td>" + arr[2] + "</td><td>" + bez + " mit " + arr[5] + "</td><td>" + wk + "</td><td><button type='button' class='btn weiter2' onclick='delBeziehung(\""+arr[0]+"\",\""+arr[1]+"\",\""+arr[2]+"\");'>Löschen</button></td></tr>";
         } else {
-            inhaltListe += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + arr[0] + "</td><td>" + arr[1] + "</td><td>" + arr[2] + "</td><td>" + bez + "</td><td>" + wk + "</td><td><button type='button' class='btn weiter2' onclick=''>Löschen</button></td></tr>";
+            inhaltListe += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + arr[0] + "</td><td>" + arr[1] + "</td><td>" + arr[2] + "</td><td>" + bez + "</td><td>" + wk + "</td><td><button type='button' class='btn weiter2' onclick='delBeziehung(\""+arr[0]+"\",\""+arr[1]+"\",\""+arr[2]+"\");'>Löschen</button></td></tr>";
+        }
+        document.getElementById("auflistungBeziehungen").innerHTML = "<table class='table' style='text-align: center;'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>1. Entität</th><th scope='col'>Name</th><th scope='col'>2. Entität</th><th scope='col'>Art</th><th scope='col'>Weak</th><th scope='col'>Löschen</th></tr></thead><tbody style='color: #eeeeee;'>" + inhaltListe + "</tbody></table>";
+    }
+}
+
+function beziehungenPruefen(e1, e2, typ) {
+    if ((e1 == e2) && typ == "ist") {
+        return true;
+    }
+    if (typ == "m" && (document.getElementById("second").value == e1 || document.getElementById("second").value == e2)) {
+        return true;
+    }
+    return false;
+}
+
+function delBeziehung (e1, name, e2) {
+    var stelle;
+    for (var i = 0; i < beziehungen.length; i++) {
+        var str = beziehungen[i].split("|",6);
+        if (str[0] == e1 && str[1] == name && str[2] == e2) {
+            stelle = i;
+            break;
         }
     }
-
-
-    document.getElementById("auflistungBeziehungen").innerHTML = "<table class='table' style='text-align: center;'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>1. Entität</th><th scope='col'>Name</th><th scope='col'>2. Entität</th><th scope='col'>Art</th><th scope='col'>Weak</th><th scope='col'>Löschen</th></tr></thead><tbody style='color: #eeeeee;'>" + inhaltListe + "</tbody></table>";
+    beziehungen.splice(stelle,1);
+    updateListe();
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
