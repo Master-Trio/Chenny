@@ -28,6 +28,7 @@ if(isset($_POST['submit'])){
 							$_SESSION['er'] = "Passwort ungültig";
 							exit();
 						}elseif($hashedPwdCheck == true){
+							$_SESSION['id'] = $row['user_id'];
 							$_SESSION['uid'] = $row['user_uid'];
 							$_SESSION['email'] = $row['user_email'];
 							$_SESSION['password'] = $row['user_pwd'];
