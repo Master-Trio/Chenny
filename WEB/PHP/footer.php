@@ -1,10 +1,9 @@
 <h1 style=
-  	"position:absolute;
-  	color:#303030;
-   	bottom:0;
-   	width:100%;
-   	font-size:12px;
-   	height:20px;
+  	"position:relative;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  right: 0;
    	text-align:center;">
     &#9400; 2018 Chenny
 </h1>
