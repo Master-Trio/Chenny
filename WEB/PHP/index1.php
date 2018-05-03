@@ -39,15 +39,15 @@
 						echo 
 					'<div align="center" class="row entwdiv">
 						<h2 class="myFont" style="text-align:center;font-size:40px;width:100%;">Meine Entwürfe</h2><br>
-							<div style="margin-left:auto;margin-right:auto;display:block;" class="col-fixed-250 entwurf">
+							<div style="margin-left:auto;margin-right:auto;display:block;" class="col-fixed-350 entwurf">
 								<button style="margin-top:210px;background-color:yellow;" type="button" class="btn">Bearbeiten</button>
 								<button style="margin-top:210px;background-color:red;" type="button" class="btn">Löschen</button>
 							</div>
-							<div style="margin-left:auto;margin-right:auto;display:block;" class="col-fixed-250 entwurf">
+							<div style="margin-left:auto;margin-right:auto;display:block;" class="col-fixed-350 entwurf">
 								<button style="margin-top:210px;background-color:yellow;" type="button" class="btn">Bearbeiten</button>
 								<button style="margin-top:210px;background-color:red;" type="button" class="btn">Löschen</button>
 							</div>
-							<div style="margin-left:auto;margin-right:auto;display:block;" class="col-fixed-250 entwurf">
+							<div style="margin-left:auto;margin-right:auto;display:block;" class="col-fixed-350 entwurf">
 								<button style="margin-top:210px;background-color:yellow;" type="button" class="btn">Bearbeiten</button>
 								<button style="margin-top:210px;background-color:red;" type="button" class="btn">Löschen</button>
 							</div>
