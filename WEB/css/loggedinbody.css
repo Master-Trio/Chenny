@@ -5,7 +5,7 @@
 	border:3px solid #303030;
 	background-color:#303030;
 	color:#eeeeee;
-	height:300px;
+	padding-bottom: 20px;
 }
 .vorschau{
 	float:left;
@@ -16,20 +16,6 @@
 	margin-right:50px;
 	margin-top:20px;
 }
-@media screen and (max-width: 480px) {
-	.maindiv button{
-		display:none
-	}
-	
-}
-@media screen and (max-width: 480px) {
-	.entwdiv{
-		border:3px solid #303030;
-		background-color:#303030;
-		color:#eeeeee;
-		height:600px;
-	}
-}
 .nentw{
 	margin-top:10px;
 	border:none;
@@ -39,10 +25,10 @@
 	color:#eeeeee;
 	border-radius:7px;
 	font-size:40px;
-	width: 30%;
+	width: 40%;
 	text-align:center;
-	margin-left:auto;
-	margin-right:auto;
+	margin-left:30%;
+	margin-right:30%;
 	padding-bottom:5px;
 }
 .nentw:hover{
@@ -50,6 +36,25 @@
 	color:#57bea4;
 	border:2px solid #57bea4;
 }
+@media screen and (max-width: 480px) {
+	.entwdiv{
+		border:3px solid #303030;
+		background-color:#303030;
+	}
+	.nentw{
+		width: 90%;
+		margin-left:5%;
+		margin-right:5%;
+	}
+}
+@media screen and (max-width: 300px) {
+	.entwdiv{
+		border:3px solid #303030;
+		background-color:#303030;
+		color:#eeeeee;
+	}
+}
+
 .dropd{
 	border-radius:10px;
 }
@@ -74,4 +79,11 @@
 .dr:focus{
 	background-color:#57bea4;	
 	color:#eeeeee;
+}
+.entwurf{
+	padding-top: 20px;
+	width: 350px;
+	height: 200px;
+	background-color:#eeeeee;
+	margin-bottom: 80px;
 }
