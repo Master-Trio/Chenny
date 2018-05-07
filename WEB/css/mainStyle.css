@@ -143,8 +143,7 @@ html, body {
     margin-right: 10%;
 }
 
-<<<<<<< HEAD
-#rowEins, #rowZwei, #rowDrei{
+#rowEins, #rowZwei, #rowDrei, #rowVier{
     margin-left: 10%;
     margin-right: 10%;
     color: #eeeeee;
@@ -153,10 +152,10 @@ html, body {
 #auflistungBeziehungen {
     margin-left: 10%;
     margin-right: 10%;
-=======
+}
+
 .attributAuswahl {
-    width: 40px;
->>>>>>> 5b14d8cd1ca63e4351fda93ff313efaedaa67d7b
+    width: 70px;
 }
 
 .zeilenUmbruchEntitaet {

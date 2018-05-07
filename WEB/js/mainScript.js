@@ -256,9 +256,27 @@ function weiterAttributWerte() {
 
 
 function erzeugeSchritt4() {
+    mapEntitaetenMitAttributen();
     createRow1();
     createRow2();
     createRow3();
+}
+
+var mappedEmitA = new Array();
+function mapEntitaetenMitAttributen () {
+    var arr = new Array();
+    //mappedEmitA = new Array(anzahlAttribute.length);
+    
+    for (var i = 0; i < anzahlAttribute.length; i++) {
+        for (var j = 0; j < anzahlAttribute[i]; j++) {
+            arr.push(attributWerteNamen[j]);
+        }
+        for (var a = 0; a < anzahlAttribute[i]; a++) {
+            attributWerteNamen.shift();
+        }
+        mappedEmitA.push(arr);
+        arr = new Array();
+    }
 }
 
 function createRow1() {
@@ -310,13 +328,46 @@ function art(typ) {
 
 function createRow3() {
 
-    var nameUndWeak = "<input type='text' id='beziehungsName' placeholder='Name der Beziehung' style='margin-right: 30px;'><input id='weak' type='checkbox'><label class='helleSchrift' style='margin-left: 3px;'>Weak</label>";
+    var nameUndWeak = "<input type='text' id='beziehungsName' placeholder='Name der Beziehung' style='margin-right: 30px;'><input onclick='createRow4();' id='weak' type='checkbox'><label class='helleSchrift' style='margin-left: 3px;'>Weak</label>";
     document.getElementById("rowDrei").innerHTML = "<div class='row'><div class='col'>&nbsp;</div><div class='col'>" + nameUndWeak + "</div><div class='col'>&nbsp;</div></div>";
 }
+
+var check = 0;
+function createRow4() {
+    check++;
+    
+    var weakPK = selectWeakPK();
+    
+    if (check % 2 == 1) {
+        document.getElementById("rowVier").innerHTML = "<p>Welcher PK soll weak sein?</p>"+weakPK;
+    }
+    else {
+        document.getElementById("rowVier").innerHTML = "";
+    }
+}
+
+function selectWeakPK () {
+    var a;
+    for (var j = 0; entitaetenNamen.length; j++) {
+        if (document.getElementById("dropRight").value == entitaetenNamen[j]) {
+            a = j;
+            break;
+        }
+    }
+    
+    var str = "";
+    for (var i = 0; i < mappedEmitA[a].length; i++) {
+        str += "<label>"+mappedEmitA[a][i]+"</label><input type='checkbox'>";
+    }
+         
+    return str;
+}
+
 
 var beziehungen = new Array();
 
 function writeBeziehung() {
+
     if (beziehungsArt != "" && document.getElementById("beziehungsName").value != "") {
         if (document.getElementById("weak").checked) {
             document.getElementById("weak").value = "on";
@@ -336,8 +387,12 @@ function writeBeziehung() {
         }
 
 
-        //prüfen auf doppelte Einträge
-        var doppelt = false;
+        //prüfen auf doppelte Einträg
+        var doppelt = pruefeDoppelteBeziehungen(document.getElementById("dropLeft").value, document.getElementById("dropRight").value, beziehungsArt);
+
+
+
+        //console.log(beziehungenReverse);
 
         document.getElementById("fehlermeldung4").innerHTML = "";
         if (!doppelt) {
@@ -351,6 +406,25 @@ function writeBeziehung() {
 }
 
 
+function pruefeDoppelteBeziehungen(e1, e2, type) {
+    var arr = new Array();
+
+    for (var i = 0; i < beziehungen.length; i++) {
+        arr.push(beziehungen[i].split("|", 6));
+    }
+
+    var zaehlen = 0;
+    for (var j = 0; j < arr.length; j++) {
+        if (e1 == arr[j][0] && e2 == arr[j][2] && type == arr[j][3]) {
+            zaehlen++;
+        } else if (e1 == arr[j][2] && e2 == arr[j][0] && type == arr[j][3]) {
+            zaehlen++;
+        }
+    }
+
+    return (zaehlen > 1);
+}
+
 function updateListe() {
     var inhaltListe = "";
     var arr = new Array();
@@ -358,7 +432,7 @@ function updateListe() {
     if (beziehungen.length == 0) {
         document.getElementById("auflistungBeziehungen").innerHTML = "";
     }
-    
+
     for (var i = 0; i < beziehungen.length; i++) {
         arr = beziehungen[i].split("|", 6);
         var bez = "";
@@ -384,9 +458,9 @@ function updateListe() {
             wk = "<img src='IMG/X.png' width='20' height='auto' alt='no'>";
         }
         if (bez == "M:N") {
-            inhaltListe += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + arr[0] + "</td><td>" + arr[1] + "</td><td>" + arr[2] + "</td><td>" + bez + " mit " + arr[5] + "</td><td>" + wk + "</td><td><button type='button' class='btn weiter2' onclick='delBeziehung(\""+arr[0]+"\",\""+arr[1]+"\",\""+arr[2]+"\");'>Löschen</button></td></tr>";
+            inhaltListe += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + arr[0] + "</td><td>" + arr[1] + "</td><td>" + arr[2] + "</td><td>" + bez + " mit " + arr[5] + "</td><td>" + wk + "</td><td><button type='button' class='btn weiter2' onclick='delBeziehung(\"" + arr[0] + "\",\"" + arr[1] + "\",\"" + arr[2] + "\");'>Löschen</button></td></tr>";
         } else {
-            inhaltListe += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + arr[0] + "</td><td>" + arr[1] + "</td><td>" + arr[2] + "</td><td>" + bez + "</td><td>" + wk + "</td><td><button type='button' class='btn weiter2' onclick='delBeziehung(\""+arr[0]+"\",\""+arr[1]+"\",\""+arr[2]+"\");'>Löschen</button></td></tr>";
+            inhaltListe += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + arr[0] + "</td><td>" + arr[1] + "</td><td>" + arr[2] + "</td><td>" + bez + "</td><td>" + wk + "</td><td><button type='button' class='btn weiter2' onclick='delBeziehung(\"" + arr[0] + "\",\"" + arr[1] + "\",\"" + arr[2] + "\");'>Löschen</button></td></tr>";
         }
         document.getElementById("auflistungBeziehungen").innerHTML = "<table class='table' style='text-align: center;'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>1. Entität</th><th scope='col'>Name</th><th scope='col'>2. Entität</th><th scope='col'>Art</th><th scope='col'>Weak</th><th scope='col'>Löschen</th></tr></thead><tbody style='color: #eeeeee;'>" + inhaltListe + "</tbody></table>";
     }
@@ -402,29 +476,15 @@ function beziehungenPruefen(e1, e2, typ) {
     return false;
 }
 
-function delBeziehung (e1, name, e2) {
+function delBeziehung(e1, name, e2) {
     var stelle;
     for (var i = 0; i < beziehungen.length; i++) {
-        var str = beziehungen[i].split("|",6);
+        var str = beziehungen[i].split("|", 6);
         if (str[0] == e1 && str[1] == name && str[2] == e2) {
             stelle = i;
             break;
         }
     }
-    beziehungen.splice(stelle,1);
+    beziehungen.splice(stelle, 1);
     updateListe();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
