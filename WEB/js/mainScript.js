@@ -97,7 +97,7 @@ function attributes() {
     //Erzeugt die einzelnen Rows um die Anzahl der Attribute auszuwählen
     for (var i = 0; i < entitaetenNamen.length; i++) {
 
-        document.getElementById("attribute").innerHTML += "<div class='row'><div class='col'>&nbsp;</div><div style='width: 100px; word-wrap: break-word;' class='col'>" + entitaetenNamen[i] + "</div><div class='col'><img class='pfeil' src='IMG/pfeil.png'></div><div class='col'><div style='margin-top: -10px;' class='form-group'><select class='form-control attributAuswahl' style='width:40px;' id='sel" + String(a) + "' onchange='dyn(this, plural" + i + ");'><option>1</option><option>2</option><option>3</option><option>4</option><option>0</option></select></div></div><div class='col' id='plural" + i + "'>Attribut</div><div class='col'>&nbsp;</div></div><br>";
+        document.getElementById("attribute").innerHTML += "<div class='row'><div class='col'>&nbsp;</div><div style='width: 100px; word-wrap: break-word;' class='col'>" + entitaetenNamen[i] + "</div><div class='col'><img class='pfeil' src='IMG/pfeil.png'></div><div class='col'><div style='margin-top: -10px;' class='form-group'><select class='form-control attributAuswahl' id='sel" + String(a) + "' onchange='dyn(this, plural" + i + ");'><option>1</option><option>2</option><option>3</option><option>4</option><option>0</option></select></div></div><div class='col' id='plural" + i + "'>Attribut</div><div class='col'>&nbsp;</div></div><br>";
         a++;
     }
     document.getElementById("schritt2").style.visibility = "visible"; //Nach der Generierung, wird das DIV angezeigt
@@ -238,6 +238,15 @@ function weiterAttributWerte() {
         platz++;
     }
 
+    //Überprüfung, ob keine doppelten Attributnamen vergeben wurden
+    var pruefArr = pruefeDoppelteAttribute(attributWerteNamen);
+    if (pruefArr.length < attributWerteNamen.length) {
+        document.getElementById("fehlermeldung3").innerHTML = "<p style='color: red;'>Keine doppelten Einträge!</p>";
+        fehler = true;
+    } else {
+        fehler = false;
+    }
+
     //Überprüfung, ob genug PKs ausgewählt wurden. Mindestens einer pro Entität
     if (zaehlen < entitaetenNamen.length) {
         document.getElementById("fehlermeldung3").innerHTML = "";
@@ -253,6 +262,20 @@ function weiterAttributWerte() {
     }
 }
 
+function pruefeDoppelteAttribute(arr) {
+    var i,
+        len = arr.length,
+        out = [],
+        obj = {};
+
+    for (i = 0; i < len; i++) {
+        obj[arr[i]] = 0;
+    }
+    for (i in obj) {
+        out.push(i);
+    }
+    return out;
+}
 
 
 function erzeugeSchritt4() {
@@ -263,10 +286,10 @@ function erzeugeSchritt4() {
 }
 
 var mappedEmitA = new Array();
-function mapEntitaetenMitAttributen () {
+
+function mapEntitaetenMitAttributen() {
     var arr = new Array();
-    //mappedEmitA = new Array(anzahlAttribute.length);
-    
+
     for (var i = 0; i < anzahlAttribute.length; i++) {
         for (var j = 0; j < anzahlAttribute[i]; j++) {
             arr.push(attributWerteNamen[j]);
@@ -328,39 +351,8 @@ function art(typ) {
 
 function createRow3() {
 
-    var nameUndWeak = "<input type='text' id='beziehungsName' placeholder='Name der Beziehung' style='margin-right: 30px;'><input onclick='createRow4();' id='weak' type='checkbox'><label class='helleSchrift' style='margin-left: 3px;'>Weak</label>";
+    var nameUndWeak = "<input type='text' id='beziehungsName' placeholder='Name der Beziehung' style='margin-right: 30px;'><input id='weak' type='checkbox'><label class='helleSchrift' style='margin-left: 3px;'>Weak</label>";
     document.getElementById("rowDrei").innerHTML = "<div class='row'><div class='col'>&nbsp;</div><div class='col'>" + nameUndWeak + "</div><div class='col'>&nbsp;</div></div>";
-}
-
-var check = 0;
-function createRow4() {
-    check++;
-    
-    var weakPK = selectWeakPK();
-    
-    if (check % 2 == 1) {
-        document.getElementById("rowVier").innerHTML = "<p>Welcher PK soll weak sein?</p>"+weakPK;
-    }
-    else {
-        document.getElementById("rowVier").innerHTML = "";
-    }
-}
-
-function selectWeakPK () {
-    var a;
-    for (var j = 0; entitaetenNamen.length; j++) {
-        if (document.getElementById("dropRight").value == entitaetenNamen[j]) {
-            a = j;
-            break;
-        }
-    }
-    
-    var str = "";
-    for (var i = 0; i < mappedEmitA[a].length; i++) {
-        str += "<label>"+mappedEmitA[a][i]+"</label><input type='checkbox'>";
-    }
-         
-    return str;
 }
 
 
@@ -389,10 +381,6 @@ function writeBeziehung() {
 
         //prüfen auf doppelte Einträg
         var doppelt = pruefeDoppelteBeziehungen(document.getElementById("dropLeft").value, document.getElementById("dropRight").value, beziehungsArt);
-
-
-
-        //console.log(beziehungenReverse);
 
         document.getElementById("fehlermeldung4").innerHTML = "";
         if (!doppelt) {
@@ -488,3 +476,43 @@ function delBeziehung(e1, name, e2) {
     beziehungen.splice(stelle, 1);
     updateListe();
 }
+
+
+function createCookie () {
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
