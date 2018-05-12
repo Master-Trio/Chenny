@@ -382,6 +382,7 @@ function art(typ) {
     } else {
         document.getElementById("beziehungsName").value = "";
         document.getElementById("beziehungsName").disabled = false;
+        document.getElementById("weak").disabled = false;
     }
     document.getElementById("sec").innerHTML = "";
     beziehungsArt = typ;
@@ -623,35 +624,5 @@ function createCookie() {
         var zeile4 = format;
         zeile4Arr = [zeile4];
         document.cookie = zeile1Arr+":"+zeile2Arr+":"+zeile3Arr+":"+zeile4Arr;
-    
-        //Auslesen
-        var cookie = document.cookie;
-        var cookieArr = cookie.split(":");
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
