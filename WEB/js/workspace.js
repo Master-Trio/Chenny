@@ -79,14 +79,13 @@ window.onresize = function () {
     attAbstand = 30 * screenSize;
     entTextSize = 30 * screenSize;
 }
-
 function setup() {
     ausrichtung();
     var canvas = createCanvas(cw, ch);
 
     // Move the canvas so it’s inside our <div id="sketch-holder">.
     canvas.parent('sketch-holder');
-
+	//Test Einträge
     ent[0] = new Entity("Teest", "");
     ent[1] = new Entity("Swag", "");
     
@@ -105,7 +104,8 @@ function setup() {
 function draw() {
     background(200);
     //drawGrid();
-
+	
+	//Zeichnet alle Objekte mit deren Attributen
     for(let i = 0; i < entAtt.length; i++) {
         entAtt[i].show();
     }
@@ -114,22 +114,30 @@ function draw() {
 function windowResized() {
     resizeCanvas(cw, ch);
 }
-
+// Darstellung der vertikalen und horrizontalen Hilfslinien
 function drawGrid() {
     line(0, ch / 2, cw, ch / 2);
     line(cw / 2, 0, cw / 2, ch)
 }
-
+//Array für die Entitäten mit deren Attributen
 let entAtt = [];
+//Array für die Entitäten 
 let ent = [];
+//Array für die Attribute
 let att = [];
-
+//Breite einer Entität
 let entWidth = 100;
+//TextSize in einer Entität
 let entTextSize = 30;
+//Breite eines Attributs
 let ellipseWidth = 80;
+//TextSize in einem Attribut
 let attTextSize = 25;
+//Abstand zwischen einer Entität und einem Attribut
 let attAbstand = 30;
 
+
+//Entität mit den Attributen zusammengesetzt
 class EntAtt {
     
     constructor(x, y, ent_Obj, attr_Obj1, attr_Obj2, attr_Obj3, attr_Obj4) {
@@ -141,17 +149,18 @@ class EntAtt {
         this.attr_Obj3 = attr_Obj3;
         this.attr_Obj4 = attr_Obj4;
     }
-    
+    //Methode um es darzustellen
     show() {
         rect(this.x, this.y, entWidth, entWidth/2);
         textSize(entTextSize);
         text(this.ent_Obj.entName, this.x + entWidth/10, this.y + entWidth/3);
         
         if(this.attr_Obj1 != null && this.attr_Obj2 == null && this.attr_Obj3 == null && this.attr_Obj4 == null) {
+			//Darstellung der Entität
             ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth/2);
             textSize(attTextSize);
+			//Darstellung eines Attributs mit den Strichen
             text(this.attr_Obj1.attName, this.x - ellipseWidth/3, this.y - attTextSize);
-            
             line(this.x + entWidth/4, this.y, this.x,this.y - attAbstand + ellipseWidth/4);
         }
         if(this.attr_Obj1 != null && this.attr_Obj2 != null && this.attr_Obj3 == null && this.attr_Obj4 == null) {
@@ -214,7 +223,6 @@ class EntAtt {
     }
     
 }
-
 class Entity {
 
     constructor(entName, bezTyp) {
