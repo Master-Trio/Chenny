@@ -43,7 +43,7 @@ function names(anzahl) {
 function namenSpeichern() {
     var fehler = false; //Variable ob ein Fehler bei den Namen existiert
     entitaetenNamen = new Array(); //neues Array angelegt
-
+    
     //Diese for-Schleife schreibt die Namen in das Array 
     for (var i = 0; i < anzahlEntitaeten; i++) {
         //Diese if-Abfrage prüft, ob das Feld nicht leer gelassen wurde
@@ -62,6 +62,12 @@ function namenSpeichern() {
         } else { //wenn das Feld leer gelassen wurde, entsprechende Fehlermeldung ausgeben
             document.getElementById("fehlermeldung").innerHTML = "<p style='color: red;'>Es wurden nicht alle Felder ausgefüllt!</p>";
             fehler = true; //Fehlervariable auf true setzten, damit Schritt 2 nicht angezeigt wird
+            break;
+        }
+        var str = document.getElementById("feld" + (i + 1)).value;
+        if (str.search(":") != -1) {
+            document.getElementById("fehlermeldung").innerHTML = "<p style='color: red;'>Bitte keine Doppelpukte eingeben!</p>";
+            fehler = true;
             break;
         }
     }
@@ -226,6 +232,14 @@ function weiterAttributWerte() {
             } else {
                 attributWerteNamen.push(document.getElementById("textfeld" + platz + (i + 1)).value);
             }
+            
+            //Überprüfung, ob ein Textfeld leer gelassen wurde
+            var str = document.getElementById("textfeld" + platz + (i + 1)).value;
+            if (str.search(":") != -1) {
+                document.getElementById("fehlermeldung3").innerHTML = "";
+                document.getElementById("fehlermeldung3").innerHTML = "<p style='color: red;'>Bitte keine Doppelpunkte eingeben!</p>";
+                fehler = true;
+            }
 
             if (document.getElementById("checkbox" + platz + (i + 1)).checked) {
                 attributWertePK.push(document.getElementById("checkbox" + platz + (i + 1)).value);
@@ -243,8 +257,6 @@ function weiterAttributWerte() {
     if (pruefArr.length < attributWerteNamen.length) {
         document.getElementById("fehlermeldung3").innerHTML = "<p style='color: red;'>Keine doppelten Einträge!</p>";
         fehler = true;
-    } else {
-        fehler = false;
     }
 
     //Überprüfung, ob genug PKs ausgewählt wurden. Mindestens einer pro Entität
@@ -283,6 +295,7 @@ function pruefeDoppelteAttribute(arr) {
 
 function erzeugeSchritt4() {
     mapEntitaetenMitAttributen();
+    mapAttributeMitPK();
     createRow1();
     createRow2();
     createRow3();
@@ -304,6 +317,25 @@ function mapEntitaetenMitAttributen() {
         arr = new Array();
     }
 }
+
+var mappedAmitPK = new Array();
+
+function mapAttributeMitPK() {
+    var arr = new Array();
+
+    for (var i = 0; i < anzahlAttribute.length; i++) {
+        for (var j = 0; j < anzahlAttribute[i]; j++) {
+            arr.push(attributWertePK[j]);
+        }
+        for (var a = 0; a < anzahlAttribute[i]; a++) {
+            attributWertePK.shift();
+        }
+        mappedAmitPK.push(arr);
+        arr = new Array();
+    }
+}
+
+
 
 function createRow1() {
 
@@ -330,6 +362,8 @@ function createRow2() {
 
 
 function secondDrop() {
+    document.getElementById("beziehungsName").value = "";
+    document.getElementById("beziehungsName").disabled = false;
     if (entitaetenNamen.length < 3) {
         document.getElementById("fehlermeldung4").innerHTML = "<p style='color: red;'>Es wurden zu wenige Entitäten für eine M:N-Beziehung angegeben!</p>";
     } else {
@@ -344,9 +378,11 @@ function art(typ) {
     if (typ == "ist") {
         document.getElementById("beziehungsName").value = "---";
         document.getElementById("beziehungsName").disabled = true;
+        document.getElementById("weak").disabled = true;
     } else {
         document.getElementById("beziehungsName").value = "";
         document.getElementById("beziehungsName").disabled = false;
+        document.getElementById("weak").disabled = false;
     }
     document.getElementById("sec").innerHTML = "";
     beziehungsArt = typ;
@@ -377,16 +413,23 @@ function writeBeziehung() {
             }
         } catch (err) {
             if (!fehler) {
-                beziehungen.push(document.getElementById("dropLeft").value + "|" + document.getElementById("beziehungsName").value + "|" + document.getElementById("dropRight").value + "|" + beziehungsArt + "|" + document.getElementById("weak").value + "|no");
+                beziehungen.push(document.getElementById("dropLeft").value + "|" + document.getElementById("beziehungsName").value + "|" + document.getElementById("dropRight").value + "|" + beziehungsArt + "|" + document.getElementById("weak").value);
             }
         }
-
-
+        
         //prüfen auf doppelte Einträg
         var doppelt = pruefeDoppelteBeziehungen(document.getElementById("dropLeft").value, document.getElementById("dropRight").value, beziehungsArt);
-
-        document.getElementById("fehlermeldung4").innerHTML = "";
+        
+        //prüfen auf Doppelpunkte
+        var str = document.getElementById("beziehungsName").value;
+        if (str.search(":") != -1) {
+            document.getElementById("fehlermeldung4").innerHTML = "";
+            document.getElementById("fehlermeldung4").innerHTML = "<p style='color: red;'>Bitte keine Doppelpunkte eingeben!</p>"
+            doppelt = true;
+        }
+        
         if (!doppelt) {
+            document.getElementById("fehlermeldung4").innerHTML = "";
             updateListe();
         } else {
             beziehungen.pop();
@@ -481,11 +524,10 @@ function delBeziehung(e1, name, e2) {
 }
 
 
-
+var format = "";
 function createCookie() {
 
     var erzeuge = true;
-    var format = "";
 
     if (document.getElementById("hoch").value == "on") {
         erzeuge = true;
@@ -501,31 +543,86 @@ function createCookie() {
     }
 
     if (erzeuge) {
-        /* FUNKTIONIERT
         var zeile1 = "";
         for (var i = 0; i < entitaetenNamen.length; i++) {
             zeile1 += entitaetenNamen[i]+"|";
         }
-        document.cookie = zeile1;
-        */
-
+       
+        var weakArr = new Array();
+        var arr = new Array();
+        for (var x = 0; x < beziehungen.length; x++) {
+            var strArr = beziehungen[x].split("|");
+            if (strArr[4] == "on") {
+                for (var i = 0; i < entitaetenNamen.length; i++) {
+                    if (strArr[2] == entitaetenNamen[i]) {
+                        arr.push("weak");
+                    }
+                    else {
+                        arr.push("x");
+                    }
+                }
+                weakArr.push(arr);
+                arr = new Array();
+            }
+        }
+        
+        try {
+            for (var i = 0; i < weakArr.length; i++) {
+                for (var j = 0; j < weakArr[i].length; j++) {
+                    if (weakArr[i][j] == "weak") {
+                        for (var o = 0; o < mappedEmitA[j].length; o++) {
+                            if (mappedAmitPK[j][o] == "on") {
+                                if (mappedEmitA[j][o].search("w") == -1) {
+                                    mappedEmitA[j][o] += "w";   
+                                }   
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        catch (err) {}
+        zeile1Arr = [zeile1];
+        
+        
+        
         var zeile2 = "";
         for (var j = 0; j < mappedEmitA.length; j++) {
             for (var a = 0; a < mappedEmitA[j].length; a++) {
-                if (mappedEmitA[j].length > 1) {
-                    zeile2 += mappedEmitA[j][a] + ",";
+                if (mappedAmitPK[j][a] == "on") {
+                    zeile2 += "p" + mappedEmitA[j][a] + ",";
                 } else {
-                    zeile2 += mappedEmitA[j][a];
+                    zeile2 += mappedEmitA[j][a] + ",";
                 }
-
             }
+            zeile2 = zeile2.substr(0, zeile2.length - 1);
             zeile2 += "|";
         }
-        var zeile2res = zeile2.substr(0, zeile2.length - 1);
-        document.cookie = zeile2res;
-
-        var x = document.cookie;
-        var arr = x.split("|");
-        console.log(arr);
+        zeile2 = zeile2.substr(0, zeile2.length - 1);
+        zeile2Arr = [zeile2];
+        
+        var zeile3 = "";
+        for (var i = 0; i < beziehungen.length; i++) {
+            var bezStr = beziehungen[i].split("|");
+            var weak = "";
+            if (bezStr[4] == "on") {
+                weak = "w";
+            }
+            else {
+                weak = "#";
+            }
+            if (bezStr[3] != "m") {
+                zeile3 += bezStr[0]+"/"+bezStr[2]+"/"+bezStr[1]+"/"+bezStr[3]+"/"+weak+"|";    
+            }
+            else {
+                zeile3 += bezStr[0]+"/"+bezStr[5]+"/"+bezStr[2]+"/"+bezStr[1]+"/"+bezStr[3]+"/"+weak+"|"; 
+            }
+        }
+        zeile3 = zeile3.substr(0,zeile3.length-1);
+        zeile3Arr = [zeile3];
+        
+        var zeile4 = format;
+        zeile4Arr = [zeile4];
+        document.cookie = zeile1Arr+":"+zeile2Arr+":"+zeile3Arr+":"+zeile4Arr;
     }
 }
