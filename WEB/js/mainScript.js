@@ -150,7 +150,7 @@ function writeTable() {
         var PKFelder = erzeugePKFelder(i); //hier wird die Methode aufgerufen, die die Checkboxen erstellt
 
         //Hinzufügen der Felder und Boxen 
-        content += "<tr><th scope='row'>" + entitaetenNamen[i] + "</th><td>" + textFelder + "</td><td>" + PKFelder + "</td></tr>";
+        content += "<tr><th scope='row' style='word-break: break-all;'>" + entitaetenNamen[i] + "</th><td>" + textFelder + "</td><td>" + PKFelder + "</td></tr>";
     }
 
     var ende = "</tbody></table>"; //Ende der Tabelle
