@@ -342,7 +342,7 @@ function createRow1() {
     var dropLeft = drops("dropLeft");
     var dropRight = drops("dropRight");
 
-    document.getElementById("rowEins").innerHTML = "<div class='row'><div class='col'>" + dropLeft + "</div><div class='col'><p class='helleSchrift'><-- zu --><p></div><div class='col'>" + dropRight + "</div></div>";
+    document.getElementById("rowEins").innerHTML = "<div class='row'><div class='col'>" + dropLeft + "</div><div class='col'><img src='../IMG/zu.png' style='width: 40px; margin-bottom: 15px; margin-left: 10px; margin-right: 10px;'></div><div class='col'>" + dropRight + "</div></div>";
 }
 
 function drops(where) {
