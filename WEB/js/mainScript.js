@@ -604,22 +604,5 @@ function createCookie() {
         var zeile4 = format;
         zeile4Arr = [zeile4];
         document.cookie = zeile1Arr+":"+zeile2Arr+":"+zeile3Arr+":"+zeile4Arr;
-        
-        var x = document.cookie;
-        var arr = x.split(":");
-        console.log(arr);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
