@@ -39,9 +39,9 @@ if(isset($_SESSION['uid'])){
     </div>';
     
     echo '
-    <script src="../p5.min.js"></script>
-    <script src="../addons/p5.dom.min.js"></script>
-    <script src="../addons/p5.sound.min.js"></script>
+    <script src="../p5/p5.min.js"></script>
+    <script src="../p5/addons/p5.dom.min.js"></script>
+    <script src="../p5/addons/p5.sound.min.js"></script>
     ';
 }else{
 		header("Location:../index.html");
