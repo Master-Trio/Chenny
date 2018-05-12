@@ -43,7 +43,7 @@ function names(anzahl) {
 function namenSpeichern() {
     var fehler = false; //Variable ob ein Fehler bei den Namen existiert
     entitaetenNamen = new Array(); //neues Array angelegt
-
+    
     //Diese for-Schleife schreibt die Namen in das Array 
     for (var i = 0; i < anzahlEntitaeten; i++) {
         //Diese if-Abfrage prüft, ob das Feld nicht leer gelassen wurde
@@ -62,6 +62,12 @@ function namenSpeichern() {
         } else { //wenn das Feld leer gelassen wurde, entsprechende Fehlermeldung ausgeben
             document.getElementById("fehlermeldung").innerHTML = "<p style='color: red;'>Es wurden nicht alle Felder ausgefüllt!</p>";
             fehler = true; //Fehlervariable auf true setzten, damit Schritt 2 nicht angezeigt wird
+            break;
+        }
+        var str = document.getElementById("feld" + (i + 1)).value;
+        if (str.search(":") != -1) {
+            document.getElementById("fehlermeldung").innerHTML = "<p style='color: red;'>Bitte keine Doppelpukte eingeben!</p>";
+            fehler = true;
             break;
         }
     }
@@ -226,6 +232,14 @@ function weiterAttributWerte() {
             } else {
                 attributWerteNamen.push(document.getElementById("textfeld" + platz + (i + 1)).value);
             }
+            
+            //Überprüfung, ob ein Textfeld leer gelassen wurde
+            var str = document.getElementById("textfeld" + platz + (i + 1)).value;
+            if (str.search(":") != -1) {
+                document.getElementById("fehlermeldung3").innerHTML = "";
+                document.getElementById("fehlermeldung3").innerHTML = "<p style='color: red;'>Bitte keine Doppelpunkte eingeben!</p>";
+                fehler = true;
+            }
 
             if (document.getElementById("checkbox" + platz + (i + 1)).checked) {
                 attributWertePK.push(document.getElementById("checkbox" + platz + (i + 1)).value);
@@ -243,8 +257,6 @@ function weiterAttributWerte() {
     if (pruefArr.length < attributWerteNamen.length) {
         document.getElementById("fehlermeldung3").innerHTML = "<p style='color: red;'>Keine doppelten Einträge!</p>";
         fehler = true;
-    } else {
-        fehler = false;
     }
 
     //Überprüfung, ob genug PKs ausgewählt wurden. Mindestens einer pro Entität
@@ -403,13 +415,20 @@ function writeBeziehung() {
                 beziehungen.push(document.getElementById("dropLeft").value + "|" + document.getElementById("beziehungsName").value + "|" + document.getElementById("dropRight").value + "|" + beziehungsArt + "|" + document.getElementById("weak").value);
             }
         }
-
-
+        
         //prüfen auf doppelte Einträg
         var doppelt = pruefeDoppelteBeziehungen(document.getElementById("dropLeft").value, document.getElementById("dropRight").value, beziehungsArt);
-
-        document.getElementById("fehlermeldung4").innerHTML = "";
+        
+        //prüfen auf Doppelpunkte
+        var str = document.getElementById("beziehungsName").value;
+        if (str.search(":") != -1) {
+            document.getElementById("fehlermeldung4").innerHTML = "";
+            document.getElementById("fehlermeldung4").innerHTML = "<p style='color: red;'>Bitte keine Doppelpunkte eingeben!</p>"
+            doppelt = true;
+        }
+        
         if (!doppelt) {
+            document.getElementById("fehlermeldung4").innerHTML = "";
             updateListe();
         } else {
             beziehungen.pop();
@@ -604,5 +623,35 @@ function createCookie() {
         var zeile4 = format;
         zeile4Arr = [zeile4];
         document.cookie = zeile1Arr+":"+zeile2Arr+":"+zeile3Arr+":"+zeile4Arr;
+    
+        //Auslesen
+        var cookie = document.cookie;
+        var cookieArr = cookie.split(":");
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
