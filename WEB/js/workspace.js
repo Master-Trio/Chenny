@@ -18,52 +18,52 @@ function ausrichtung() {
 
     switch (true) {
 		case (x > 200 && x < 300):
-            screenSize = 0.2;
-            break;
-		case (x > 300 && x < 400):
             screenSize = 0.3;
             break;
-		case (x > 400 && x < 500):
+		case (x > 300 && x < 400):
             screenSize = 0.4;
             break;
-        case (x > 500 && x < 600):
+		case (x > 400 && x < 500):
             screenSize = 0.5;
             break;
-        case (x > 600 && x < 700):
+        case (x > 500 && x < 600):
             screenSize = 0.6;
             break;
-        case (x > 700 && x < 800):
+        case (x > 600 && x < 700):
             screenSize = 0.7;
             break;
-        case (x > 800 && x < 900):
+        case (x > 700 && x < 800):
             screenSize = 0.8;
             break;
-        case (x > 900 && x < 1000):
+        case (x > 800 && x < 900):
             screenSize = 0.9;
             break;
-        case (x > 1000 && x < 1100):
-            screenSize = 1;
+        case (x > 900 && x < 1000):
+            screenSize = 1.0;
             break;
-        case (x > 1100 && x < 1200):
+        case (x > 1000 && x < 1100):
             screenSize = 1.1;
             break;
-        case (x > 1200 && x < 1300):
+        case (x > 1100 && x < 1200):
             screenSize = 1.2;
             break;
-        case (x > 1300 && x < 1400):
+        case (x > 1200 && x < 1300):
             screenSize = 1.3;
             break;
-        case (x > 1400 && x < 1500):
+        case (x > 1300 && x < 1400):
             screenSize = 1.4;
             break;
-        case (x > 1500 && x < 1600):
+        case (x > 1400 && x < 1500):
             screenSize = 1.5;
             break;
-        case (x > 1600 && x < 1700):
+        case (x > 1500 && x < 1600):
             screenSize = 1.6;
             break;
-        case (x > 1700):
+        case (x > 1600 && x < 1700):
             screenSize = 1.7;
+            break;
+        case (x > 1700):
+            screenSize = 1.8;
             break;
     }
 
