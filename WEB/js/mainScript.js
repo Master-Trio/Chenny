@@ -501,11 +501,10 @@ function delBeziehung(e1, name, e2) {
 }
 
 
-
+var format = "";
 function createCookie() {
 
     var erzeuge = true;
-    var format = "";
 
     if (document.getElementById("hoch").value == "on") {
         erzeuge = true;
@@ -527,7 +526,6 @@ function createCookie() {
             zeile1 += entitaetenNamen[i]+"|";
         }
         document.cookie = zeile1;
-        */
     
         var weakArr = new Array();
         var arr = new Array();
@@ -564,8 +562,6 @@ function createCookie() {
         }
         catch (err) {}
         
-        console.log(mappedEmitA);
-        
         var zeile2 = "";
         for (var j = 0; j < mappedEmitA.length; j++) {
             for (var a = 0; a < mappedEmitA[j].length; a++) {
@@ -580,9 +576,26 @@ function createCookie() {
         }
         var zeile2res = zeile2.substr(0, zeile2.length - 1);
         document.cookie = zeile2res;
-
+        
+        var zeile4 = format;
+        document.cookie = zeile4;
+        */
+        
         var x = document.cookie;
         var arr = x.split("|");
         console.log(arr);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
