@@ -553,7 +553,9 @@ function createCookie() {
                     if (weakArr[i][j] == "weak") {
                         for (var o = 0; o < mappedEmitA[j].length; o++) {
                             if (mappedAmitPK[j][o] == "on") {
-                                 mappedEmitA[j][o] += "w";   
+                                if (mappedEmitA[j][o].search("w") == -1) {
+                                    mappedEmitA[j][o] += "w";   
+                                }   
                             }
                         }
                     }
