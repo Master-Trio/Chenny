@@ -350,6 +350,8 @@ function createRow2() {
 
 
 function secondDrop() {
+    document.getElementById("beziehungsName").value = "";
+    document.getElementById("beziehungsName").disabled = false;
     if (entitaetenNamen.length < 3) {
         document.getElementById("fehlermeldung4").innerHTML = "<p style='color: red;'>Es wurden zu wenige Entitäten für eine M:N-Beziehung angegeben!</p>";
     } else {
@@ -364,6 +366,7 @@ function art(typ) {
     if (typ == "ist") {
         document.getElementById("beziehungsName").value = "---";
         document.getElementById("beziehungsName").disabled = true;
+        document.getElementById("weak").disabled = true;
     } else {
         document.getElementById("beziehungsName").value = "";
         document.getElementById("beziehungsName").disabled = false;
@@ -520,13 +523,11 @@ function createCookie() {
     }
 
     if (erzeuge) {
-        /* FUNKTIONIERT
         var zeile1 = "";
         for (var i = 0; i < entitaetenNamen.length; i++) {
             zeile1 += entitaetenNamen[i]+"|";
         }
-        document.cookie = zeile1;
-    
+       
         var weakArr = new Array();
         var arr = new Array();
         for (var x = 0; x < beziehungen.length; x++) {
@@ -561,6 +562,9 @@ function createCookie() {
             }
         }
         catch (err) {}
+        zeile1Arr = [zeile1];
+        
+        
         
         var zeile2 = "";
         for (var j = 0; j < mappedEmitA.length; j++) {
@@ -574,15 +578,35 @@ function createCookie() {
             zeile2 = zeile2.substr(0, zeile2.length - 1);
             zeile2 += "|";
         }
-        var zeile2res = zeile2.substr(0, zeile2.length - 1);
-        document.cookie = zeile2res;
+        zeile2 = zeile2.substr(0, zeile2.length - 1);
+        zeile2Arr = [zeile2];
+        
+        var zeile3 = "";
+        for (var i = 0; i < beziehungen.length; i++) {
+            var bezStr = beziehungen[i].split("|");
+            var weak = "";
+            if (bezStr[4] == "on") {
+                weak = "w";
+            }
+            else {
+                weak = "#";
+            }
+            if (bezStr[3] != "m") {
+                zeile3 += bezStr[0]+"/"+bezStr[2]+"/"+bezStr[1]+"/"+bezStr[3]+"/"+weak+"|";    
+            }
+            else {
+                zeile3 += bezStr[0]+"/"+bezStr[5]+"/"+bezStr[2]+"/"+bezStr[1]+"/"+bezStr[3]+"/"+weak+"|"; 
+            }
+        }
+        zeile3 = zeile3.substr(0,zeile3.length-1);
+        zeile3Arr = [zeile3];
         
         var zeile4 = format;
-        document.cookie = zeile4;
-        */
+        zeile4Arr = [zeile4];
+        document.cookie = zeile1Arr+":"+zeile2Arr+":"+zeile3Arr+":"+zeile4Arr;
         
         var x = document.cookie;
-        var arr = x.split("|");
+        var arr = x.split(":");
         console.log(arr);
     }
 }
