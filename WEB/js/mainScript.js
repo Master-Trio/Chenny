@@ -262,6 +262,9 @@ function weiterAttributWerte() {
     }
 }
 
+/*
+ * Diese Methode prüft, ob ein doppelter Wert in einem Array vorhanden ist
+ */
 function pruefeDoppelteAttribute(arr) {
     var i,
         len = arr.length,
@@ -478,41 +481,51 @@ function delBeziehung(e1, name, e2) {
 }
 
 
-function createCookie () {
-    
+
+function createCookie() {
+
+    var erzeuge = true;
+    var format = "";
+
+    if (document.getElementById("hoch").value == "on") {
+        erzeuge = true;
+        document.getElementById("fehlermeldung4").innerHTML = "";
+        format = "h";
+    } else if (document.getElementById("quer").value == "on") {
+        erzeuge = true;
+        document.getElementById("fehlermeldung4").innerHTML = "";
+        format = "q";
+    } else {
+        document.getElementById("fehlermeldung4").innerHTML = "<p style='color: red;'>Bitte wähle ein Bildformat aus!</p>";
+        erzeuge = false;
+    }
+
+    if (erzeuge) {
+        /* FUNKTIONIERT
+        var zeile1 = "";
+        for (var i = 0; i < entitaetenNamen.length; i++) {
+            zeile1 += entitaetenNamen[i]+"|";
+        }
+        document.cookie = zeile1;
+        */
+
+        var zeile2 = "";
+        for (var j = 0; j < mappedEmitA.length; j++) {
+            for (var a = 0; a < mappedEmitA[j].length; a++) {
+                if (mappedEmitA[j].length > 1) {
+                    zeile2 += mappedEmitA[j][a] + ",";
+                } else {
+                    zeile2 += mappedEmitA[j][a];
+                }
+
+            }
+            zeile2 += "|";
+        }
+        var zeile2res = zeile2.substr(0, zeile2.length - 1);
+        document.cookie = zeile2res;
+
+        var x = document.cookie;
+        var arr = x.split("|");
+        console.log(arr);
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
