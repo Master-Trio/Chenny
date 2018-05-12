@@ -161,3 +161,47 @@ html, body {
 .zeilenUmbruchEntitaet {
     word-wrap: break-word;
 }
+
+/*
+    Mobile Version der Beziehungstabelle 
+*/
+@media only screen and (max-width: 860px) {
+    .myTable table, .myTable thead, .myTable tbody, .myTable th, .myTable td, .myTable tr {
+        display: block;
+    }
+    
+    .myTable thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    .myTable tr {
+        border: 4px solid #57bea4;
+        border-radius: 5px;
+    }
+    
+    .myTable td {
+        border: none;
+        border-bottom: 1px solid #57bea4;
+        position: relative;
+        padding-left: 50%;
+    }
+    
+    .myTable td:before {
+        font-weight: 600;
+        background-color: rgb(34,37,41);
+        border-radius: 5px;
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+    
+    .myTable td:nth-of-type(1):before { content: "1. Entität"; }
+    .myTable td:nth-of-type(2):before { content: "Name"; }
+    .myTable td:nth-of-type(3):before { content: "2. Entität"; }
+    .myTable td:nth-of-type(4):before { content: "Art"; }
+    .myTable td:nth-of-type(5):before { content: "Weak"; }
+}

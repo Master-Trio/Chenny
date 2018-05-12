@@ -496,7 +496,7 @@ function updateListe() {
         } else {
             inhaltListe += "<tr><th scope='row'>" + (i + 1) + "</th><td>" + arr[0] + "</td><td>" + arr[1] + "</td><td>" + arr[2] + "</td><td>" + bez + "</td><td>" + wk + "</td><td><button type='button' class='btn weiter2' onclick='delBeziehung(\"" + arr[0] + "\",\"" + arr[1] + "\",\"" + arr[2] + "\");'>Löschen</button></td></tr>";
         }
-        document.getElementById("auflistungBeziehungen").innerHTML = "<table class='table' style='text-align: center;'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>1. Entität</th><th scope='col'>Name</th><th scope='col'>2. Entität</th><th scope='col'>Art</th><th scope='col'>Weak</th><th scope='col'>Löschen</th></tr></thead><tbody style='color: #eeeeee;'>" + inhaltListe + "</tbody></table>";
+        document.getElementById("auflistungBeziehungen").innerHTML = "<div class='wic myTable'><table class='table myTable' style='text-align: center;'><thead class='thead-dark'><tr><th scope='col'>#</th><th scope='col'>1. Entität</th><th scope='col'>Name</th><th scope='col'>2. Entität</th><th scope='col'>Art</th><th scope='col'>Weak</th><th scope='col'>Löschen</th></tr></thead><tbody style='color: #eeeeee;'>" + inhaltListe + "</tbody></table></div>";
     }
 }
 
