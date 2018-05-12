@@ -283,6 +283,7 @@ function pruefeDoppelteAttribute(arr) {
 
 function erzeugeSchritt4() {
     mapEntitaetenMitAttributen();
+    mapAttributeMitPK();
     createRow1();
     createRow2();
     createRow3();
@@ -304,6 +305,25 @@ function mapEntitaetenMitAttributen() {
         arr = new Array();
     }
 }
+
+var mappedAmitPK = new Array();
+
+function mapAttributeMitPK() {
+    var arr = new Array();
+
+    for (var i = 0; i < anzahlAttribute.length; i++) {
+        for (var j = 0; j < anzahlAttribute[i]; j++) {
+            arr.push(attributWertePK[j]);
+        }
+        for (var a = 0; a < anzahlAttribute[i]; a++) {
+            attributWertePK.shift();
+        }
+        mappedAmitPK.push(arr);
+        arr = new Array();
+    }
+}
+
+
 
 function createRow1() {
 
@@ -377,7 +397,7 @@ function writeBeziehung() {
             }
         } catch (err) {
             if (!fehler) {
-                beziehungen.push(document.getElementById("dropLeft").value + "|" + document.getElementById("beziehungsName").value + "|" + document.getElementById("dropRight").value + "|" + beziehungsArt + "|" + document.getElementById("weak").value + "|no");
+                beziehungen.push(document.getElementById("dropLeft").value + "|" + document.getElementById("beziehungsName").value + "|" + document.getElementById("dropRight").value + "|" + beziehungsArt + "|" + document.getElementById("weak").value);
             }
         }
 
@@ -508,17 +528,52 @@ function createCookie() {
         }
         document.cookie = zeile1;
         */
-
+    
+        var weakArr = new Array();
+        var arr = new Array();
+        for (var x = 0; x < beziehungen.length; x++) {
+            var strArr = beziehungen[x].split("|");
+            if (strArr[4] == "on") {
+                for (var i = 0; i < entitaetenNamen.length; i++) {
+                    if (strArr[2] == entitaetenNamen[i]) {
+                        arr.push("weak");
+                    }
+                    else {
+                        arr.push("x");
+                    }
+                }
+                weakArr.push(arr);
+                arr = new Array();
+            }
+        }
+        
+        try {
+            for (var i = 0; i < weakArr.length; i++) {
+                for (var j = 0; j < weakArr[i].length; j++) {
+                    if (weakArr[i][j] == "weak") {
+                        for (var o = 0; o < mappedEmitA[j].length; o++) {
+                            if (mappedAmitPK[j][o] == "on") {
+                                 mappedEmitA[j][o] += "w";   
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        catch (err) {}
+        
+        console.log(mappedEmitA);
+        
         var zeile2 = "";
         for (var j = 0; j < mappedEmitA.length; j++) {
             for (var a = 0; a < mappedEmitA[j].length; a++) {
-                if (mappedEmitA[j].length > 1) {
-                    zeile2 += mappedEmitA[j][a] + ",";
+                if (mappedAmitPK[j][a] == "on") {
+                    zeile2 += "p" + mappedEmitA[j][a] + ",";
                 } else {
-                    zeile2 += mappedEmitA[j][a];
+                    zeile2 += mappedEmitA[j][a] + ",";
                 }
-
             }
+            zeile2 = zeile2.substr(0, zeile2.length - 1);
             zeile2 += "|";
         }
         var zeile2res = zeile2.substr(0, zeile2.length - 1);
