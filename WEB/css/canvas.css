@@ -32,7 +32,7 @@ body {
 .but:hover {
     background-color: #eeeeee;
     color: #57bea4;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 .myrow {
@@ -54,6 +54,20 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.canvMoz {
+    margin-top: 50px;
+}
+
+@-moz-document url-prefix() {
+    .moz {
+        margin-top: 20px;
+    }
+    
+    .canvMoz {
+        padding-top: 50px;
+    }
 }
 
 /*
