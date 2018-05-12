@@ -103,7 +103,7 @@
         </div>
     </section>
 
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
     <!-- Schritt 3 -->
@@ -118,7 +118,7 @@
                 </div>
             </div>
             <div id="tabDiv" align="center">
-                
+
             </div>
             <br><br>
             <button type="button" class="btn weiter" onclick="weiterAttributWerte();">Weiter</button>
@@ -128,8 +128,8 @@
             </div>
         </div>
     </section>
-    
-    
+
+
     <!-- Schritt 4 -->
     <section id="schritt4" style="padding-top: 40px; margin-top: -50px; padding-bottom: 100px; visibility: hidden;">
         <div class="cont" style="background-color: #303030;">
@@ -142,27 +142,38 @@
                 </div>
             </div>
             <div id="rowEins" align="center">
-                
+
             </div>
             <div id="rowZwei" align="center">
-                
+
             </div>
             <br>
             <div id="rowDrei" align="center">
-                
+
             </div>
             <br>
             <div id="rowVier" align="center">
-                
+
             </div>
             <br>
             <button type="button" class="btn weiter2" onclick="writeBeziehung();">Bestätigen</button>
             <br>
             <br>
             <div id="auflistungBeziehungen" align="center">
-                
+
             </div>
             <br><br>
+            <div align="center">
+                <form>
+                    <fieldset>
+                        <input type="radio" id="hoch" name="format" value="off" onclick="getElementById('hoch').value = 'on'">
+                        <label for="hoch" class="helleSchrift"> Hochformat</label> 
+                        <br>
+                        <input type="radio" id="quer" name="format" value="off" onclick="getElementById('quer').value = 'on'">
+                        <label for="quer" class="helleSchrift"> Querformat</label> 
+                    </fieldset>
+                </form>
+            </div>
             <button type="button" class="btn weiter2" onclick="createCookie();">Fertig</button>
             <br>
             <div id="fehlermeldung4" align="center">
@@ -170,7 +181,7 @@
             </div>
         </div>
     </section>
-    
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
