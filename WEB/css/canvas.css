@@ -15,14 +15,12 @@ body {
 .in {
     margin-top: 10px;
     padding-bottom: 3px;
-    margin-left: 20px;
     width: 150px;
     border-radius: 5px;
     border: 1px solid #57bea4;
 }
 
 .but {
-    margin-left: 20px;
     border: 1px solid #57bea4;
     border-radius: 4px;
     background-color: #57bea4;
@@ -48,7 +46,6 @@ body {
 }
 
 .middleStroke {
-    margin-left: 10px;
     position: absolute;
     width: 100%;
     height: 2px;
