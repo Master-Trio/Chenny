@@ -153,7 +153,7 @@ function setup() {
 */
 function draw() {
     background(200);
-    //drawGrid();
+    drawGrid();
 
     //Zeichnet alle Objekte mit deren Attributen
     for (let i = 0; i < entAtt.length; i++) {
