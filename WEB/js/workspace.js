@@ -130,7 +130,7 @@ function setup() {
     ent[1] = new Entity("Swag", "");
 
     att[0] = new Attribut("1juju", "");
-    att[1] = new Attribut("Sbhjubjkjjkbj", "");
+    att[1] = new Attribut("Sbj", "");
     att[2] = new Attribut("Pe77bjjbkbjkkbjter", "");
     att[3] = new Attribut("S77bjjbkbjkkbjebi", "");
 
@@ -138,7 +138,7 @@ function setup() {
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0]);
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0], att[1]);
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0], att[1], att[2]);
-    entAtt[0] = new EntAtt(100 * screenSize, 100 * screenSize, ent[0], att[0], att[1], att[2], att[3]);
+    entAtt[0] = new EntAtt(cw/2,ch/2, ent[0], att[0], att[1], att[2], att[3]);
 
 }
 
@@ -165,6 +165,7 @@ function draw() {
 function windowResized() {
     // Canvasgröße wird verändert
     resizeCanvas(cw, ch);
+	entAtt[0].move(cw/2,ch/2);
 }
 
 // Darstellung der vertikalen und horrizontalen Hilfslinien
@@ -207,7 +208,10 @@ class EntAtt {
         this.attr_Obj3 = attr_Obj3;
         this.attr_Obj4 = attr_Obj4;
     }
-
+	move(x,y){
+		this.x = x;
+		this.y = y;
+	}
     // Methode um es darzustellen
     show() {
         // Darstellung in einem Rechteck
