@@ -264,10 +264,11 @@ function cookieDaten(myEnts, myBezis) {
 
     // Anzahl der Beistriche, welche die Attribute in einem Arrayelement trennen.
     var beistrichAnzahl;
+    // Mithilfe dieser Variable werden die Entitäten im Entity-Objekt-Array an die richtige Stelle gebracht
+    var entitaetenNummer = 0;
 
     for (var i = 0; i < ourEnts.length; i++) {
-        var x = i - 1;
-        
+        // Da nur jedes zweite Array-Element eine Entität ist, ist diese Abfrage nötig
         if (i % 2 == 0) {
             // Diese Abfrage gilt nur für die erste Entität
             if (i == 0) {
@@ -287,11 +288,15 @@ function cookieDaten(myEnts, myBezis) {
                     }
                 }
             } else {
-                ent[x] = new Entity(ourEnts[i]);
+                // Hier werden die restlichen Entitäten generiert
+                ent[i - entitaetenNummer] = new Entity(ourEnts[i]);
                 //for (var j = 0; j < ourEnts.length / 2; j += 2) {
                   //  att[4 + j] = new Attribut(ourEnts[i + 1].split(',', 1));
                 //}
             }
+            
+            // Um eine gute Nummerierung einzuhalten, wird diese Variable jedes mal bei Erfüllung der Bedingung erhöht
+            entitaetenNummer++;
         }
     }
 
