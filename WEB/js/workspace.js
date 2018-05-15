@@ -1,3 +1,49 @@
+// ------------
+// -- COOKIE --
+// ------------
+
+//Auslesen Entitäten mit Attributen
+//Zu verwenden: entitatenMitAttributen
+var cookie = document.cookie;
+var cookieArr = cookie.split(":");
+
+var ents = cookieArr[0].split("|");
+ents.pop();
+
+var atts = cookieArr[1].split("|");;
+
+var entitatenMitAttributen = new Array();
+for (var i = 0; i < ents.length; i++) {
+    entitatenMitAttributen.push(ents[i]);
+    entitatenMitAttributen.push(atts[i]);
+}
+
+//Auslesen Beziehungen
+//Zu Verwenden: bezis
+var bezis = new Array();
+var zweiteAuslese = cookieArr[2].split("|");
+
+var auf = new Array();
+for (var i = 0; i < zweiteAuslese.length; i++) {
+    var elems = zweiteAuslese[i].split("/");
+    if (elems.length > 5) { //m-n
+        auf.push(elems[0]);
+        auf.push(elems[1]);
+        auf.push(elems[2]);
+        auf.push(elems[3]);
+        auf.push(elems[5]);
+    } else {
+        auf.push(elems[0]);
+        auf.push(elems[3]);
+        auf.push(elems[1]);
+        auf.push(elems[2]);
+        auf.push(elems[4]);
+    }
+    bezis.push(auf);
+    auf = new Array();
+}
+
+
 // -----------------
 // -- CANVASGRÖßE --
 // -----------------
@@ -138,7 +184,7 @@ function setup() {
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0]);
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0], att[1]);
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0], att[1], att[2]);
-    entAtt[0] = new EntAtt(cw/4,ch/4, ent[0], att[0], att[1], att[2], att[3]);
+    entAtt[0] = new EntAtt(cw / 4, ch / 4, ent[0], att[0], att[1], att[2], att[3]);
 
 }
 
@@ -157,21 +203,17 @@ function draw() {
     //Zeichnet alle Objekte mit deren Attributen
     for (i = 0; i < entAtt.length; i++) {
         entAtt[i].show();
-		fill(color(255,0,0));
-		ellipse(entAtt[0].getRealX(),entAtt[0].getRealY(),10*screenSize,10*screenSize);
+        fill(color(255, 0, 0));
+        ellipse(entAtt[0].getRealX(), entAtt[0].getRealY(), 10 * screenSize, 10 * screenSize);
     }
-	
+
 }
 
 // Diese Funktion wird bei Verändern der Fenstergröße aufgerufen.
 function windowResized() {
     // Canvasgröße wird verändert
     resizeCanvas(cw, ch);
-<<<<<<< HEAD
-    entAtt[0].move(cw / 2, ch / 2);
-=======
-	entAtt[0].move(cw/4,ch/4);
->>>>>>> e20dd401c859ca36ceb681bafaea848ef7dcc196
+    entAtt[0].move(cw / 4, ch / 4);
 }
 
 // Darstellung der vertikalen und horrizontalen Hilfslinien
@@ -221,22 +263,22 @@ class EntAtt {
         this.attr_Obj3 = attr_Obj3;
         this.attr_Obj4 = attr_Obj4;
     }
-	//Liefert die X Koordinate vom Zentrum der Fläche
-	getRealX(){
-		return x1+(x2-x1)/2;
-	}
-	//Liefert die Y Koordinate vom Zentrum der Fläche
-	getRealY(){
-		return y1+(y2-y1)/2;
-	}
-	//Verschiebt das Objekt an eine bestimmte Stelle
-	move(x,y){
-		this.x = x;
-		this.y = y;
-	}
+    //Liefert die X Koordinate vom Zentrum der Fläche
+    getRealX() {
+        return x1 + (x2 - x1) / 2;
+    }
+    //Liefert die Y Koordinate vom Zentrum der Fläche
+    getRealY() {
+        return y1 + (y2 - y1) / 2;
+    }
+    //Verschiebt das Objekt an eine bestimmte Stelle
+    move(x, y) {
+        this.x = x;
+        this.y = y;
+    }
     // Methode um es darzustellen
     show() {
-		fill(color(154,115,115));
+        fill(color(154, 115, 115));
         // Darstellung in einem Rechteck
         x1 = this.x - ellipseWidth / 2;
         y1 = this.y - ellipseWidth / 4 - attAbstand;
@@ -246,18 +288,18 @@ class EntAtt {
         line(x2, y1, x2, y2);
         line(x2, y2, x1, y2);
         line(x1, y2, x1, y1);
-		//Rechteck der Entität
+        //Rechteck der Entität
         rect(this.x, this.y, entWidth, entWidth / 2);
         // Check ob der Entitätenname zu lang ist; falls ja, dann macht es einen Zeilenumbruch
         if (this.ent_Obj.entName.length > 8) {
             var oben = this.ent_Obj.entName.substr(0, 8);
             var unten = this.ent_Obj.entName.substring(8, this.ent_Obj.entName.length);
-			fill(color(255,255,255));
+            fill(color(255, 255, 255));
             textSize(attTextSize + 7 * screenSize);
             text(oben, this.x + entWidth / 10, this.y + attTextSize + entWidth / 10);
             text(unten, this.x + entWidth / 10, this.y + attTextSize + entWidth / 3.5);
         } else {
-			fill(color(255,255,255));
+            fill(color(255, 255, 255));
             textSize(entTextSize);
             text(this.ent_Obj.entName, this.x + entWidth / 10, this.y + entWidth / 3);
         }
@@ -267,9 +309,9 @@ class EntAtt {
         //***********
 
         if (this.attr_Obj1 != null && this.attr_Obj2 == null && this.attr_Obj3 == null && this.attr_Obj4 == null) {
-            fill(color(154,115,115));
-			ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
-			fill(color(255,255,255));
+            fill(color(154, 115, 115));
+            ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
+            fill(color(255, 255, 255));
             //Check ob der Attributname zu lang ist, falls ja dann macht es einen Zeilenumbruch
             if (this.attr_Obj1.attName.length > 10) {
                 var oben = this.attr_Obj1.attName.substring(0, 10);
@@ -290,10 +332,10 @@ class EntAtt {
         //***********
 
         if (this.attr_Obj1 != null && this.attr_Obj2 != null && this.attr_Obj3 == null && this.attr_Obj4 == null) {
-            fill(color(154,115,115));
-			ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
+            fill(color(154, 115, 115));
+            ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
             ellipse(this.x + entWidth, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
-			fill(color(255,255,255));
+            fill(color(255, 255, 255));
             //Check ob der Attributname zu lang ist, falls ja dann macht es einen Zeilenumbruch
             if (this.attr_Obj1.attName.length > 10) {
                 var oben = this.attr_Obj1.attName.substring(0, 10);
@@ -325,11 +367,11 @@ class EntAtt {
         //***********
 
         if (this.attr_Obj1 != null && this.attr_Obj2 != null && this.attr_Obj3 != null && this.attr_Obj4 == null) {
-            fill(color(154,115,115));
-			ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
+            fill(color(154, 115, 115));
+            ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
             ellipse(this.x + entWidth, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
             ellipse(this.x, this.y + entWidth / 2 + attAbstand, ellipseWidth, ellipseWidth / 2);
-			fill(color(255,255,255));
+            fill(color(255, 255, 255));
             //Check ob der Attributname zu lang ist, falls ja dann macht es einen Zeilenumbruch
             if (this.attr_Obj1.attName.length > 10) {
                 var oben = this.attr_Obj1.attName.substring(0, 10);
@@ -373,12 +415,12 @@ class EntAtt {
         //***********
 
         if (this.attr_Obj1 != null && this.attr_Obj2 != null && this.attr_Obj3 != null && this.attr_Obj4 != null) {
-            fill(color(154,115,115));
-			ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
+            fill(color(154, 115, 115));
+            ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
             ellipse(this.x + entWidth, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
             ellipse(this.x, this.y + entWidth / 2 + attAbstand, ellipseWidth, ellipseWidth / 2);
             ellipse(this.x + entWidth, this.y + entWidth / 2 + attAbstand, ellipseWidth, ellipseWidth / 2);
-			fill(color(255,255,255));
+            fill(color(255, 255, 255));
             if (this.attr_Obj1.attName.length > 10) {
                 var oben = this.attr_Obj1.attName.substring(0, 10);
                 var unten = this.attr_Obj1.attName.substring(10, this.attr_Obj1.attName.length);
