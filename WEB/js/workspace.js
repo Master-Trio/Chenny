@@ -138,7 +138,7 @@ function setup() {
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0]);
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0], att[1]);
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0], att[1], att[2]);
-    entAtt[0] = new EntAtt(cw/2,ch/2, ent[0], att[0], att[1], att[2], att[3]);
+    entAtt[0] = new EntAtt(cw / 2, ch / 2, ent[0], att[0], att[1], att[2], att[3]);
 
 }
 
@@ -165,7 +165,7 @@ function draw() {
 function windowResized() {
     // Canvasgröße wird verändert
     resizeCanvas(cw, ch);
-	entAtt[0].move(cw/2,ch/2);
+    entAtt[0].move(cw / 2, ch / 2);
 }
 
 // Darstellung der vertikalen und horrizontalen Hilfslinien
@@ -208,10 +208,10 @@ class EntAtt {
         this.attr_Obj3 = attr_Obj3;
         this.attr_Obj4 = attr_Obj4;
     }
-	move(x,y){
-		this.x = x;
-		this.y = y;
-	}
+    move(x, y) {
+        this.x = x;
+        this.y = y;
+    }
     // Methode um es darzustellen
     show() {
         // Darstellung in einem Rechteck
