@@ -1,49 +1,3 @@
-// ------------
-// -- COOKIE --
-// ------------
-
-//Auslesen Entitäten mit Attributen
-//Zu verwenden: entitatenMitAttributen
-var cookie = document.cookie;
-var cookieArr = cookie.split(":");
-
-var ents = cookieArr[0].split("|");
-ents.pop();
-
-var atts = cookieArr[1].split("|");;
-
-var entitatenMitAttributen = new Array();
-for (var i = 0; i < ents.length; i++) {
-    entitatenMitAttributen.push(ents[i]);
-    entitatenMitAttributen.push(atts[i]);
-}
-
-//Auslesen Beziehungen
-//Zu Verwenden: bezis
-var bezis = new Array();
-var zweiteAuslese = cookieArr[2].split("|");
-
-var auf = new Array();
-for (var i = 0; i < zweiteAuslese.length; i++) {
-    var elems = zweiteAuslese[i].split("/");
-    if (elems.length > 5) { //m-n
-        auf.push(elems[0]);
-        auf.push(elems[1]);
-        auf.push(elems[2]);
-        auf.push(elems[3]);
-        auf.push(elems[5]);
-    } else {
-        auf.push(elems[0]);
-        auf.push(elems[3]);
-        auf.push(elems[1]);
-        auf.push(elems[2]);
-        auf.push(elems[4]);
-    }
-    bezis.push(auf);
-    auf = new Array();
-}
-
-
 // -----------------
 // -- CANVASGRÖßE --
 // -----------------
@@ -153,6 +107,62 @@ window.onresize = function () {
 */
 function setup() {
 
+    // ------------
+    // -- COOKIE --
+    // ------------
+
+    //Auslesen Entitäten mit Attributen
+    //Zu verwenden: entitatenMitAttributen
+    var cookie = document.cookie;
+    var cookieArr = cookie.split(":");
+
+    var ents = cookieArr[0].split("|");
+    ents.pop();
+
+    var atts = cookieArr[1].split("|");
+
+    var entitatenMitAttributen = new Array();
+    for (var i = 0; i < ents.length; i++) {
+        entitatenMitAttributen.push(ents[i]);
+        entitatenMitAttributen.push(atts[i]);
+    }
+
+    //Auslesen Beziehungen
+    //Zu Verwenden: bezis
+    var bezis = new Array();
+    var zweiteAuslese = cookieArr[2].split("|");
+
+    var auf = new Array();
+    for (var i = 0; i < zweiteAuslese.length; i++) {
+        var elems = zweiteAuslese[i].split("/");
+        if (elems.length > 5) { //m-n
+            auf.push(elems[0]);
+            auf.push(elems[1]);
+            auf.push(elems[2]);
+            auf.push(elems[3]);
+            auf.push(elems[5]);
+        } else {
+            auf.push(elems[0]);
+            auf.push(elems[3]);
+            auf.push(elems[1]);
+            auf.push(elems[2]);
+            auf.push(elems[4]);
+        }
+        bezis.push(auf);
+        auf = new Array();
+    }
+
+    console.log(entitatenMitAttributen);
+    console.log(bezis);
+    alert(bezis);
+    alert(entitatenMitAttributen);
+
+
+
+    cookieDaten(entitatenMitAttributen, bezis);
+
+
+
     // Damit das Canvas bereits zu Anfang in richtiger Größe angezeigt wird, wird die Methode auch hier aufgerufen
     ausrichtung();
 
@@ -172,20 +182,19 @@ function setup() {
     canvas.parent('sketch-holder');
 
     //Test Einträge
-    ent[0] = new Entity("12ufgh7778sbhjbjdf", "");
-    ent[1] = new Entity("Swag", "");
+    // ent[0] = new Entity("12ufgh7778sbhjbjdf");
+    // ent[1] = new Entity("Swag");
 
-    att[0] = new Attribut("1juju", "");
-    att[1] = new Attribut("Sbj", "");
-    att[2] = new Attribut("Pe77bjjbkbjkkbjter", "");
-    att[3] = new Attribut("S77bjjbkbjkkbjebi", "");
+    //att[0] = new Attribut("1juju", "");
+    //att[1] = new Attribut("Sbj", "");
+    //att[2] = new Attribut("Pe77bjjbkbjkkbjter", "");
+    //att[3] = new Attribut("S77bjjbkbjkkbjebi", "");
 
     //entAtt[0] = new EntAtt(100, 100, ent[0]);
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0]);
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0], att[1]);
-    //entAtt[0] = new EntAtt(100, 100, ent[0], att[0], att[1], att[2]);
-    entAtt[0] = new EntAtt(cw / 4, ch / 4, ent[0], att[0], att[1], att[2], att[3]);
-
+    entAtt[0] = new EntAtt(100, 100, ent[0], att[0], att[1], att[2]);
+    //entAtt[0] = new EntAtt(cw / 4, ch / 4, ent[0], att[0], att[1], att[2], att[4]);
 }
 
 // ----------
@@ -244,6 +253,52 @@ let y1 = this.y - ellipseWidth / 4 - attAbstand;
 let x2 = this.x + entWidth + ellipseWidth / 2;
 let y2 = this.y + entWidth / 2 + attAbstand + ellipseWidth / 4;
 
+/*
+    Mit dieser Funktion werden die Cookie-Daten in Verwendung gebracht.
+    Die eingelesenen Entitäten werden im ent[] gespeichert.
+    Selbiges geschieht mit den Attributen.
+*/
+function cookieDaten(myEnts, myBezis) {
+    var ourEnts = myEnts;
+    var ourBezis = myBezis;
+
+    // Anzahl der Beistriche, welche die Attribute in einem Arrayelement trennen.
+    var beistrichAnzahl;
+
+    for (var i = 0; i < ourEnts.length; i++) {
+        var x = i - 1;
+        
+        if (i % 2 == 0) {
+            // Diese Abfrage gilt nur für die erste Entität
+            if (i == 0) {
+                // Die erste Entität wird gespeichert
+                ent[i] = new Entity(ourEnts[i]);
+                // Dies ist die, oben deklarierte, Beistrichanzahl
+                beistrichAnzahl = ourEnts[i + 1].split(",").length - 1;
+                var m = ourEnts[i + 1];
+                for (var j = 0; j <= beistrichAnzahl; j++) {
+                    // Das Attribut, welches sich vor dem ersten Beistrich befindet, wird gespeichert
+                    att[j] = new Attribut(m.split(',', 1));
+                    // Hiermit wird das bereits gespeicherte Attribut aus dem Arrayelement gelöscht, samt nachfolgendem Beistrich
+                    m = m.substring(m.indexOf(",") + 1);
+                    // Um auch das letzte Attribut mitzunehmen, wird diese if-Abfrage benötigt, da vor diesem kein Beistruch mehr steht
+                    if(j == beistrichAnzahl) {
+                        att[j] = new Attribut(m,"");
+                    }
+                }
+            } else {
+                ent[x] = new Entity(ourEnts[i]);
+                //for (var j = 0; j < ourEnts.length / 2; j += 2) {
+                  //  att[4 + j] = new Attribut(ourEnts[i + 1].split(',', 1));
+                //}
+            }
+        }
+    }
+
+    alert(beistrichAnzahl);
+    console.log(ent);
+    console.log(att);
+}
 
 
 // -------------
@@ -473,9 +528,8 @@ class EntAtt {
 // Entitätsklasse
 class Entity {
     // Im Konstruktor sind der Entitätenname und der Beziehungstyp zu finden
-    constructor(entName, bezTyp) {
+    constructor(entName) {
         this.entName = entName;
-        this.bezTyp = bezTyp;
     }
 }
 
