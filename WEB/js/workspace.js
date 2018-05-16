@@ -154,14 +154,8 @@ function setup() {
 
     console.log(entitatenMitAttributen);
     console.log(bezis);
-    alert(bezis);
-    alert(entitatenMitAttributen);
-
-
 
     cookieDaten(entitatenMitAttributen, bezis);
-
-
 
     // Damit das Canvas bereits zu Anfang in richtiger Größe angezeigt wird, wird die Methode auch hier aufgerufen
     ausrichtung();
@@ -193,7 +187,7 @@ function setup() {
     //entAtt[0] = new EntAtt(100, 100, ent[0]);
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0]);
     //entAtt[0] = new EntAtt(100, 100, ent[0], att[0], att[1]);
-    entAtt[0] = new EntAtt(100, 100, ent[0], att[0], att[1], att[2]);
+    //entAtt[0] = new EntAtt(100, 100, ent[0], att[0], att[1], att[2]);
     //entAtt[0] = new EntAtt(cw / 4, ch / 4, ent[0], att[0], att[1], att[2], att[4]);
 }
 
@@ -212,6 +206,7 @@ function draw() {
     //Zeichnet alle Objekte mit deren Attributen
     for (i = 0; i < entAtt.length; i++) {
         entAtt[i].show();
+        
         fill(color(255, 0, 0));
         ellipse(entAtt[0].getRealX(), entAtt[0].getRealY(), 10 * screenSize, 10 * screenSize);
     }
@@ -266,12 +261,22 @@ function cookieDaten(myEnts, myBezis) {
     var beistrichAnzahl;
     // Mithilfe dieser Variable werden die Entitäten im Entity-Objekt-Array an die richtige Stelle gebracht
     var entitaetenNummer = 0;
+    // Mithilfe dieser Variable werden die Attribute im Attribut-Objekt-Array an die richtige Stelle gebracht
+    var attributNummer = 0;
+    
+    // provisorisch
+    let newRandomX, newRandomY, myX, myY;
+    
+    // Anzahl aller Attribute
+    var anzahlAtts;
 
     for (var i = 0; i < ourEnts.length; i++) {
         // Da nur jedes zweite Array-Element eine Entität ist, ist diese Abfrage nötig
         if (i % 2 == 0) {
             // Diese Abfrage gilt nur für die erste Entität
             if (i == 0) {
+                // Diese Zeile fixt einen Fehler in Chrome
+                ourEnts[i] = ourEnts[i].substring(ourEnts[i].indexOf(";")+2);
                 // Die erste Entität wird gespeichert
                 ent[i] = new Entity(ourEnts[i]);
                 // Dies ist die, oben deklarierte, Beistrichanzahl
@@ -286,13 +291,79 @@ function cookieDaten(myEnts, myBezis) {
                     if(j == beistrichAnzahl) {
                         att[j] = new Attribut(m,"");
                     }
+                    
+                    attributNummer++;
                 }
+                
+                // -- provisorische Positionen!
+                newRandomX = (Math.random() * 500 * screenSize) + 1;
+                myX = parseInt(newRandomX, 10);
+                newRandomY = (Math.random() * 500 * screenSize) + 1;
+                myY = parseInt(newRandomY, 10);
+                
+                // -- Entitäten + Attribute --
+                // Hier werden die Entitäten mit den dazugehörigen Attributen zusammengeführt
+                // Je nachdem, wie viele Attribute es gab, wird der jeweilige Konstruktor ausgewählt.
+                if(beistrichAnzahl == 0) {
+                    entAtt[i] = new EntAtt(myX,myY,ent[i],att[0]);
+                    anzahlAtts = 1;
+                }
+                else if(beistrichAnzahl == 1) {
+                    entAtt[i] = new EntAtt(myX,myY,ent[i],att[0],att[1]);
+                    anzahlAtts = 2;
+                }
+                else if(beistrichAnzahl == 2) {
+                    entAtt[i] = new EntAtt(myX,myY,ent[i],att[0],att[1],att[2]);
+                    anzahlAtts = 3;
+                }
+                else if(beistrichAnzahl == 3) {
+                    entAtt[i] = new EntAtt(myX,myY,ent[i],att[0],att[1],att[2],att[3]);
+                    anzahlAtts = 4;
+                }
+                
             } else {
+                // Dies ist die, oben deklarierte, Beistrichanzahl
+                beistrichAnzahl = ourEnts[i + 1].split(",").length - 1;
                 // Hier werden die restlichen Entitäten generiert
                 ent[i - entitaetenNummer] = new Entity(ourEnts[i]);
-                //for (var j = 0; j < ourEnts.length / 2; j += 2) {
-                  //  att[4 + j] = new Attribut(ourEnts[i + 1].split(',', 1));
-                //}
+                
+                var n = ourEnts[i + 1];
+                for (var d = 0; d <= beistrichAnzahl; d++) {
+                    // Das Attribut, welches sich vor dem ersten Beistrich befindet, wird gespeichert
+                    att[attributNummer + d] = new Attribut(n.split(',', 1));
+                    // Hiermit wird das bereits gespeicherte Attribut aus dem Arrayelement gelöscht, samt nachfolgendem Beistrich
+                    n = n.substring(n.indexOf(",") + 1);
+                    // Um auch das letzte Attribut mitzunehmen, wird diese if-Abfrage benötigt, da vor diesem kein Beistruch mehr steht
+                    if(d == beistrichAnzahl) {
+                        att[attributNummer + d] = new Attribut(n,"");
+                    }
+                }
+                
+                // -- provisorische Positionen!
+                newRandomX = (Math.random() * 500 * screenSize) + 1;
+                myX = parseInt(newRandomX, 10);
+                newRandomY = (Math.random() * 500 * screenSize) + 1;
+                myY = parseInt(newRandomY, 10);
+                
+                // -- Entitäten + Attribute --
+                // Hier werden die Entitäten mit den dazugehörigen Attributen zusammengeführt
+                // Je nachdem, wie viele Attribute es gab, wird der jeweilige Konstruktor ausgewählt.
+                if(beistrichAnzahl == 0) {
+                    entAtt[i - entitaetenNummer] = new EntAtt(myX,myY,ent[i - entitaetenNummer],att[anzahlAtts]);
+                    anzahlAtts += 1;
+                }
+                else if(beistrichAnzahl == 1) {
+                    entAtt[i - entitaetenNummer] = new EntAtt(myX,myY,ent[i - entitaetenNummer],att[anzahlAtts],att[anzahlAtts+1]);
+                    anzahlAtts += 2;
+                }
+                else if(beistrichAnzahl == 2) {
+                    entAtt[i - entitaetenNummer] = new EntAtt(myX,myY,ent[i - entitaetenNummer],att[anzahlAtts],att[anzahlAtts+1],att[anzahlAtts+2]);
+                    anzahlAtts += 3;
+                }
+                else if(beistrichAnzahl == 3) {
+                    entAtt[i - entitaetenNummer] = new EntAtt(myX,myY,ent[i - entitaetenNummer],att[anzahlAtts],att[anzahlAtts+1],att[anzahlAtts+2],att[anzahlAtts+3]);
+                    anzahlAtts += 4;
+                }
             }
             
             // Um eine gute Nummerierung einzuhalten, wird diese Variable jedes mal bei Erfüllung der Bedingung erhöht
@@ -300,7 +371,7 @@ function cookieDaten(myEnts, myBezis) {
         }
     }
 
-    alert(beistrichAnzahl);
+    console.log(entAtt);
     console.log(ent);
     console.log(att);
 }
