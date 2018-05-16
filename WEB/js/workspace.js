@@ -155,8 +155,11 @@ function setup() {
     console.log(entitatenMitAttributen);
     console.log(bezis);
 
+    
+    // AUFRUF-COOKIEDATEN
     cookieDaten(entitatenMitAttributen, bezis);
 
+    
     // Damit das Canvas bereits zu Anfang in richtiger Größe angezeigt wird, wird die Methode auch hier aufgerufen
     ausrichtung();
 
@@ -226,12 +229,19 @@ function drawGrid() {
     line(cw / 2, 0, cw / 2, ch);
 }
 
-//Array für die Entitäten mit deren Attributen
+/*
+    OBJEKTARRAYS
+*/
+// Array für die Entitäten mit deren Attributen
+// Hier werden die Attribute zu ihren Entitäten zugeordnet. Außerdem wird eine Position festgelegt
 let entAtt = [];
-//Array für die Entitäten 
+// Array für die Entitäten 
+// Hier werden alle Entitäten, die es gibt, der Reihe nach abgespeichert
 let ent = [];
-//Array für die Attribute
+// Array für die Attribute
+// Hier werden alle Attribute, die es gibt, der Reihe nach abgespeichert
 let att = [];
+
 //Breite einer Entität
 let entWidth = 100 * screenSize;
 //TextSize in einer Entität
@@ -247,6 +257,10 @@ let x1 = this.x - ellipseWidth / 2;
 let y1 = this.y - ellipseWidth / 4 - attAbstand;
 let x2 = this.x + entWidth + ellipseWidth / 2;
 let y2 = this.y + entWidth / 2 + attAbstand + ellipseWidth / 4;
+
+// -----------------
+// -- COOKIEDATEN --
+// -----------------
 
 /*
     Mit dieser Funktion werden die Cookie-Daten in Verwendung gebracht.
