@@ -19,7 +19,7 @@ session_start();
 	<!-- Custom JS -->
 	 <script type="text/javascript" src="../js/konto.js"></script>
 	 <!-- Canvas CSS -->
-	 <link rel="stylesheet" type="text/css" href="../css/canvas.css">
+	 
     <title>Chenny</title>
   </head>
   <body style="background-color:#eeeeee;">
