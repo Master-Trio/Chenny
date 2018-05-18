@@ -37,7 +37,7 @@ if(isset($_POST['submit'])){
 						header("Location:signup.php");
 					}
 					else{
-						if(!preg_match("/^[a-zA-Z]*$/",$vn)||!preg_match("/^[a-zA-Z]*$/",$nn)){
+						if(!preg_match("^[a-zA-ZäöüÄÖÜ ._-]+$",$vn)||!preg_match("^[a-zA-ZäöüÄÖÜ ._-]+$",$nn)){
 							$_SESSION['er'] = "Vorname/Nachname ungültig";
 							header("Location:signup.php");
 							exit();
