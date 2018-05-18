@@ -217,6 +217,11 @@ function draw() {
 
 }
 
+function exportCanvas() {
+    var img = canvas.toDataURL("image/png");
+    document.write('<img src="'+img+'"/>');
+}
+
 // Diese Funktion wird bei Verändern der Fenstergröße aufgerufen.
 function windowResized() {
     // Canvasgröße wird verändert
