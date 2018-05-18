@@ -90,11 +90,11 @@ window.onresize = function () {
     ausrichtung();
 
     // Verschiedene Größen werden mit der Fenstergröße multipliziert
-    entWidth = 100 * screenSize;
-    ellipseWidth = 80 * screenSize;
-    attTextSize = 12 * screenSize;
-    attAbstand = 30 * screenSize;
-    entTextSize = 20 * screenSize;
+    entWidth = 100/2 * screenSize;
+    ellipseWidth = 80/2 * screenSize;
+    attTextSize = 12/2 * screenSize;
+    attAbstand = 30/2 * screenSize;
+    entTextSize = 20/2 * screenSize;
 }
 
 // ------------
@@ -159,6 +159,7 @@ function setup() {
     // AUFRUF-COOKIEDATEN
     cookieDaten(entitatenMitAttributen, bezis);
 
+    
     
     // Damit das Canvas bereits zu Anfang in richtiger Größe angezeigt wird, wird die Methode auch hier aufgerufen
     ausrichtung();
@@ -243,15 +244,15 @@ let ent = [];
 let att = [];
 
 //Breite einer Entität
-let entWidth = 100 * screenSize;
+let entWidth = 100/2 * screenSize;
 //TextSize in einer Entität
-let entTextSize = 20 * screenSize;
+let entTextSize = 20/2 * screenSize;
 //Breite eines Attributs
-let ellipseWidth = 80 * screenSize;
+let ellipseWidth = 80/2 * screenSize;
 //TextSize in einem Attribut
-let attTextSize = 12 * screenSize;
+let attTextSize = 12/2 * screenSize;
 //Abstand zwischen einer Entität und einem Attribut
-let attAbstand = 30 * screenSize;
+let attAbstand = 30/2 * screenSize;
 //Relevante Variablen zur Berechnung von RealX und RealY
 let x1 = this.x - ellipseWidth / 2;
 let y1 = this.y - ellipseWidth / 4 - attAbstand;
@@ -301,7 +302,7 @@ function cookieDaten(myEnts, myBezis) {
                     att[j] = new Attribut(m.split(',', 1));
                     // Hiermit wird das bereits gespeicherte Attribut aus dem Arrayelement gelöscht, samt nachfolgendem Beistrich
                     m = m.substring(m.indexOf(",") + 1);
-                    // Um auch das letzte Attribut mitzunehmen, wird diese if-Abfrage benötigt, da vor diesem kein Beistruch mehr steht
+                    // Um auch das letzte Attribut mitzunehmen, wird diese if-Abfrage benötigt, da vor diesem kein Beistrich mehr steht
                     if(j == beistrichAnzahl) {
                         att[j] = new Attribut(m,"");
                     }
@@ -309,11 +310,17 @@ function cookieDaten(myEnts, myBezis) {
                     attributNummer++;
                 }
                 
+                
+                
+                
                 // -- provisorische Positionen!
                 newRandomX = (Math.random() * 500 * screenSize) + 1;
                 myX = parseInt(newRandomX, 10);
                 newRandomY = (Math.random() * 500 * screenSize) + 1;
                 myY = parseInt(newRandomY, 10);
+                
+                
+                
                 
                 // -- Entitäten + Attribute --
                 // Hier werden die Entitäten mit den dazugehörigen Attributen zusammengeführt
@@ -340,24 +347,32 @@ function cookieDaten(myEnts, myBezis) {
                 beistrichAnzahl = ourEnts[i + 1].split(",").length - 1;
                 // Hier werden die restlichen Entitäten generiert
                 ent[i - entitaetenNummer] = new Entity(ourEnts[i]);
-                
                 var n = ourEnts[i + 1];
+                
                 for (var d = 0; d <= beistrichAnzahl; d++) {
                     // Das Attribut, welches sich vor dem ersten Beistrich befindet, wird gespeichert
-                    att[attributNummer + d] = new Attribut(n.split(',', 1));
+                    att[attributNummer] = new Attribut(n.split(',', 1));
                     // Hiermit wird das bereits gespeicherte Attribut aus dem Arrayelement gelöscht, samt nachfolgendem Beistrich
                     n = n.substring(n.indexOf(",") + 1);
                     // Um auch das letzte Attribut mitzunehmen, wird diese if-Abfrage benötigt, da vor diesem kein Beistruch mehr steht
                     if(d == beistrichAnzahl) {
-                        att[attributNummer + d] = new Attribut(n,"");
+                        att[attributNummer] = new Attribut(n,"");
                     }
+                    
+                    attributNummer++;
                 }
+                
+                
+                
                 
                 // -- provisorische Positionen!
                 newRandomX = (Math.random() * 500 * screenSize) + 1;
-                myX = parseInt(newRandomX, 10);
+                myX = 200;
                 newRandomY = (Math.random() * 500 * screenSize) + 1;
-                myY = parseInt(newRandomY, 10);
+                myY = 200;
+                
+                
+                
                 
                 // -- Entitäten + Attribute --
                 // Hier werden die Entitäten mit den dazugehörigen Attributen zusammengeführt
