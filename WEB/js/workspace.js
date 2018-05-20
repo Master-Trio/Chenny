@@ -84,19 +84,6 @@ function ausrichtung() {
     }
 }
 
-// Die Funktionen werden bei Veränderung der Fenstergröße ausgeführt
-window.onresize = function () {
-    // Ausrichtung und Canvasgröße
-    ausrichtung();
-
-    // Verschiedene Größen werden mit der Fenstergröße multipliziert
-    entWidth = 100/2 * screenSize;
-    ellipseWidth = 80/2 * screenSize;
-    attTextSize = 12/2 * screenSize;
-    attAbstand = 30/2 * screenSize;
-    entTextSize = 20/2 * screenSize;
-}
-
 // ------------
 // -- SETUP --
 // ------------
@@ -155,25 +142,22 @@ function setup() {
     console.log(entitatenMitAttributen);
     console.log(bezis);
 
-    
-    // AUFRUF-COOKIEDATEN
-    cookieDaten(entitatenMitAttributen, bezis);
-
-    
-    
     // Damit das Canvas bereits zu Anfang in richtiger Größe angezeigt wird, wird die Methode auch hier aufgerufen
     ausrichtung();
 
     // Auch dies soll bereits zu Anfang richtiggestellt sein
     // Verschiedene Größen werden mit der Fenstergröße multipliziert
-    entWidth = 100 * screenSize;
-    ellipseWidth = 80 * screenSize;
-    attTextSize = 12 * screenSize;
-    attAbstand = 30 * screenSize;
-    entTextSize = 20 * screenSize;
+    entWidth = 100/2 * screenSize;
+    ellipseWidth = 80/2 * screenSize;
+    attTextSize = 12/2 * screenSize;
+    attAbstand = 30/2 * screenSize;
+    entTextSize = 20/2 * screenSize;
 
     // Hier wird das Canvas, mithilfe variabler Parameter erstellt
     var canvas = createCanvas(cw, ch);
+    
+    // AUFRUF-COOKIEDATEN
+    cookieDaten(entitatenMitAttributen, bezis);
 
     // Hiermit wird das Canvas in ein div gesetzt
     // Move the canvas so it’s inside our <div id="sketch-holder">.
@@ -210,13 +194,12 @@ function draw() {
     //Zeichnet alle Objekte mit deren Attributen
     for (i = 0; i < entAtt.length; i++) {
         entAtt[i].show();
-        
-        fill(color(255, 0, 0));
-        ellipse(entAtt[0].getRealX(), entAtt[0].getRealY(), 10 * screenSize, 10 * screenSize);
     }
-
 }
 
+/*
+    Diese Funktion exportiert das gesamte Canvas als PNG
+*/
 function exportCanvas() {
     var img = canvas.toDataURL("image/png");
     document.write('<img src="'+img+'"/>');
@@ -224,9 +207,24 @@ function exportCanvas() {
 
 // Diese Funktion wird bei Verändern der Fenstergröße aufgerufen.
 function windowResized() {
+    // Ausrichtung und Canvasgröße
+    ausrichtung();
+
+    // Verschiedene Größen werden mit der Fenstergröße multipliziert
+    entWidth = 100/2 * screenSize;
+    ellipseWidth = 80/2 * screenSize;
+    attTextSize = 12/2 * screenSize;
+    attAbstand = 30/2 * screenSize;
+    entTextSize = 20/2 * screenSize;
+    
     // Canvasgröße wird verändert
     resizeCanvas(cw, ch);
-    entAtt[0].move(cw / 4, ch / 4);
+    
+    // Hier wird die Position der Entitäten angepasst
+    for (i = 0; i < entAtt.length; i++) {
+        entAtt[i].move(myX[i],myY[i])
+    }
+    
 }
 
 // Darstellung der vertikalen und horrizontalen Hilfslinien
@@ -264,6 +262,9 @@ let y1 = this.y - ellipseWidth / 4 - attAbstand;
 let x2 = this.x + entWidth + ellipseWidth / 2;
 let y2 = this.y + entWidth / 2 + attAbstand + ellipseWidth / 4;
 
+// Arrays zur Positionierung von Entitäten
+let myX = [];
+let myY = [];
 // -----------------
 // -- COOKIEDATEN --
 // -----------------
@@ -283,9 +284,6 @@ function cookieDaten(myEnts, myBezis) {
     var entitaetenNummer = 0;
     // Mithilfe dieser Variable werden die Attribute im Attribut-Objekt-Array an die richtige Stelle gebracht
     var attributNummer = 0;
-    
-    // provisorisch
-    let newRandomX, newRandomY, myX, myY;
     
     // Anzahl aller Attribute
     var anzahlAtts;
@@ -318,11 +316,13 @@ function cookieDaten(myEnts, myBezis) {
                 
                 
                 
-                // -- provisorische Positionen!
-                newRandomX = (Math.random() * 500 * screenSize) + 1;
-                myX = parseInt(newRandomX, 10);
-                newRandomY = (Math.random() * 500 * screenSize) + 1;
-                myY = parseInt(newRandomY, 10);
+                // -- Positionierung --
+                myX[i - entitaetenNummer] = cw/10 + entitaetenNummer*cw/5 +1*screenSize; 
+                if((i-entitaetenNummer)>3) {
+                    myY[i - entitaetenNummer] = cw/4;
+                } else {
+                    myY[i - entitaetenNummer] = cw/6;
+                }
                 
                 
                 
@@ -331,19 +331,19 @@ function cookieDaten(myEnts, myBezis) {
                 // Hier werden die Entitäten mit den dazugehörigen Attributen zusammengeführt
                 // Je nachdem, wie viele Attribute es gab, wird der jeweilige Konstruktor ausgewählt.
                 if(beistrichAnzahl == 0) {
-                    entAtt[i] = new EntAtt(myX,myY,ent[i],att[0]);
+                    entAtt[i] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i],att[0]);
                     anzahlAtts = 1;
                 }
                 else if(beistrichAnzahl == 1) {
-                    entAtt[i] = new EntAtt(myX,myY,ent[i],att[0],att[1]);
+                    entAtt[i] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i],att[0],att[1]);
                     anzahlAtts = 2;
                 }
                 else if(beistrichAnzahl == 2) {
-                    entAtt[i] = new EntAtt(myX,myY,ent[i],att[0],att[1],att[2]);
+                    entAtt[i] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i],att[0],att[1],att[2]);
                     anzahlAtts = 3;
                 }
                 else if(beistrichAnzahl == 3) {
-                    entAtt[i] = new EntAtt(myX,myY,ent[i],att[0],att[1],att[2],att[3]);
+                    entAtt[i] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i],att[0],att[1],att[2],att[3]);
                     anzahlAtts = 4;
                 }
                 
@@ -368,13 +368,13 @@ function cookieDaten(myEnts, myBezis) {
                 }
                 
                 
-                
-                
-                // -- provisorische Positionen!
-                newRandomX = (Math.random() * 500 * screenSize) + 1;
-                myX = 200;
-                newRandomY = (Math.random() * 500 * screenSize) + 1;
-                myY = 200;
+                // -- Positionierung --
+                myX[i - entitaetenNummer] = cw/10 + entitaetenNummer*cw/5 +1*screenSize; 
+                if((i-entitaetenNummer)>1) {
+                    myY[i - entitaetenNummer] = cw/4;
+                } else {
+                    myY[i - entitaetenNummer] = cw/6;
+                }
                 
                 
                 
@@ -383,19 +383,19 @@ function cookieDaten(myEnts, myBezis) {
                 // Hier werden die Entitäten mit den dazugehörigen Attributen zusammengeführt
                 // Je nachdem, wie viele Attribute es gab, wird der jeweilige Konstruktor ausgewählt.
                 if(beistrichAnzahl == 0) {
-                    entAtt[i - entitaetenNummer] = new EntAtt(myX,myY,ent[i - entitaetenNummer],att[anzahlAtts]);
+                    entAtt[i - entitaetenNummer] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i - entitaetenNummer],att[anzahlAtts]);
                     anzahlAtts += 1;
                 }
                 else if(beistrichAnzahl == 1) {
-                    entAtt[i - entitaetenNummer] = new EntAtt(myX,myY,ent[i - entitaetenNummer],att[anzahlAtts],att[anzahlAtts+1]);
+                    entAtt[i - entitaetenNummer] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i - entitaetenNummer],att[anzahlAtts],att[anzahlAtts+1]);
                     anzahlAtts += 2;
                 }
                 else if(beistrichAnzahl == 2) {
-                    entAtt[i - entitaetenNummer] = new EntAtt(myX,myY,ent[i - entitaetenNummer],att[anzahlAtts],att[anzahlAtts+1],att[anzahlAtts+2]);
+                    entAtt[i - entitaetenNummer] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i - entitaetenNummer],att[anzahlAtts],att[anzahlAtts+1],att[anzahlAtts+2]);
                     anzahlAtts += 3;
                 }
                 else if(beistrichAnzahl == 3) {
-                    entAtt[i - entitaetenNummer] = new EntAtt(myX,myY,ent[i - entitaetenNummer],att[anzahlAtts],att[anzahlAtts+1],att[anzahlAtts+2],att[anzahlAtts+3]);
+                    entAtt[i - entitaetenNummer] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i - entitaetenNummer],att[anzahlAtts],att[anzahlAtts+1],att[anzahlAtts+2],att[anzahlAtts+3]);
                     anzahlAtts += 4;
                 }
             }
