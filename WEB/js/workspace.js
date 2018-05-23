@@ -147,15 +147,15 @@ function setup() {
 
     // Auch dies soll bereits zu Anfang richtiggestellt sein
     // Verschiedene Größen werden mit der Fenstergröße multipliziert
-    entWidth = 100/2 * screenSize;
-    ellipseWidth = 80/2 * screenSize;
-    attTextSize = 12/2 * screenSize;
-    attAbstand = 30/2 * screenSize;
-    entTextSize = 20/2 * screenSize;
+    entWidth = 100 / 2 * screenSize;
+    ellipseWidth = 80 / 2 * screenSize;
+    attTextSize = 12 / 2 * screenSize;
+    attAbstand = 30 / 2 * screenSize;
+    entTextSize = 20 / 2 * screenSize;
 
     // Hier wird das Canvas, mithilfe variabler Parameter erstellt
     var canvas = createCanvas(cw, ch);
-    
+
     // AUFRUF-COOKIEDATEN
     cookieDaten(entitatenMitAttributen, bezis);
 
@@ -189,8 +189,8 @@ function setup() {
     Diese Funktion sollte niemals händisch aufgerufen werden.
 */
 function draw() {
-    background(200);
-    drawGrid();
+    background('white');
+    //drawGrid();
     //Zeichnet alle Objekte mit deren Attributen
     for (i = 0; i < entAtt.length; i++) {
         entAtt[i].show();
@@ -202,7 +202,7 @@ function draw() {
 */
 function exportCanvas() {
     var img = canvas.toDataURL("image/png");
-    document.write('<img src="'+img+'"/>');
+    document.write('<img src="' + img + '"/>');
 }
 
 // Diese Funktion wird bei Verändern der Fenstergröße aufgerufen.
@@ -211,20 +211,39 @@ function windowResized() {
     ausrichtung();
 
     // Verschiedene Größen werden mit der Fenstergröße multipliziert
-    entWidth = 100/2 * screenSize;
-    ellipseWidth = 80/2 * screenSize;
-    attTextSize = 12/2 * screenSize;
-    attAbstand = 30/2 * screenSize;
-    entTextSize = 20/2 * screenSize;
-    
+    entWidth = 100 / 2 * screenSize;
+    ellipseWidth = 80 / 2 * screenSize;
+    attTextSize = 12 / 2 * screenSize;
+    attAbstand = 30 / 2 * screenSize;
+    entTextSize = 20 / 2 * screenSize;
+
     // Canvasgröße wird verändert
     resizeCanvas(cw, ch);
-    
+
     // Hier wird die Position der Entitäten angepasst
-    for (i = 0; i < entAtt.length; i++) {
-        entAtt[i].move(myX[i],myY[i])
+    for (var i = 0; i < entAtt.length; i++) {
+
+        if (screenSize < 1.3) {
+            if (i > 4) {
+                myY[i] = ch / 2 + ch / 4;
+                myX[i] = cw / 10 + (i - 5) * 100;
+            } else {
+                myY[i] = ch / 5;
+                myX[i] = cw / 10 + i * 100;
+            }
+        } else {
+            if (i > 4) {
+                myY[i] = ch / 2 + ch / 4;
+                myX[i] = cw / 10 + (i - 5) * 180;
+            } else {
+                myY[i] = ch / 5;
+                myX[i] = cw / 10 + i * 180;
+            }
+        }
+
+        entAtt[i].move(myX[i], myY[i]);
     }
-    
+
 }
 
 // Darstellung der vertikalen und horrizontalen Hilfslinien
@@ -247,15 +266,15 @@ let ent = [];
 let att = [];
 
 //Breite einer Entität
-let entWidth = 100/2 * screenSize;
+let entWidth = 100 / 2 * screenSize;
 //TextSize in einer Entität
-let entTextSize = 20/2 * screenSize;
+let entTextSize = 20 / 2 * screenSize;
 //Breite eines Attributs
-let ellipseWidth = 80/2 * screenSize;
+let ellipseWidth = 80 / 2 * screenSize;
 //TextSize in einem Attribut
-let attTextSize = 12/2 * screenSize;
+let attTextSize = 12 / 2 * screenSize;
 //Abstand zwischen einer Entität und einem Attribut
-let attAbstand = 30/2 * screenSize;
+let attAbstand = 30 / 2 * screenSize;
 //Relevante Variablen zur Berechnung von RealX und RealY
 let x1 = this.x - ellipseWidth / 2;
 let y1 = this.y - ellipseWidth / 4 - attAbstand;
@@ -284,7 +303,7 @@ function cookieDaten(myEnts, myBezis) {
     var entitaetenNummer = 0;
     // Mithilfe dieser Variable werden die Attribute im Attribut-Objekt-Array an die richtige Stelle gebracht
     var attributNummer = 0;
-    
+
     // Anzahl aller Attribute
     var anzahlAtts;
 
@@ -294,7 +313,7 @@ function cookieDaten(myEnts, myBezis) {
             // Diese Abfrage gilt nur für die erste Entität
             if (i == 0) {
                 // Diese Zeile fixt einen Fehler in Chrome
-                ourEnts[i] = ourEnts[i].substring(ourEnts[i].indexOf(";")+2);
+                ourEnts[i] = ourEnts[i].substring(ourEnts[i].indexOf(";") + 1);
                 // Die erste Entität wird gespeichert
                 ent[i] = new Entity(ourEnts[i]);
                 // Dies ist die, oben deklarierte, Beistrichanzahl
@@ -306,100 +325,100 @@ function cookieDaten(myEnts, myBezis) {
                     // Hiermit wird das bereits gespeicherte Attribut aus dem Arrayelement gelöscht, samt nachfolgendem Beistrich
                     m = m.substring(m.indexOf(",") + 1);
                     // Um auch das letzte Attribut mitzunehmen, wird diese if-Abfrage benötigt, da vor diesem kein Beistrich mehr steht
-                    if(j == beistrichAnzahl) {
-                        att[j] = new Attribut(m,"");
+                    if (j == beistrichAnzahl) {
+                        att[j] = new Attribut(m, "");
                     }
-                    
+
                     attributNummer++;
                 }
-                
-                
-                
-                
+
+
                 // -- Positionierung --
-                myX[i - entitaetenNummer] = cw/10 + entitaetenNummer*cw/5 +1*screenSize; 
-                if((i-entitaetenNummer)>3) {
-                    myY[i - entitaetenNummer] = cw/4;
-                } else {
-                    myY[i - entitaetenNummer] = cw/6;
-                }
-                
-                
-                
-                
+                myX[i - entitaetenNummer] = cw / 10 + entitaetenNummer * cw / 5 + 1 * screenSize;
+
+                myY[i - entitaetenNummer] = ch / 5;
+
+
                 // -- Entitäten + Attribute --
                 // Hier werden die Entitäten mit den dazugehörigen Attributen zusammengeführt
                 // Je nachdem, wie viele Attribute es gab, wird der jeweilige Konstruktor ausgewählt.
-                if(beistrichAnzahl == 0) {
-                    entAtt[i] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i],att[0]);
+                if (beistrichAnzahl == 0) {
+                    entAtt[i] = new EntAtt(myX[i - entitaetenNummer], myY[i - entitaetenNummer], ent[i], att[0]);
                     anzahlAtts = 1;
-                }
-                else if(beistrichAnzahl == 1) {
-                    entAtt[i] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i],att[0],att[1]);
+                } else if (beistrichAnzahl == 1) {
+                    entAtt[i] = new EntAtt(myX[i - entitaetenNummer], myY[i - entitaetenNummer], ent[i], att[0], att[1]);
                     anzahlAtts = 2;
-                }
-                else if(beistrichAnzahl == 2) {
-                    entAtt[i] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i],att[0],att[1],att[2]);
+                } else if (beistrichAnzahl == 2) {
+                    entAtt[i] = new EntAtt(myX[i - entitaetenNummer], myY[i - entitaetenNummer], ent[i], att[0], att[1], att[2]);
                     anzahlAtts = 3;
-                }
-                else if(beistrichAnzahl == 3) {
-                    entAtt[i] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i],att[0],att[1],att[2],att[3]);
+                } else if (beistrichAnzahl == 3) {
+                    entAtt[i] = new EntAtt(myX[i - entitaetenNummer], myY[i - entitaetenNummer], ent[i], att[0], att[1], att[2], att[3]);
                     anzahlAtts = 4;
                 }
-                
+
             } else {
                 // Dies ist die, oben deklarierte, Beistrichanzahl
                 beistrichAnzahl = ourEnts[i + 1].split(",").length - 1;
                 // Hier werden die restlichen Entitäten generiert
                 ent[i - entitaetenNummer] = new Entity(ourEnts[i]);
                 var n = ourEnts[i + 1];
-                
+
                 for (var d = 0; d <= beistrichAnzahl; d++) {
                     // Das Attribut, welches sich vor dem ersten Beistrich befindet, wird gespeichert
                     att[attributNummer] = new Attribut(n.split(',', 1));
                     // Hiermit wird das bereits gespeicherte Attribut aus dem Arrayelement gelöscht, samt nachfolgendem Beistrich
                     n = n.substring(n.indexOf(",") + 1);
                     // Um auch das letzte Attribut mitzunehmen, wird diese if-Abfrage benötigt, da vor diesem kein Beistruch mehr steht
-                    if(d == beistrichAnzahl) {
-                        att[attributNummer] = new Attribut(n,"");
+                    if (d == beistrichAnzahl) {
+                        att[attributNummer] = new Attribut(n, "");
                     }
-                    
+
                     attributNummer++;
                 }
-                
-                
+
+
                 // -- Positionierung --
-                myX[i - entitaetenNummer] = cw/10 + entitaetenNummer*cw/5 +1*screenSize; 
-                if((i-entitaetenNummer)>1) {
-                    myY[i - entitaetenNummer] = cw/4;
+                /*
+                    Hier findet die Positionierung statt.
+                    Dieser Prozess wird in der Funktion WindowResized wiederholt, 
+                    dort wird jedoch statt 'i-entitaetenNummer' einfach 'i' eingesetzt.
+                */
+                if (screenSize < 1.3) {
+                    if ((i - entitaetenNummer) > 4) {
+                        myY[i - entitaetenNummer] = ch / 2 + ch / 4;
+                        myX[i - entitaetenNummer] = cw / 10 + (entitaetenNummer - 5) * 100;
+                    } else {
+                        myY[i - entitaetenNummer] = ch / 5;
+                        myX[i - entitaetenNummer] = cw / 10 + entitaetenNummer * 100;
+                    }
                 } else {
-                    myY[i - entitaetenNummer] = cw/6;
+                    if ((i - entitaetenNummer) > 4) {
+                        myY[i - entitaetenNummer] = ch / 2 + ch / 4;
+                        myX[i - entitaetenNummer] = cw / 10 + (entitaetenNummer - 5) * 180;
+                    } else {
+                        myY[i - entitaetenNummer] = ch / 5;
+                        myX[i - entitaetenNummer] = cw / 10 + entitaetenNummer * 180;
+                    }
                 }
-                
-                
-                
-                
+
                 // -- Entitäten + Attribute --
                 // Hier werden die Entitäten mit den dazugehörigen Attributen zusammengeführt
                 // Je nachdem, wie viele Attribute es gab, wird der jeweilige Konstruktor ausgewählt.
-                if(beistrichAnzahl == 0) {
-                    entAtt[i - entitaetenNummer] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i - entitaetenNummer],att[anzahlAtts]);
+                if (beistrichAnzahl == 0) {
+                    entAtt[i - entitaetenNummer] = new EntAtt(myX[i - entitaetenNummer], myY[i - entitaetenNummer], ent[i - entitaetenNummer], att[anzahlAtts]);
                     anzahlAtts += 1;
-                }
-                else if(beistrichAnzahl == 1) {
-                    entAtt[i - entitaetenNummer] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i - entitaetenNummer],att[anzahlAtts],att[anzahlAtts+1]);
+                } else if (beistrichAnzahl == 1) {
+                    entAtt[i - entitaetenNummer] = new EntAtt(myX[i - entitaetenNummer], myY[i - entitaetenNummer], ent[i - entitaetenNummer], att[anzahlAtts], att[anzahlAtts + 1]);
                     anzahlAtts += 2;
-                }
-                else if(beistrichAnzahl == 2) {
-                    entAtt[i - entitaetenNummer] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i - entitaetenNummer],att[anzahlAtts],att[anzahlAtts+1],att[anzahlAtts+2]);
+                } else if (beistrichAnzahl == 2) {
+                    entAtt[i - entitaetenNummer] = new EntAtt(myX[i - entitaetenNummer], myY[i - entitaetenNummer], ent[i - entitaetenNummer], att[anzahlAtts], att[anzahlAtts + 1], att[anzahlAtts + 2]);
                     anzahlAtts += 3;
-                }
-                else if(beistrichAnzahl == 3) {
-                    entAtt[i - entitaetenNummer] = new EntAtt(myX[i - entitaetenNummer],myY[i - entitaetenNummer],ent[i - entitaetenNummer],att[anzahlAtts],att[anzahlAtts+1],att[anzahlAtts+2],att[anzahlAtts+3]);
+                } else if (beistrichAnzahl == 3) {
+                    entAtt[i - entitaetenNummer] = new EntAtt(myX[i - entitaetenNummer], myY[i - entitaetenNummer], ent[i - entitaetenNummer], att[anzahlAtts], att[anzahlAtts + 1], att[anzahlAtts + 2], att[anzahlAtts + 3]);
                     anzahlAtts += 4;
                 }
             }
-            
+
             // Um eine gute Nummerierung einzuhalten, wird diese Variable jedes mal bei Erfüllung der Bedingung erhöht
             entitaetenNummer++;
         }
@@ -443,8 +462,9 @@ class EntAtt {
     }
     // Methode um es darzustellen
     show() {
-        fill(color(154, 115, 115));
+        fill(color('white'));
         // Darstellung in einem Rechteck
+        /*
         x1 = this.x - ellipseWidth / 2;
         y1 = this.y - ellipseWidth / 4 - attAbstand;
         x2 = this.x + entWidth + ellipseWidth / 2;
@@ -453,18 +473,19 @@ class EntAtt {
         line(x2, y1, x2, y2);
         line(x2, y2, x1, y2);
         line(x1, y2, x1, y1);
+        */
         //Rechteck der Entität
         rect(this.x, this.y, entWidth, entWidth / 2);
         // Check ob der Entitätenname zu lang ist; falls ja, dann macht es einen Zeilenumbruch
         if (this.ent_Obj.entName.length > 8) {
             var oben = this.ent_Obj.entName.substr(0, 8);
             var unten = this.ent_Obj.entName.substring(8, this.ent_Obj.entName.length);
-            fill(color(255, 255, 255));
+            fill(color('black'));
             textSize(attTextSize + 7 * screenSize);
             text(oben, this.x + entWidth / 10, this.y + attTextSize + entWidth / 10);
             text(unten, this.x + entWidth / 10, this.y + attTextSize + entWidth / 3.5);
         } else {
-            fill(color(255, 255, 255));
+            fill(color('black'));
             textSize(entTextSize);
             text(this.ent_Obj.entName, this.x + entWidth / 10, this.y + entWidth / 3);
         }
@@ -474,9 +495,9 @@ class EntAtt {
         //***********
 
         if (this.attr_Obj1 != null && this.attr_Obj2 == null && this.attr_Obj3 == null && this.attr_Obj4 == null) {
-            fill(color(154, 115, 115));
+            fill(color('white'));
             ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
-            fill(color(255, 255, 255));
+            fill(color('black'));
             //Check ob der Attributname zu lang ist, falls ja dann macht es einen Zeilenumbruch
             if (this.attr_Obj1.attName.length > 10) {
                 var oben = this.attr_Obj1.attName.substring(0, 10);
@@ -497,10 +518,10 @@ class EntAtt {
         //***********
 
         if (this.attr_Obj1 != null && this.attr_Obj2 != null && this.attr_Obj3 == null && this.attr_Obj4 == null) {
-            fill(color(154, 115, 115));
+            fill(color('white'));
             ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
             ellipse(this.x + entWidth, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
-            fill(color(255, 255, 255));
+            fill(color('black'));
             //Check ob der Attributname zu lang ist, falls ja dann macht es einen Zeilenumbruch
             if (this.attr_Obj1.attName.length > 10) {
                 var oben = this.attr_Obj1.attName.substring(0, 10);
@@ -532,11 +553,11 @@ class EntAtt {
         //***********
 
         if (this.attr_Obj1 != null && this.attr_Obj2 != null && this.attr_Obj3 != null && this.attr_Obj4 == null) {
-            fill(color(154, 115, 115));
+            fill(color('white'));
             ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
             ellipse(this.x + entWidth, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
             ellipse(this.x, this.y + entWidth / 2 + attAbstand, ellipseWidth, ellipseWidth / 2);
-            fill(color(255, 255, 255));
+            fill(color('black'));
             //Check ob der Attributname zu lang ist, falls ja dann macht es einen Zeilenumbruch
             if (this.attr_Obj1.attName.length > 10) {
                 var oben = this.attr_Obj1.attName.substring(0, 10);
@@ -580,12 +601,12 @@ class EntAtt {
         //***********
 
         if (this.attr_Obj1 != null && this.attr_Obj2 != null && this.attr_Obj3 != null && this.attr_Obj4 != null) {
-            fill(color(154, 115, 115));
+            fill(color('white'));
             ellipse(this.x, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
             ellipse(this.x + entWidth, this.y - attAbstand, ellipseWidth, ellipseWidth / 2);
             ellipse(this.x, this.y + entWidth / 2 + attAbstand, ellipseWidth, ellipseWidth / 2);
             ellipse(this.x + entWidth, this.y + entWidth / 2 + attAbstand, ellipseWidth, ellipseWidth / 2);
-            fill(color(255, 255, 255));
+            fill(color('black'));
             if (this.attr_Obj1.attName.length > 10) {
                 var oben = this.attr_Obj1.attName.substring(0, 10);
                 var unten = this.attr_Obj1.attName.substring(10, this.attr_Obj1.attName.length);
