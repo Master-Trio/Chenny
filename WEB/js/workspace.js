@@ -201,8 +201,8 @@ function draw() {
     Diese Funktion exportiert das gesamte Canvas als PNG
 */
 function exportCanvas() {
-    var img = canvas.toDataURL("image/png");
-    document.write('<img src="' + img + '"/>');
+    var img = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+   	download.setAttribute("href", img);
 }
 
 // Diese Funktion wird bei Verändern der Fenstergröße aufgerufen.

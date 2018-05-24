@@ -590,7 +590,7 @@ function createCookie() {
         for (var j = 0; j < mappedEmitA.length; j++) {
             for (var a = 0; a < mappedEmitA[j].length; a++) {
                 if (mappedAmitPK[j][a] == "on") {
-                    zeile2 += "p" + mappedEmitA[j][a] + ",";
+                    zeile2 += mappedEmitA[j][a] + ",";
                 } else {
                     zeile2 += mappedEmitA[j][a] + ",";
                 }
