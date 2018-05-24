@@ -223,28 +223,72 @@ function windowResized() {
     // Hier wird die Position der Entitäten angepasst
     for (var i = 0; i < entAtt.length; i++) {
 
-        if (screenSize < 1.3) {
-            if (i > 4) {
-                myY[i] = ch / 2 + ch / 4;
-                myX[i] = cw / 10 + (i - 5) * 100;
-            } else {
-                myY[i] = ch / 5;
-                myX[i] = cw / 10 + i * 100;
+        if (screenSize < 0.7) {
+            if (entAtt.length > 5) {
+                if (i > 4) {
+                    myY[i] = ch / 2 + ch / 4;
+                    myX[i] = cw / 10 + (i - 5) * 70;
+                } else {
+                    myY[i] = ch / 5;
+                    myX[i] = cw / 10 + i * 70;
+                }
             }
-        } else {
-            if (i > 4) {
-                myY[i] = ch / 2 + ch / 4;
-                myX[i] = cw / 10 + (i - 5) * 180;
-            } else {
-                myY[i] = ch / 5;
-                myX[i] = cw / 10 + i * 180;
+
+            if (entAtt.length < 5) {
+                if (i > 2 && i < 5) {
+                    myY[i] = ch / 2 + ch / 4;
+                    myX[i] = cw / 4 + (i - 3) * 130;
+                } else {
+                    myY[i] = ch / 5;
+                    myX[i] = cw / 6 + i * 110;
+                }
+            }
+        } else if (screenSize < 1.2) {
+            if (entAtt.length > 5) {
+                if (i > 4) {
+                    myY[i] = ch / 2 + ch / 4;
+                    myX[i] = cw / 10 + (i - 5) * 100;
+                } else {
+                    myY[i] = ch / 5;
+                    myX[i] = cw / 10 + i * 100;
+                }
+            }
+
+            if (entAtt.length < 5) {
+                if (i > 2 && i < 5) {
+                    myY[i] = ch / 2 + ch / 4;
+                    myX[i] = cw / 4 + (i - 3) * 130;
+                } else {
+                    myY[i] = ch / 5;
+                    myX[i] = cw / 6 + i * 110;
+                }
+            }
+        } else if(screenSize > 1.1){
+            if (entAtt.length > 5) {
+                if (i > 4) {
+                    myY[i] = ch / 2 + ch / 4;
+                    myX[i] = cw / 10 + (i - 5) * 180;
+                } else {
+                    myY[i] = ch / 5;
+                    myX[i] = cw / 10 + i * 180;
+                }
+            }
+
+            if (entAtt.length < 5) {
+                if (i > 2 && i < 5) {
+                    myY[i] = ch / 2 + ch / 4;
+                    myX[i] = cw / 3 + (i - 3) * 250;
+                } else {
+                    myY[i] = ch / 5;
+                    myX[i] = cw / 5 + i * 240;
+                }
             }
         }
-
         entAtt[i].move(myX[i], myY[i]);
     }
 
 }
+
 
 // Darstellung der vertikalen und horrizontalen Hilfslinien
 function drawGrid() {
@@ -334,9 +378,39 @@ function cookieDaten(myEnts, myBezis) {
 
 
                 // -- Positionierung --
-                myX[i - entitaetenNummer] = cw / 10 + entitaetenNummer * cw / 5 + 1 * screenSize;
+                if (screenSize < 1.2) {
+                    if ((i - entitaetenNummer) > 4) {
+                        myY[i - entitaetenNummer] = ch / 2 + ch / 4;
+                        myX[i - entitaetenNummer] = cw / 10 + (entitaetenNummer - 5) * 100;
+                    } else {
+                        myY[i - entitaetenNummer] = ch / 5;
+                        myX[i - entitaetenNummer] = cw / 10 + entitaetenNummer * 100;
+                    }
 
-                myY[i - entitaetenNummer] = ch / 5;
+                    if ((i - entitaetenNummer) > 2) {
+                        myY[i - entitaetenNummer] = ch / 2 + ch / 4;
+                        myX[i - entitaetenNummer] = cw / 4 + (entitaetenNummer - 3) * 130;
+                    } else {
+                        myY[i - entitaetenNummer] = ch / 5;
+                        myX[i - entitaetenNummer] = cw / 6 + entitaetenNummer * 110;
+                    }
+                } else {
+                    if ((i - entitaetenNummer) > 4) {
+                        myY[i - entitaetenNummer] = ch / 2 + ch / 4;
+                        myX[i - entitaetenNummer] = cw / 10 + (entitaetenNummer - 5) * 180;
+                    } else {
+                        myY[i - entitaetenNummer] = ch / 5;
+                        myX[i - entitaetenNummer] = cw / 10 + entitaetenNummer * 180;
+                    }
+
+                    if ((i - entitaetenNummer) > 2) {
+                        myY[i - entitaetenNummer] = ch / 2 + ch / 4;
+                        myX[i - entitaetenNummer] = cw / 4 + (entitaetenNummer - 3) * 150;
+                    } else {
+                        myY[i - entitaetenNummer] = ch / 5;
+                        myX[i - entitaetenNummer] = cw / 4 + entitaetenNummer * 100;
+                    }
+                }
 
 
                 // -- Entitäten + Attribute --
@@ -383,7 +457,23 @@ function cookieDaten(myEnts, myBezis) {
                     Dieser Prozess wird in der Funktion WindowResized wiederholt, 
                     dort wird jedoch statt 'i-entitaetenNummer' einfach 'i' eingesetzt.
                 */
-                if (screenSize < 1.3) {
+                if (screenSize < 0.7) {
+                    if ((i - entitaetenNummer) > 4) {
+                        myY[i - entitaetenNummer] = ch / 2 + ch / 4;
+                        myX[i - entitaetenNummer] = cw / 10 + (entitaetenNummer - 5) * 70;
+                    } else {
+                        myY[i - entitaetenNummer] = ch / 5;
+                        myX[i - entitaetenNummer] = cw / 10 + entitaetenNummer * 70;
+                    }
+
+                    if ((i - entitaetenNummer) > 2) {
+                        myY[i - entitaetenNummer] = ch / 2 + ch / 4;
+                        myX[i - entitaetenNummer] = cw / 4 + (entitaetenNummer - 3) * 130;
+                    } else {
+                        myY[i - entitaetenNummer] = ch / 5;
+                        myX[i - entitaetenNummer] = cw / 6 + entitaetenNummer * 110;
+                    }
+                } else if (screenSize < 1.2) {
                     if ((i - entitaetenNummer) > 4) {
                         myY[i - entitaetenNummer] = ch / 2 + ch / 4;
                         myX[i - entitaetenNummer] = cw / 10 + (entitaetenNummer - 5) * 100;
@@ -391,13 +481,29 @@ function cookieDaten(myEnts, myBezis) {
                         myY[i - entitaetenNummer] = ch / 5;
                         myX[i - entitaetenNummer] = cw / 10 + entitaetenNummer * 100;
                     }
-                } else {
+
+                    if ((i - entitaetenNummer) > 2) {
+                        myY[i - entitaetenNummer] = ch / 2 + ch / 4;
+                        myX[i - entitaetenNummer] = cw / 4 + (entitaetenNummer - 3) * 130;
+                    } else {
+                        myY[i - entitaetenNummer] = ch / 5;
+                        myX[i - entitaetenNummer] = cw / 6 + entitaetenNummer * 110;
+                    }
+                } else if(screenSize > 1.1){
                     if ((i - entitaetenNummer) > 4) {
                         myY[i - entitaetenNummer] = ch / 2 + ch / 4;
                         myX[i - entitaetenNummer] = cw / 10 + (entitaetenNummer - 5) * 180;
                     } else {
                         myY[i - entitaetenNummer] = ch / 5;
                         myX[i - entitaetenNummer] = cw / 10 + entitaetenNummer * 180;
+                    }
+
+                    if ((i - entitaetenNummer) > 2) {
+                        myY[i - entitaetenNummer] = ch / 2 + ch / 4;
+                        myX[i - entitaetenNummer] = cw / 4 + (entitaetenNummer - 3) * 150;
+                    } else {
+                        myY[i - entitaetenNummer] = ch / 5;
+                        myX[i - entitaetenNummer] = cw / 4 + entitaetenNummer * 100;
                     }
                 }
 
@@ -427,6 +533,7 @@ function cookieDaten(myEnts, myBezis) {
     console.log(entAtt);
     console.log(ent);
     console.log(att);
+    windowResized();
 }
 
 
