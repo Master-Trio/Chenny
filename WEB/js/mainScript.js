@@ -70,6 +70,17 @@ function namenSpeichern() {
             fehler = true;
             break;
         }
+        else if (str.search("/") != -1) {
+            document.getElementById("fehlermeldung").innerHTML = "<p style='color: red;'>Bitte keine Schrägstriche eingeben!</p>";
+            fehler = true;
+            break;
+        }
+        else if (str.search("|") != -1) {
+            document.getElementById("fehlermeldung").innerHTML = "<p style='color: red;'>Bitte kein &quot;|&quot; eingeben!</p>";
+            console.log(document.getElementById("feld" + (i + 1)).value);
+            fehler = true;
+            break;
+        }
     }
     //Wenn die Fehlervariable weiterhin, wie bei der Initialisierung auf false ist, kann Schritt 2 angezeigt werden
     if (!fehler && auswahl) {
@@ -233,11 +244,25 @@ function weiterAttributWerte() {
                 attributWerteNamen.push(document.getElementById("textfeld" + platz + (i + 1)).value);
             }
 
-            //Überprüfung, ob ein Textfeld leer gelassen wurde
+            //Überprüfung, ob ein Doppelpunkt eingegben wurde
             var str = document.getElementById("textfeld" + platz + (i + 1)).value;
             if (str.search(":") != -1) {
                 document.getElementById("fehlermeldung3").innerHTML = "";
                 document.getElementById("fehlermeldung3").innerHTML = "<p style='color: red;'>Bitte keine Doppelpunkte eingeben!</p>";
+                fehler = true;
+            }
+            
+            //Überprüfung, ob ein Schrägstrich eingegeben wurde
+            if (str.search("/") != -1) {
+                document.getElementById("fehlermeldung3").innerHTML = "";
+                document.getElementById("fehlermeldung3").innerHTML = "<p style='color: red;'>Bitte keine Schrägstriche eingeben!</p>";
+                fehler = true;
+            }
+            
+            //Überprüfung, ob ein | eingegeben wurde
+            if (str.search("|") != -1) {
+                document.getElementById("fehlermeldung3").innerHTML = "";
+                document.getElementById("fehlermeldung3").innerHTML = "<p style='color: red;'>Bitte kein &quot;|&quot; eingeben!</p>";
                 fehler = true;
             }
 
@@ -426,6 +451,20 @@ function writeBeziehung() {
         if (str.search(":") != -1) {
             document.getElementById("fehlermeldung4").innerHTML = "";
             document.getElementById("fehlermeldung4").innerHTML = "<p style='color: red;'>Bitte keine Doppelpunkte eingeben!</p>"
+            doppelt = true;
+        }
+        
+        //prüfen auf Schrägstrich
+        if (str.search("/") != -1) {
+            document.getElementById("fehlermeldung4").innerHTML = "";
+            document.getElementById("fehlermeldung4").innerHTML = "<p style='color: red;'>Bitte keine Schrägstriche eingeben!</p>"
+            doppelt = true;
+        }
+        
+        //prüfen auf |
+        if (str.search("|") != -1) {
+            document.getElementById("fehlermeldung4").innerHTML = "";
+            document.getElementById("fehlermeldung4").innerHTML = "<p style='color: red;'>Bitte kein &quot;|&quot; eingeben!</p>"
             doppelt = true;
         }
 
